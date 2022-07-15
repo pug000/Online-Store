@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": true,
+    "useDefineForClassFields": true,
+    "skipLibCheck": true,
+    "moduleResolution": "Node",
+    "module": "ESNext",
+    "target": "ESNext",
+    "allowJs": true,
+    "strict": true,
+    "jsx": "react-jsx",
+    "isolatedModules": true,
+    "types": [
+      "react/next",
+      "react-dom/next"
+    ]
+  },
+  "lib": [
+    "DOM",
+    "DOM.Iterable",
+    "ESNext"
+  ],
+  "files": [
+    "src/index.tsx"
+  ],
+  "include": [
+    "src/**/*.ts",
+    ".eslintrc.json",
+  ],
+}

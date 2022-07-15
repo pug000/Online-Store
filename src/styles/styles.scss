@@ -1,0 +1,62 @@
+@font-face {
+  font-family: "Satisfy";
+  src: url("../assets/fonts/Satisfy-Regular.ttf") format("tff");
+}
+
+@font-face {
+  font-family: "Roboto Mono";
+  src: url("../assets/fonts/RobotoMono-Regular.ttf") format("tff");
+}
+
+@font-face {
+  font-family: "Play";
+  src: url("../assets/fonts/Play-Regular.ttf") format("tff");
+}
+
+body {
+  max-width: 1440px;
+  color: #333;
+  background-color: #f6f6f6;
+  margin: 0 auto;
+}
+
+.lock {
+  overflow: hidden;
+}
+
+.main {
+  display: grid;
+  margin: 100px 45px 0;
+  gap: 40px;
+  grid-template-columns: minmax(180px, 280px) 1fr;
+}
+
+.filter-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 15px;
+  font-family: "Play", sans-serif;
+}
+
+.products-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(295px, 0.23fr));
+  width: 100%;
+  grid-gap: 30px;
+  align-items: center;
+  align-content: flex-start;
+  justify-content: space-evenly;
+}
+
+.no-results-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__title {
+    font-size: 28px;
+    color: #333;
+    font-family: "Play", sans-serif;
+  }
+}
