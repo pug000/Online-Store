@@ -1,14 +1,16 @@
-import React from "react";
+import React, { FC } from 'react';
 
-import styles from "./Header.module.scss";
+import styles from './Header.module.scss';
 
-const Header: React.FC = () => {
+import { HeaderProps } from '../../ts/interfaces';
+
+const Header: FC<HeaderProps> = ({ cart }) => {
   return (
     <header className={styles.header}>
       <div className={styles.headerContainer}>
         <h1 className={styles.headerContainerTitle}>Online Store</h1>
         <div className={styles.headerContainerCart}>
-          <span>0</span>
+          <span>{cart.length}</span>
         </div>
       </div>
       <div className={styles.headerLine}></div>

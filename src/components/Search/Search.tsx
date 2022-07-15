@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { FC } from 'react';
 
 import styles from './Search.module.scss';
 
-const Search: React.FC = () => {
+const Search: FC = () => {
   return (
     <div className={styles.search}>
       <div className={styles.searchWrapper}>

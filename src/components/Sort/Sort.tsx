@@ -1,9 +1,9 @@
-import React from "react";
+import React, { FC } from "react";
 import { optionsLayout } from './../../layout/data';
 
 import styles from './Sort.module.scss';
 
-const Sort: React.FC = () => {
+const Sort: FC = () => {
   return (
     <div className={styles.sort}>
       <h2 className={styles.sortTitle}>Сортировка</h2>

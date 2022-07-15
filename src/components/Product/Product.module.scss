@@ -130,21 +130,21 @@
           }
         }
       }
-    }
 
-    .active {
-      color: #000;
+      .btnActive {
+        color: #000;
 
-      &:hover {
-        color: #fff;
-      }
+        &:hover {
+          color: #fff;
+        }
 
-      &:after {
-        background: transparent;
-      }
+        &:after {
+          background: transparent;
+        }
 
-      &:hover::after {
-        background-color: #000;
+        &:hover::after {
+          background-color: #000;
+        }
       }
     }
   }
