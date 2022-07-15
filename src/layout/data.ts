@@ -1,4 +1,6 @@
-export const data = [
+import { ProductData } from "../ts/interfaces";
+
+export const data: ProductData[] = [
   {
     num: '1',
     brand: 'Cougar',
