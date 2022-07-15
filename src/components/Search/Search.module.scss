@@ -1,0 +1,67 @@
+.search {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  &Wrapper {
+    display: flex;
+    position: relative;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 16%);
+    background-color: #fff;
+    border-radius: 7px;
+
+    &Input {
+      width: 100%;
+      padding: 10px 0 10px 12px;
+      border: none;
+      border-radius: 7px;
+      background-color: #fff;
+      color: #333;
+      font-size: 17px;
+
+      &[type="text"] {
+        font-size: 19px;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    &ClearBtn {
+      position: absolute;
+      left: 85%;
+      cursor: pointer;
+      width: 28px;
+      height: 28px;
+      border: none;
+      background-color: transparent;
+      display: none;
+      transition: 0.3s;
+
+      &::before,
+      &::after {
+        position: absolute;
+        left: 15px;
+        content: " ";
+        height: 15px;
+        width: 2px;
+        background-color: #333;
+        cursor: pointer;
+        top: 45%;
+      }
+
+      &::before {
+        transform: rotate(45deg);
+      }
+
+      &::after {
+        transform: rotate(-45deg);
+      }
+    }
+
+    .active {
+      display: block;
+    }
+  }
+}

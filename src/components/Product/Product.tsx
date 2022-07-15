@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import { data } from './../../layout/data';
 
 import styles from './Product.module.scss';
@@ -10,7 +10,7 @@ const Product: React.FC = () => {
         <div key={item.num} className={styles.product}>
           <div className={styles.title}>{item.name}</div>
           <div className={styles.containerImg}>
-            <img className={styles.img} src={`./assets/img/${item.num}.png`} alt="product-img" />
+            <img className={styles.img} src={`./assets/img/${item.num}.png`} alt='product-img' />
           </div>
           <div className={styles.description}>
             <div className={styles.count}>Количество: {item.count}</div>
