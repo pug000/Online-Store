@@ -6,6 +6,7 @@ import { SelectedSort } from './components/SelectedSort/SelectedSort';
 import { Popup } from './components/Popup/Popup';
 import { dataLayout, optionsLayout } from './layout/data';
 import { ProductData } from './ts/interfaces';
+import { getLocalStorage, setLocalStorage } from './local';
 
 import './styles/reset.scss';
 import styles from './styles/styles.module.scss';
@@ -19,12 +20,10 @@ enum OptionValue {
 }
 
 const App: FC = () => {
-  const getCart = localStorage.getItem('cart');
-
-  const [cart, setCart] = useState<string[]>(typeof getCart === 'string' ? JSON.parse(getCart) : []);
+  const [cart, setCart] = useState<string[]>(getLocalStorage('cart', []));
   const [data, setData] = useState<ProductData[]>(dataLayout)
   const [popup, setPopup] = useState<boolean>(false);
-  const [selectedSort, setSelectedSort] = useState<string>('По названию (A-Z)');
+  const [selectedSort, setSelectedSort] = useState<string>(getLocalStorage('sort', 'По названию (A-Z)'));
 
   const sortData = (sort: string) => {
     setSelectedSort(sort);
@@ -49,7 +48,8 @@ const App: FC = () => {
   }, [selectedSort])
 
   window.onbeforeunload = () => {
-    localStorage.setItem('cart', JSON.stringify(cart));
+    setLocalStorage('cart', cart);
+    setLocalStorage('sort', selectedSort);
   }
 
   return (
