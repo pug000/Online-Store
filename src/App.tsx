@@ -7,17 +7,10 @@ import { Popup } from './components/Popup/Popup';
 import { dataLayout, optionsLayout } from './layout/data';
 import { ProductData } from './ts/interfaces';
 import { getLocalStorage, setLocalStorage } from './local';
+import { OptionValue } from './ts/enum';
 
 import './styles/reset.scss';
 import styles from './styles/styles.module.scss';
-
-enum OptionValue {
-  first = 'По названию (Z-A)',
-  second = 'Сначала недорогие',
-  third = 'Сначала дорогие',
-  fourth = 'Максимальное количество',
-  fifth = 'Минимальное количество',
-}
 
 const App: FC = () => {
   const [cart, setCart] = useState<string[]>(getLocalStorage('cart', []));
