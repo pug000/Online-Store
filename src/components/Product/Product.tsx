@@ -5,12 +5,12 @@ import styles from './Product.module.scss';
 
 
 
-const Product: FC<ProductProps> = (
+export const Product: FC<ProductProps> = (
   {
     productData,
-    addToCart,
-    removeFromCart,
     cart,
+    setCart,
+    setPopup,
   }
 ) => {
   return (
@@ -28,9 +28,13 @@ const Product: FC<ProductProps> = (
         const [active, setActive] = useState<boolean>(cart.includes(num) ? true : false);
 
         const handleClick = () => {
-          setActive(active => !active);
-          active ? removeFromCart(num) : addToCart(num);
-        }
+          cart.length < 20 ? setActive(active => !active) : setActive(false);
+          !active ? addToCart(num) : removeFromCart(num);
+        };
+
+        const addToCart = (id: string) => cart.length < 20 ? setCart(cart => [...cart, id]) : setPopup(popup => !popup);
+
+        const removeFromCart = (id: string) => setCart(cart => cart.filter((el) => el !== id));
 
         return (
           <div key={num} className={styles.product}>
@@ -56,5 +60,3 @@ const Product: FC<ProductProps> = (
     </div>
   )
 }
-
-export default Product;

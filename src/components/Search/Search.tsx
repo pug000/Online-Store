@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 
 import styles from './Search.module.scss';
 
-const Search: FC = () => {
+export const Search: FC = () => {
   return (
     <div className={styles.search}>
       <div className={styles.searchWrapper}>
@@ -12,5 +12,3 @@ const Search: FC = () => {
     </div>
   )
 }
-
-export default Search;

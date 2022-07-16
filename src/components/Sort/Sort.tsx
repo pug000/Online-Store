@@ -3,7 +3,7 @@ import { optionsLayout } from './../../layout/data';
 
 import styles from './Sort.module.scss';
 
-const Sort: FC = () => {
+export const Sort: FC = () => {
   return (
     <div className={styles.sort}>
       <h2 className={styles.sortTitle}>Сортировка</h2>
@@ -15,5 +15,3 @@ const Sort: FC = () => {
     </div>
   )
 }
-
-export default Sort;

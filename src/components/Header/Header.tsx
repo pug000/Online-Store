@@ -4,7 +4,7 @@ import styles from './Header.module.scss';
 
 import { HeaderProps } from '../../ts/interfaces';
 
-const Header: FC<HeaderProps> = ({ cart }) => {
+export const Header: FC<HeaderProps> = ({ cart }) => {
   return (
     <header className={styles.header}>
       <div className={styles.headerContainer}>
@@ -17,5 +17,3 @@ const Header: FC<HeaderProps> = ({ cart }) => {
     </header>
   )
 };
-
-export default Header;

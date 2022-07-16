@@ -13,7 +13,12 @@ export interface HeaderProps {
 }
 export interface ProductProps {
   productData: ProductData[];
-  addToCart: (id: string) => void;
-  removeFromCart: (id: string) => void;
   cart: string[];
+  setCart: (value: React.SetStateAction<string[]>) => void;
+  setPopup: (value: React.SetStateAction<boolean>) => void;
+}
+
+export interface PopupProps {
+  popup: boolean;
+  onClick: () => void;
 }
