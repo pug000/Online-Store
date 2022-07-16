@@ -1,6 +1,6 @@
-import { ProductData } from "../ts/interfaces";
+import { OptionLayout, ProductData } from "../ts/interfaces";
 
-export const data: ProductData[] = [
+export const dataLayout: ProductData[] = [
   {
     num: '1',
     brand: 'Cougar',
@@ -201,14 +201,14 @@ export const data: ProductData[] = [
   },
 ];
 
-export const optionsLayout: string[] = [
-  'По названию (A-Z)',
-  'По названию (Z-A)',
-  'Сначала недорогие',
-  'Сначала дорогие',
-  'Максимальное количество',
-  'Минимальное количество',
-];
+export const optionsLayout: OptionLayout[] = [
+  { id: 1, option: 'По названию (A-Z)' },
+  { id: 2, option: 'По названию (Z-A)' },
+  { id: 3, option: 'Сначала недорогие' },
+  { id: 4, option: 'Сначала дорогие' },
+  { id: 5, option: 'Максимальное количество' },
+  { id: 6, option: 'Минимальное количество' },
+]
 
 export const brandsLayout: string[] = [
   'Cougar',

@@ -22,3 +22,14 @@ export interface PopupProps {
   popup: boolean;
   onClick: () => void;
 }
+
+export interface SelectedSortProps {
+  optionsLayout: OptionLayout[],
+  value: string,
+  onChange: (value: string) => void;
+}
+
+export interface OptionLayout {
+  id: number,
+  option: string
+}

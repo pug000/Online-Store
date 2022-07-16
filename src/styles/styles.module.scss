@@ -39,12 +39,12 @@ body {
   font-family: "Play", sans-serif;
 }
 
-.no-results-wrapper {
+.noResultWrapper {
   display: flex;
   justify-content: center;
   align-items: center;
 
-  &__title {
+  &Title {
     font-size: 28px;
     color: #333;
     font-family: "Play", sans-serif;
