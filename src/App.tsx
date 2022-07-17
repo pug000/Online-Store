@@ -6,7 +6,7 @@ import { Popup } from './components/Popup/Popup';
 import { dataLayout } from './layout/data';
 import { FilterState, ProductData } from './ts/interfaces';
 import { getLocalStorage, setLocalStorage } from './local';
-import { searchFilter, sortFilter } from './setting';
+import { maxPrice, maxQuantity, minPrice, minQuantity, searchFilter, sliderFilter, sortFilter } from './settings';
 
 import './styles/reset.scss';
 import styles from './styles/styles.module.scss';
@@ -21,6 +21,8 @@ const App: FC = () => {
       {
         search: '',
         sort: 'По названию (A-Z)',
+        price: [minPrice, maxPrice],
+        quantity: [minQuantity, maxQuantity],
       }
     )
   );
@@ -28,8 +30,10 @@ const App: FC = () => {
   useMemo(() => {
     let result = dataLayout.filter((item) => searchFilter(item.name, filter.search));
     result = sortFilter(result, filter.sort);
+    result = result.filter((item) => sliderFilter(item.price, filter.price));
+    result = result.filter((item) => sliderFilter(item.count, filter.quantity));
     setData(result);
-  }, [filter.sort, filter.search])
+  }, [filter.sort, filter.search, filter.price, filter.quantity])
 
   window.onbeforeunload = () => {
     setLocalStorage('cart', cart);

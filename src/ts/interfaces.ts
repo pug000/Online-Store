@@ -47,7 +47,16 @@ export interface SearchProps {
   onChange: (value: string) => void;
 }
 
+export interface RangeSliderProps {
+  value: number[],
+  step: number,
+  onChange: (value: number[]) => void;
+  defaultValue: number[],
+}
+
 export interface FilterState {
   search: string,
   sort: string,
+  price: number[],
+  quantity: number[],
 }
