@@ -55,8 +55,31 @@ export interface RangeSliderProps {
 }
 
 export interface FilterState {
-  search: string,
-  sort: string,
-  price: number[],
-  quantity: number[],
+  search: string;
+  sort: string;
+  price: number[];
+  quantity: number[];
+  brand: string[];
+  type: string[];
+  colorEffect: string[];
+}
+
+export interface CheckboxLayout {
+  id: number;
+  name: string;
+}
+
+export interface CheckboxProps {
+  title: string;
+  layout: CheckboxLayout[];
+  filter: string[]
+  addOnClick: (value: string) => void;
+  removeOnClick: (value: string) => void;
+}
+
+export interface CheckboxItemProps {
+  name: string;
+  filter: string[]
+  addOnClick: (value: string) => void;
+  removeOnClick: (value: string) => void;
 }

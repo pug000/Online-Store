@@ -6,34 +6,45 @@ import { Popup } from './components/Popup/Popup';
 import { dataLayout } from './layout/data';
 import { FilterState, ProductData } from './ts/interfaces';
 import { getLocalStorage, setLocalStorage } from './local';
-import { maxPrice, maxQuantity, minPrice, minQuantity, searchFilter, sliderFilter, sortFilter } from './settings';
+import { checkboxFilter, maxPrice, maxQuantity, minPrice, minQuantity, searchFilter, sliderFilter, sortFilter } from './settings';
 
 import './styles/reset.scss';
 import styles from './styles/styles.module.scss';
 
 const App: FC = () => {
+  const defaultFilters: FilterState = {
+    search: '',
+    sort: 'По названию (A-Z)',
+    price: [minPrice, maxPrice],
+    quantity: [minQuantity, maxQuantity],
+    brand: [],
+    type: [],
+    colorEffect: [],
+  }
   const [cart, setCart] = useState<string[]>(getLocalStorage('cart', []));
   const [data, setData] = useState<ProductData[]>(dataLayout)
   const [popup, setPopup] = useState<boolean>(false);
-  const [filter, setFilter] = useState<FilterState>(
-    getLocalStorage(
-      'filters',
-      {
-        search: '',
-        sort: 'По названию (A-Z)',
-        price: [minPrice, maxPrice],
-        quantity: [minQuantity, maxQuantity],
-      }
-    )
-  );
+  const [filter, setFilter] = useState<FilterState>(getLocalStorage('filters', defaultFilters));
 
   useMemo(() => {
-    let result = dataLayout.filter((item) => searchFilter(item.name, filter.search));
+    let result = [...dataLayout].filter((item) => searchFilter(item.name, filter.search));
     result = sortFilter(result, filter.sort);
     result = result.filter((item) => sliderFilter(item.price, filter.price));
     result = result.filter((item) => sliderFilter(item.count, filter.quantity));
+    result = result.filter((item) => checkboxFilter(item.brand, filter.brand));
+    result = result.filter((item) => checkboxFilter(item.type, filter.type));
+    result = result.filter((item) => checkboxFilter(item.colorEffect, filter.colorEffect));
+
     setData(result);
-  }, [filter.sort, filter.search, filter.price, filter.quantity])
+  }, [
+    filter.sort,
+    filter.search,
+    filter.price,
+    filter.quantity,
+    filter.brand,
+    filter.type,
+    filter.colorEffect
+  ]);
 
   window.onbeforeunload = () => {
     setLocalStorage('cart', cart);

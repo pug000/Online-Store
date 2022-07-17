@@ -29,6 +29,10 @@ export const sliderFilter = (item: string, value: number[]) => {
   return value[0] <= Number(item) && Number(item) <= value[1];
 };
 
+export const checkboxFilter = (item: string, value: string[]) => {
+  return value.length === 0 ? item : value.includes(item);
+};
+
 const getMinValue = (item: number[]): number => {
   return Math.min.apply(null, [...item]);
 };
