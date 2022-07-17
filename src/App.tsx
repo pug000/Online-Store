@@ -7,6 +7,7 @@ import { dataLayout } from './layout/data';
 import { FilterState, ProductData } from './ts/interfaces';
 import { getLocalStorage, setLocalStorage } from './local';
 import { checkboxFilter, maxPrice, maxQuantity, minPrice, minQuantity, searchFilter, sliderFilter, sortFilter } from './settings';
+import { Footer } from './components/Footer/Footer';
 
 import './styles/reset.scss';
 import styles from './styles/styles.module.scss';
@@ -75,6 +76,7 @@ const App: FC = () => {
             <h2 className={styles.noResultWrapperTitle}>{'Извините, совпадений не обнаружено'}</h2>
           </div>}
       </main>
+      <Footer />
       <Popup popup={popup} onClick={() => setPopup(!popup)} />
     </>
   )
