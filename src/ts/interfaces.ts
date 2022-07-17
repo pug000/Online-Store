@@ -1,13 +1,13 @@
 import React from "react";
 
 export interface ProductData {
-  num: string,
-  brand: string,
-  name: string,
-  type: string,
-  price: string,
-  count: string,
-  colorEffect: string,
+  num: string;
+  brand: string;
+  name: string;
+  type: string;
+  price: string;
+  count: string;
+  colorEffect: string;
 }
 
 export interface HeaderProps {
@@ -26,32 +26,33 @@ export interface PopupProps {
 }
 
 export interface SelectedSortProps {
-  value: string,
+  value: string;
   onChange: (value: string) => void;
-  optionsLayout: OptionLayout[],
+  optionsLayout: OptionLayout[];
 
 }
 
 export interface OptionLayout {
-  id: number,
+  id: number;
   option: string
 }
 
 export interface FiltersProps {
-  filter: FilterState,
+  filter: FilterState;
   setFilter: (value: React.SetStateAction<FilterState>) => void;
 }
 
 export interface SearchProps {
-  value: string,
+  value: string;
   onChange: (value: string) => void;
 }
 
 export interface RangeSliderProps {
-  value: number[],
-  step: number,
+  title: string;
+  value: number[];
+  step: number;
   onChange: (value: number[]) => void;
-  defaultValue: number[],
+  defaultValue: number[];
 }
 
 export interface FilterState {
@@ -72,14 +73,14 @@ export interface CheckboxLayout {
 export interface CheckboxProps {
   title: string;
   layout: CheckboxLayout[];
-  filter: string[]
+  filter: string[];
   addOnClick: (value: string) => void;
   removeOnClick: (value: string) => void;
 }
 
 export interface CheckboxItemProps {
   name: string;
-  filter: string[]
+  filter: string[];
   addOnClick: (value: string) => void;
   removeOnClick: (value: string) => void;
 }

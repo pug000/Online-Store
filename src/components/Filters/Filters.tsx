@@ -26,12 +26,14 @@ export const Filters: FC<FiltersProps> = (
         onChange={selectedValue => setFilter({ ...filter, sort: selectedValue })}
         optionsLayout={optionsLayout} />
       <RangeSlider
+        title='Цена $'
         value={filter.price}
         step={10}
         onChange={(value) => setFilter({ ...filter, price: value })}
         defaultValue={[minPrice, maxPrice]}
       />
       <RangeSlider
+        title='Количество'
         value={filter.quantity}
         step={1}
         onChange={(value) => setFilter({ ...filter, quantity: value })}

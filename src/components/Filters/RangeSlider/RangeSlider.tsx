@@ -6,6 +6,7 @@ import styles from './Slider.module.scss';
 
 export const RangeSlider: FC<RangeSliderProps> = (
   {
+    title,
     value,
     step,
     onChange,
@@ -14,7 +15,7 @@ export const RangeSlider: FC<RangeSliderProps> = (
 ) => {
   return (
     <div className={styles.filterRange}>
-      <h2 className={styles.filterRangeTitle}>Цена</h2>
+      <h2 className={styles.filterRangeTitle}>{title}</h2>
       <ReactSlider
         defaultValue={value}
         className={styles.filterSlider}
