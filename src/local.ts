@@ -1,5 +1,7 @@
 export const setLocalStorage = <T>(key: string, value: T | T[]) => {
-  localStorage.setItem(key, JSON.stringify(value))
+  Array.isArray(value)
+    ? localStorage.setItem(key, JSON.stringify(value))
+    : localStorage.setItem(key, JSON.stringify({ ...value, search: '' }));
 }
 
 export const getLocalStorage = <T>(key: string, defaultValue: T | T[]): T => {

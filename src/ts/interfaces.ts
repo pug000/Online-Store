@@ -40,6 +40,8 @@ export interface OptionLayout {
 export interface FiltersProps {
   filter: FilterState;
   setFilter: (value: React.SetStateAction<FilterState>) => void;
+  defaultFilters: FilterState;
+  setCart: (value: React.SetStateAction<string[]>) => void;
 }
 
 export interface SearchProps {
@@ -83,4 +85,9 @@ export interface CheckboxItemProps {
   filter: string[];
   addOnClick: (value: string) => void;
   removeOnClick: (value: string) => void;
+}
+
+export interface ResetButtonProps {
+  text: string;
+  resetOnClick: () => void;
 }

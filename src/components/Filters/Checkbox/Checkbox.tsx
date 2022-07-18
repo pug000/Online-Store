@@ -16,18 +16,19 @@ export const Checkbox: FC<CheckboxProps> = (
   return (
     <div className={styles.filter}>
       <h2 className={styles.filterTitle}>{title}</h2>
-      <div className={styles.filterContainer}></div>
-      {
-        layout.map(({ id, name }) => (
-          <CheckboxItem
-            key={id}
-            name={name}
-            filter={filter}
-            addOnClick={addOnClick}
-            removeOnClick={removeOnClick}
-          />
-        ))
-      }
+      <div className={styles.filterContainer}>
+        {
+          layout.map(({ id, name }) => (
+            <CheckboxItem
+              key={id}
+              name={name}
+              filter={filter}
+              addOnClick={addOnClick}
+              removeOnClick={removeOnClick}
+            />
+          ))
+        }
+      </div>
     </div>
   )
 }

@@ -5,3 +5,11 @@
   padding: 15px;
   font-family: "Play", sans-serif;
 }
+
+.resetContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  align-items: center;
+  justify-content: center;
+}

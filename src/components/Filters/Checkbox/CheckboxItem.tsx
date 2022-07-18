@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useMemo, useState } from 'react';
 import { CheckboxItemProps } from '../../../ts/interfaces';
 
 import styles from './Checkbox.module.scss';
@@ -11,7 +11,9 @@ export const CheckboxItem: FC<CheckboxItemProps> = (
     removeOnClick
   }
 ) => {
-  const [active, setActive] = useState(filter.includes(name) ? true : false);
+  const [active, setActive] = useState(false);
+
+  useMemo(() => setActive(filter.includes(name) ? true : false), [filter]);
 
   const handleClick = () => {
     setActive(active => !active);
@@ -19,12 +21,11 @@ export const CheckboxItem: FC<CheckboxItemProps> = (
   }
 
   return (
-    <div
-      className={
-        active
-          ? `${styles.filterItem} ${styles.filterItemActive}`
-          : `${styles.filterItem}`
-      }
+    <div className={
+      active
+        ? `${styles.filterItem} ${styles.filterItemActive}`
+        : `${styles.filterItem}`
+    }
       onClick={handleClick}
     >
       <span className={styles.filterItemText}>{name}</span>

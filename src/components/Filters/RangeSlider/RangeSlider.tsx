@@ -17,7 +17,7 @@ export const RangeSlider: FC<RangeSliderProps> = (
     <div className={styles.filterRange}>
       <h2 className={styles.filterRangeTitle}>{title}</h2>
       <ReactSlider
-        defaultValue={value}
+        value={value}
         className={styles.filterSlider}
         trackClassName={styles.filterSliderTracker}
         min={defaultValue[0]}

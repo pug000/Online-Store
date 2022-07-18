@@ -37,15 +37,11 @@ const App: FC = () => {
     result = result.filter((item) => checkboxFilter(item.colorEffect, filter.colorEffect));
 
     setData(result);
-  }, [
-    filter.sort,
-    filter.search,
-    filter.price,
-    filter.quantity,
-    filter.brand,
-    filter.type,
-    filter.colorEffect
-  ]);
+  }, [filter]);
+
+  useMemo(() => {
+    setCart(cart);
+  }, [cart])
 
   window.onbeforeunload = () => {
     setLocalStorage('cart', cart);
@@ -59,6 +55,8 @@ const App: FC = () => {
         <Filters
           filter={filter}
           setFilter={setFilter}
+          defaultFilters={defaultFilters}
+          setCart={setCart}
         />
         {data.length
           ? <div className={styles.wrapper}>

@@ -1,20 +1,24 @@
 import React, { FC } from 'react'
 import { brandsLayout, colorsEffectLayout, optionsLayout, typesLayout } from '../../layout/data';
+import { maxPrice, maxQuantity, minPrice, minQuantity } from '../../settings';
 import { FiltersProps } from '../../ts/interfaces';
 import { Search } from './Search/Search';
 import { SelectedSort } from './SelectedSort/SelectedSort';
 import { RangeSlider } from './RangeSlider/RangeSlider';
 import { Checkbox } from './Checkbox/Checkbox';
+import { ResetButton } from './Reset/Reset';
 
 import styles from './Filters.module.scss';
-import { maxPrice, maxQuantity, minPrice, minQuantity } from '../../settings';
 
 export const Filters: FC<FiltersProps> = (
   {
     filter,
-    setFilter
+    setFilter,
+    defaultFilters,
+    setCart,
   }
 ) => {
+  const resetFilters = { ...defaultFilters, sort: filter.sort }
   return (
     <div className={styles.filterContainer}>
       <Search
@@ -72,6 +76,19 @@ export const Filters: FC<FiltersProps> = (
           { ...filter, colorEffect: [...filter.colorEffect].filter((el) => el !== value) }
         )}
       />
+      <div className={styles.resetContainer}>
+        <ResetButton
+          text='Сброс фильтров'
+          resetOnClick={() => setFilter(resetFilters)}
+        />
+        <ResetButton
+          text='Cброс настроек'
+          resetOnClick={() => {
+            setFilter(defaultFilters);
+            setCart([]);
+          }}
+        />
+      </div>
     </div>
   )
 }

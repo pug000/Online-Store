@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useMemo, useState } from 'react';
 import { ProductProps } from '../../ts/interfaces';
 
 import styles from './Product.module.scss';
@@ -11,7 +11,9 @@ export const Product: FC<ProductProps> = (
     setPopup,
   }
 ) => {
-  const [active, setActive] = useState<boolean>(cart.includes(product.num) ? true : false);
+  const [active, setActive] = useState<boolean>(false);
+
+  useMemo(() => setActive(cart.includes(product.num) ? true : false), [cart]);
 
   const addToCart = (id: string) => cart.length < 20 ? setCart(cart => [...cart, id]) : setPopup(popup => !popup);
 
