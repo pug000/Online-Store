@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC } from 'react';
 import { PopupProps } from '../../ts/interfaces';
 
 import styles from './Popup.module.scss';

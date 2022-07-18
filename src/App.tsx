@@ -39,10 +39,16 @@ const App: FC = () => {
     setData(result);
   }, [filter]);
 
+  useMemo(() =>
+    !popup
+      ? document.body.classList.remove(styles.bodyLock)
+      : document.body.classList.add(styles.bodyLock),
+    [popup]);
+
   window.onbeforeunload = () => {
     setLocalStorage('cart', cart);
     setLocalStorage('filters', { ...filter, search: '' });
-  }
+  };
 
   return (
     <>
