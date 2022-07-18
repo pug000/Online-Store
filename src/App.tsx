@@ -39,10 +39,6 @@ const App: FC = () => {
     setData(result);
   }, [filter]);
 
-  useMemo(() => {
-    setCart(cart);
-  }, [cart])
-
   window.onbeforeunload = () => {
     setLocalStorage('cart', cart);
     setLocalStorage('filters', filter);
