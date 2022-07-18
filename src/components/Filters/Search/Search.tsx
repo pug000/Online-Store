@@ -6,7 +6,8 @@ import styles from './Search.module.scss';
 export const Search: FC<SearchProps> = (
   {
     value,
-    onChange
+    onChange,
+    clearOnClick,
   }
 ) => {
   return (
@@ -18,7 +19,14 @@ export const Search: FC<SearchProps> = (
           placeholder='Поиск по названию'
           autoFocus
         />
-        <button className={styles.searchWrapperClearBtn}></button>
+        <button
+          onClick={clearOnClick}
+          className={
+            value.length <= 0
+              ? `${styles.searchWrapperClearBtn}`
+              : `${styles.searchWrapperClearBtn} ${styles.searchWrapperClearBtnActive}`
+          }
+        ></button>
       </div>
     </div>
   )

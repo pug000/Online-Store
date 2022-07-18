@@ -47,6 +47,7 @@ export interface FiltersProps {
 export interface SearchProps {
   value: string;
   onChange: (value: string) => void;
+  clearOnClick: () => void;
 }
 
 export interface RangeSliderProps {

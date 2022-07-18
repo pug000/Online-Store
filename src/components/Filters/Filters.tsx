@@ -23,7 +23,8 @@ export const Filters: FC<FiltersProps> = (
     <div className={styles.filterContainer}>
       <Search
         value={filter.search}
-        onChange={e => setFilter({ ...filter, search: e })}
+        onChange={value => setFilter({ ...filter, search: value })}
+        clearOnClick={() => setFilter({ ...filter, search: '' })}
       />
       <SelectedSort
         value={filter.sort}

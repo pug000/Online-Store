@@ -36,8 +36,9 @@
       height: 28px;
       border: none;
       background-color: transparent;
-      display: none;
       transition: 0.3s;
+      opacity: 0;
+      pointer-events: none;
 
       &::before,
       &::after {
@@ -58,10 +59,11 @@
       &::after {
         transform: rotate(-45deg);
       }
-    }
 
-    .active {
-      display: block;
+      &Active {
+        opacity: 1;
+        pointer-events: all;
+      }
     }
   }
 }
