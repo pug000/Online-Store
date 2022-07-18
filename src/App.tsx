@@ -6,7 +6,7 @@ import { Popup } from './components/Popup/Popup';
 import { dataLayout } from './layout/data';
 import { FilterState, ProductData } from './ts/interfaces';
 import { getLocalStorage, setLocalStorage } from './local';
-import { checkboxFilter, maxPrice, maxQuantity, minPrice, minQuantity, searchFilter, sliderFilter, sortFilter } from './settings';
+import { checkboxFilter, maxPrice, maxQuantity, minPrice, minQuantity, rangeFilter, searchFilter, sortFilter } from './settings';
 import { Footer } from './components/Footer/Footer';
 
 import './styles/reset.scss';
@@ -30,8 +30,8 @@ const App: FC = () => {
   useMemo(() => {
     let result = [...dataLayout].filter((item) => searchFilter(item.name, filter.search));
     result = sortFilter(result, filter.sort);
-    result = result.filter((item) => sliderFilter(item.price, filter.price));
-    result = result.filter((item) => sliderFilter(item.count, filter.quantity));
+    result = result.filter((item) => rangeFilter(item.price, filter.price));
+    result = result.filter((item) => rangeFilter(item.count, filter.quantity));
     result = result.filter((item) => checkboxFilter(item.brand, filter.brand));
     result = result.filter((item) => checkboxFilter(item.type, filter.type));
     result = result.filter((item) => checkboxFilter(item.colorEffect, filter.colorEffect));

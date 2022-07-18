@@ -25,7 +25,7 @@ export const searchFilter = (name: string, value: string) => {
   return name.toLowerCase().includes(value.toLowerCase());
 };
 
-export const sliderFilter = (item: string, value: number[]) => {
+export const rangeFilter = (item: string, value: number[]) => {
   return value[0] <= Number(item) && Number(item) <= value[1];
 };
 
