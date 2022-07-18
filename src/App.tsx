@@ -41,7 +41,7 @@ const App: FC = () => {
 
   window.onbeforeunload = () => {
     setLocalStorage('cart', cart);
-    setLocalStorage('filters', filter);
+    setLocalStorage('filters', { ...filter, search: '' });
   }
 
   return (
