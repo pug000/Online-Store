@@ -33,11 +33,11 @@ export const checkboxFilter = (item: string, value: string[]) => {
   return value.length === 0 ? item : value.includes(item);
 };
 
-const getMinValue = (item: number[]): number => {
+export const getMinValue = (item: number[]): number => {
   return Math.min.apply(null, [...item]);
 };
 
-const getMaxValue = (item: number[]): number => {
+export const getMaxValue = (item: number[]): number => {
   return Math.max.apply(null, [...item]);
 };
 
