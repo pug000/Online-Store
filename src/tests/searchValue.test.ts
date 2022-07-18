@@ -1,6 +1,6 @@
 import { searchFilter } from "../settings";
 
-describe('Search filter method', () => {
+describe('Search filter function', () => {
   const randomValue = Math.random().toString(36).replace(/[^a-z]+/g, '');
 
   test('empty search value', () => {

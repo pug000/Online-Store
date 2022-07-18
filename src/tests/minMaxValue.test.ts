@@ -1,6 +1,6 @@
 import { getMinValue, getMaxValue } from '../settings';
 
-describe('Min Max Value', () => {
+describe('Min Max Value functions', () => {
   test('Min value', () => {
     expect(getMinValue([2, 5, 7, 9])).toBe(2);
     expect(getMinValue([8, 5, 7, 9, 10, 20, 99, 5])).toBe(5);
