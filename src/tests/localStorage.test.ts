@@ -11,7 +11,7 @@ describe('save array in local storage', () => {
   });
 });
 
-describe('save string in local storage', () => {
+describe('save object in local storage', () => {
   test('save n load', () => {
     setLocalStorage('cvb', { a: 'fcvd' });
     expect(getLocalStorage('cvb', { b: 'vcvd' })).toStrictEqual({ a: 'fcvd' });
