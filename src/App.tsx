@@ -22,10 +22,10 @@ const App: FC = () => {
     type: [],
     colorEffect: [],
   }
-  const [cart, setCart] = useState<string[]>(getLocalStorage('cart', []));
+  const [cart, setCart] = useState<string[]>(getLocalStorage('ldkashjklhowouCART', []));
   const [data, setData] = useState<ProductData[]>(dataLayout)
   const [popup, setPopup] = useState<boolean>(false);
-  const [filter, setFilter] = useState<FilterState>(getLocalStorage('filters', defaultFilters));
+  const [filter, setFilter] = useState<FilterState>(getLocalStorage('fdklsjdfkjjdsjFILTERS', defaultFilters));
 
   useMemo(() => {
     let result = [...dataLayout].filter((item) => searchFilter(item.name, filter.search));
@@ -46,8 +46,8 @@ const App: FC = () => {
     [popup]);
 
   window.onbeforeunload = () => {
-    setLocalStorage('cart', cart);
-    setLocalStorage('filters', { ...filter, search: '' });
+    setLocalStorage('ldkashjklhowouCART', cart);
+    setLocalStorage('fdklsjdfkjjdsjFILTERS', { ...filter, search: '' });
   };
 
   return (
