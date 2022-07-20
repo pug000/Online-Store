@@ -17,7 +17,7 @@
     box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
   }
 
-  .title {
+  &Title {
     font-size: 24px;
     line-height: 25px;
     text-align: center;
@@ -25,7 +25,7 @@
     overflow: hidden;
   }
 
-  .containerImg {
+  &Container {
     width: 100%;
     height: 200px;
     display: flex;
@@ -33,7 +33,7 @@
     align-items: center;
   }
 
-  .description {
+  &Description {
     font-size: 18px;
     display: grid;
     gap: 13px;
@@ -41,18 +41,18 @@
     line-height: 23px;
   }
 
-  .bottom {
+  &Bottom {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     margin-bottom: 10px;
 
-    .price {
+    &Price {
       font-size: 23px;
       font-family: "Roboto Mono", monospace;
     }
 
-    .btn {
+    &Btn {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -120,21 +120,21 @@
           background-color: transparent;
         }
       }
-    }
 
-    .btnActive {
-      color: #000;
+      &Active {
+        color: #000;
 
-      &:hover {
-        color: #fff;
-      }
+        &:hover {
+          color: #fff;
+        }
 
-      &:after {
-        background: transparent;
-      }
+        &:after {
+          background: transparent;
+        }
 
-      &:hover::after {
-        background-color: #000;
+        &:hover::after {
+          background-color: #000;
+        }
       }
     }
   }

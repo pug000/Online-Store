@@ -26,20 +26,22 @@ export const Product: FC<ProductProps> = (
 
   return (
     <div className={styles.product}>
-      <div className={styles.title}>{product.name}</div>
-      <div className={styles.containerImg}>
-        <img className={styles.img} src={`./assets/img/${product.num}.png`} alt='product-img' />
+      <div className={styles.productTitle}>{product.name}</div>
+      <div className={styles.productContainer}>
+        <img className={styles.productContainerImg} src={`./assets/img/${product.num}.png`} alt='product-img' />
       </div>
-      <div className={styles.description}>
-        <div className={styles.count}>Количество: {product.count}</div>
-        <div className={styles.brand}>Производитель: {product.brand}</div>
-        <div className={styles.type}>Тип клавиатуры: {product.type}</div>
-        <div className={styles.colorEffect}>Цвет подсветки: {product.colorEffect}</div>
+      <div className={styles.productDescription}>
+        <div className={styles.productDescriptionCount}>Количество: {product.count}</div>
+        <div className={styles.productDescriptionBrand}>Производитель: {product.brand}</div>
+        <div className={styles.productDescriptionType}>Тип клавиатуры: {product.type}</div>
+        <div className={styles.productDescriptionColorEffect}>Цвет подсветки: {product.colorEffect}</div>
       </div>
-      <div className={styles.bottom}>
-        <div className={styles.price}>${product.price}</div>
+      <div className={styles.productBottom}>
+        <div className={styles.productBottomPrice}>${product.price}</div>
         <button
-          className={active ? `${styles.btn} ${styles.btnActive}` : `${styles.btn}`}
+          className={active
+            ? `${styles.productBottomBtn} ${styles.productBottomBtnActive}`
+            : `${styles.productBottomBtn}`}
           onClick={handleClick}
         >{active ? 'Удалить из корзины' : 'Добавить в корзину'}</button>
       </div>

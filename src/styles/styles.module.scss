@@ -31,7 +31,7 @@ body {
   grid-template-columns: minmax(180px, 280px) 1fr;
 }
 
-.wrapper {
+.productWrapper {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(295px, 0.23fr));
   width: 100%;

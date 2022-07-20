@@ -61,7 +61,7 @@ const App: FC = () => {
           setCart={setCart}
         />
         {data.length
-          ? <div className={styles.wrapper}>
+          ? <div className={styles.productWrapper}>
             {data.map((item) => (
               <Product
                 key={item.num}

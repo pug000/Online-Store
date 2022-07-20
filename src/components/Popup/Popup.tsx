@@ -12,7 +12,9 @@ export const Popup: FC<PopupProps> = (
   return (
     <div className={popup ? `${styles.popup} ${styles.popupActive}` : `${styles.popup}`}>
       <div className={styles.popupOverlay} onClick={onClick}></div>
-      <div className={popup ? `${styles.popupContent} ${styles.popupContentActive}` : `${styles.popupContent}`}>
+      <div className={popup
+        ? `${styles.popupContent} ${styles.popupContentActive}`
+        : `${styles.popupContent}`}>
         <div className={styles.popupContentTitle}>{'Извините, все слоты заполнены'}</div>
         <button className={styles.popupContentCloseBtn} onClick={onClick}></button>
       </div>
