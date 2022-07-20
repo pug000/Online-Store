@@ -25,11 +25,11 @@ export const searchFilter = (name: string, value: string) => {
   return name.toLowerCase().includes(value.toLowerCase());
 };
 
-export const rangeFilter = (item: string, value: number[]) => {
+export const rangeFilter = <T>(item: T, value: number[]) => {
   return value[0] <= Number(item) && Number(item) <= value[1];
 };
 
-export const checkboxFilter = (item: string, value: string[]) => {
+export const checkboxFilter = <T>(item: T, value: T[]): boolean | T => {
   return value.length === 0 ? item : value.includes(item);
 };
 
@@ -41,7 +41,10 @@ export const getMaxValue = (item: number[]): number => {
   return Math.max.apply(null, [...item]);
 };
 
-export const minPrice = getMinValue(dataLayout.map((el) => Number(el.price)));
-export const maxPrice = getMaxValue(dataLayout.map((el) => Number(el.price)));
-export const minQuantity = getMinValue(dataLayout.map((el) => Number(el.count)));
-export const maxQuantity = getMaxValue(dataLayout.map((el) => Number(el.count)));
+const dataNumPrice = dataLayout.map((el) => Number(el.price));
+const dataNumQuantity = dataLayout.map((el) => Number(el.count));
+
+export const minPrice = getMinValue(dataNumPrice);
+export const maxPrice = getMaxValue(dataNumPrice);
+export const minQuantity = getMinValue(dataNumQuantity);
+export const maxQuantity = getMaxValue(dataNumQuantity);
