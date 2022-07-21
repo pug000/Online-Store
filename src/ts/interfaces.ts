@@ -1,5 +1,5 @@
 import React from "react";
-import { SortMap } from "./types";
+import { eventHandler, setState, SortMap } from "./types";
 
 export interface ProductData {
   num: string;
@@ -15,22 +15,21 @@ export interface HeaderProps {
   cart: string[];
 }
 export interface ProductProps {
-  product: ProductData;
+  product: Readonly<ProductData>;
   cart: string[];
-  setCart: (value: React.SetStateAction<string[]>) => void;
-  setPopup: (value: React.SetStateAction<boolean>) => void;
+  setCart: setState<React.SetStateAction<string[]>, void>;
+  setPopup: setState<React.SetStateAction<boolean>, void>;
 }
 
 export interface PopupProps {
   popup: boolean;
-  onClick: () => void;
+  onClick: eventHandler<React.MouseEvent<HTMLButtonElement | HTMLDivElement>, void>;
 }
 
 export interface SelectedSortProps {
   value: keyof SortMap<ProductData[]>;
-  onChange: (value: keyof SortMap<ProductData[]>) => void;
-  optionsLayout: OptionLayout[];
-
+  onChange: eventHandler<keyof SortMap<ProductData[]>, void>;
+  optionsLayout: Readonly<OptionLayout[]>;
 }
 
 export interface OptionLayout {
@@ -40,22 +39,22 @@ export interface OptionLayout {
 
 export interface FiltersProps {
   filter: FilterState;
-  setFilter: (value: React.SetStateAction<FilterState>) => void;
+  setFilter: setState<React.SetStateAction<FilterState>, void>;
   defaultFilters: FilterState;
-  setCart: (value: React.SetStateAction<string[]>) => void;
+  setCart: setState<React.SetStateAction<string[]>, void>;
 }
 
 export interface SearchProps {
   value: string;
-  onChange: (value: string) => void;
-  clearOnClick: () => void;
+  onChange: eventHandler<string, void>;
+  clearOnClick: eventHandler<React.MouseEvent<HTMLButtonElement>, void>;
 }
 
 export interface RangeSliderProps {
   title: string;
   value: number[];
   step: number;
-  onChange: (value: number[]) => void;
+  onChange: eventHandler<number[], void>;
   defaultValue: number[];
 }
 
@@ -76,20 +75,17 @@ export interface CheckboxLayout {
 
 export interface CheckboxProps {
   title: string;
-  layout: CheckboxLayout[];
+  layout: Readonly<CheckboxLayout[]>;
   filter: string[];
-  addOnClick: (value: string) => void;
-  removeOnClick: (value: string) => void;
+  addOnClick: eventHandler<string, void>;
+  removeOnClick: eventHandler<string, void>;
 }
 
-export interface CheckboxItemProps {
+export interface CheckboxItemProps extends Omit<CheckboxProps, 'title' | 'layout'> {
   name: string;
-  filter: string[];
-  addOnClick: (value: string) => void;
-  removeOnClick: (value: string) => void;
 }
 
 export interface ResetButtonProps {
   text: string;
-  resetOnClick: () => void;
+  resetOnClick: eventHandler<React.MouseEvent<HTMLButtonElement>, void>;
 }
