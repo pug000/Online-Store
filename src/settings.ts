@@ -1,24 +1,19 @@
 import { dataLayout } from "./layout/data";
 import { OptionValue } from "./ts/enum";
 import { ProductData } from "./ts/interfaces";
+import { SortMap } from "./ts/types";
 
-export const sortFilter = (data: ProductData[], value: string) => {
-  switch (value) {
-    case OptionValue.first:
-      return data.sort((a, b) => a.name.localeCompare(b.name));
-    case OptionValue.second:
-      return data.sort((a, b) => b.name.localeCompare(a.name));
-    case OptionValue.third:
-      return data.sort((a, b) => Number(a.price) - Number(b.price));
-    case OptionValue.fourth:
-      return data.sort((a, b) => Number(b.price) - Number(a.price));
-    case OptionValue.fifth:
-      return data.sort((a, b) => Number(b.count) - Number(a.count));
-    case OptionValue.sixth:
-      return data.sort((a, b) => Number(a.count) - Number(b.count));
-    default:
-      return data;
+export const sortFilter = (data: ProductData[], value: keyof SortMap<ProductData[]>) => {
+  const sortMap: SortMap<ProductData[]> = {
+    [OptionValue.AZ]: [...data].sort((a, b) => a.name.localeCompare(b.name)),
+    [OptionValue.ZA]: [...data].sort((a, b) => b.name.localeCompare(a.name)),
+    [OptionValue.minPrice]: [...data].sort((a, b) => Number(a.price) - Number(b.price)),
+    [OptionValue.maxPrice]: [...data].sort((a, b) => Number(b.price) - Number(a.price)),
+    [OptionValue.minQuantity]: [...data].sort((a, b) => Number(a.count) - Number(b.count)),
+    [OptionValue.maxQuantity]: [...data].sort((a, b) => Number(b.count) - Number(a.count))
   }
+
+  return sortMap[value];
 };
 
 export const searchFilter = (name: string, value: string) => {

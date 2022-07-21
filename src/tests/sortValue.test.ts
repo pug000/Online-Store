@@ -1,35 +1,31 @@
 import { sortFilter } from "../settings";
 import { OptionValue } from "../ts/enum";
-import { defaultData, sortedByAZ, sortedByMaxPrice, sortedByMaxQuantity, sortedByMinPrice, sortedByZA } from "./testData";
+import { defaultData, sortedByAZ, sortedByMaxPrice, sortedByMaxQuantity, sortedByMinPrice, sortedByMinQuantity, sortedByZA } from "./testData";
 
 
 
 describe('Sort filter function', () => {
   test('sort by name A-Z', () => {
-    expect(sortFilter(defaultData, OptionValue.first)).toEqual(sortedByAZ);
+    expect(sortFilter(defaultData, OptionValue.AZ)).toEqual(sortedByAZ);
   });
 
   test('sort by name Z-A', () => {
-    expect(sortFilter(defaultData, OptionValue.second)).toEqual(sortedByZA);
+    expect(sortFilter(defaultData, OptionValue.ZA)).toEqual(sortedByZA);
   });
 
   test('sort by min price', () => {
-    expect(sortFilter(defaultData, OptionValue.third)).toEqual(sortedByMinPrice);
+    expect(sortFilter(defaultData, OptionValue.minPrice)).toEqual(sortedByMinPrice);
   });
 
   test('sort by max price', () => {
-    expect(sortFilter(defaultData, OptionValue.fourth)).toEqual(sortedByMaxPrice);
-  });
-
-  test('sort by max quantity', () => {
-    expect(sortFilter(defaultData, OptionValue.fifth)).toEqual(sortedByMaxQuantity);
+    expect(sortFilter(defaultData, OptionValue.maxPrice)).toEqual(sortedByMaxPrice);
   });
 
   test('sort by min quantity', () => {
-    expect(sortFilter(defaultData, OptionValue.sixth)).toEqual(sortedByMaxQuantity);
+    expect(sortFilter(defaultData, OptionValue.minQuantity)).toEqual(sortedByMinQuantity);
   });
 
-  test('wrong sort value', () => {
-    expect(sortFilter(defaultData, 'asdhjfas')).toEqual(defaultData);
+  test('sort by max quantity', () => {
+    expect(sortFilter(defaultData, OptionValue.maxQuantity)).toEqual(sortedByMaxQuantity);
   });
 });

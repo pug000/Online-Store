@@ -11,11 +11,12 @@ import { Footer } from './components/Footer/Footer';
 
 import './styles/reset.scss';
 import styles from './styles/styles.module.scss';
+import { OptionValue } from './ts/enum';
 
 const App: FC = () => {
   const defaultFilters: FilterState = {
     search: '',
-    sort: 'По названию (A-Z)',
+    sort: OptionValue.AZ,
     price: [minPrice, maxPrice],
     quantity: [minQuantity, maxQuantity],
     brand: [],

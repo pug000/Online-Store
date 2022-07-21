@@ -1,4 +1,5 @@
 import React from "react";
+import { SortMap } from "./types";
 
 export interface ProductData {
   num: string;
@@ -26,8 +27,8 @@ export interface PopupProps {
 }
 
 export interface SelectedSortProps {
-  value: string;
-  onChange: (value: string) => void;
+  value: keyof SortMap<ProductData[]>;
+  onChange: (value: keyof SortMap<ProductData[]>) => void;
   optionsLayout: OptionLayout[];
 
 }
@@ -60,7 +61,7 @@ export interface RangeSliderProps {
 
 export interface FilterState {
   search: string;
-  sort: string;
+  sort: keyof SortMap<ProductData[]>;
   price: number[];
   quantity: number[];
   brand: string[];
