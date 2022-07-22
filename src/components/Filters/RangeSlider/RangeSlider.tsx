@@ -1,10 +1,18 @@
 import React, { FC } from 'react';
 import ReactSlider from 'react-slider';
-import { RangeSliderProps } from '../../../ts/interfaces';
+import { eventHandler } from '../../../ts/types';
 
-import styles from './Slider.module.scss';
+import styles from './RangeSlider.module.scss';
 
-export const RangeSlider: FC<RangeSliderProps> = (
+interface RangeSliderProps {
+  title: string;
+  value: number[];
+  step: number;
+  onChange: eventHandler<number[], void>;
+  defaultValue: number[];
+}
+
+const RangeSlider: FC<RangeSliderProps> = (
   {
     title,
     value,
@@ -41,3 +49,5 @@ export const RangeSlider: FC<RangeSliderProps> = (
     </div>
   )
 }
+
+export default RangeSlider;

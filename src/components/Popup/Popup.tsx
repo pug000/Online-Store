@@ -1,18 +1,23 @@
 import React, { FC } from 'react';
-import { PopupProps } from '../../ts/interfaces';
+import { eventHandler } from '../../ts/types';
 
 import styles from './Popup.module.scss';
 
-export const Popup: FC<PopupProps> = (
+interface PopupProps {
+  isPopupOpen: boolean;
+  onClick: eventHandler<React.MouseEvent<HTMLButtonElement | HTMLDivElement>, void>;
+}
+
+const Popup: FC<PopupProps> = (
   {
-    popup,
+    isPopupOpen,
     onClick,
   }
 ) => {
   return (
-    <div className={popup ? `${styles.popup} ${styles.popupActive}` : `${styles.popup}`}>
+    <div className={isPopupOpen ? `${styles.popup} ${styles.popupActive}` : `${styles.popup}`}>
       <div className={styles.popupOverlay} onClick={onClick}></div>
-      <div className={popup
+      <div className={isPopupOpen
         ? `${styles.popupContent} ${styles.popupContentActive}`
         : `${styles.popupContent}`}>
         <div className={styles.popupContentTitle}>{'Извините, все слоты заполнены'}</div>
@@ -21,3 +26,5 @@ export const Popup: FC<PopupProps> = (
     </div>
   )
 }
+
+export default Popup;

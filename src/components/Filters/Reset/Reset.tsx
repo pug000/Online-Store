@@ -1,9 +1,14 @@
 import React, { FC } from 'react';
-import { ResetButtonProps } from '../../../ts/interfaces';
+import { eventHandler } from '../../../ts/types';
 
 import styles from './Reset.module.scss';
 
-export const ResetButton: FC<ResetButtonProps> = (
+export interface ResetButtonProps {
+  text: string;
+  resetOnClick: eventHandler<React.MouseEvent<HTMLButtonElement>, void>;
+}
+
+const ResetButton: FC<ResetButtonProps> = (
   {
     text,
     resetOnClick,
@@ -16,3 +21,5 @@ export const ResetButton: FC<ResetButtonProps> = (
     >{text}</button>
   )
 }
+
+export default ResetButton;

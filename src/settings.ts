@@ -1,4 +1,4 @@
-import { dataLayout } from "./layout/data";
+import dataLayout from "./layout/data";
 import { OptionValue } from "./ts/enum";
 import { ProductData } from "./ts/interfaces";
 import { SortMap } from "./ts/types";
@@ -10,8 +10,8 @@ export const sortFilter = (data: ProductData[], value: keyof SortMap<ProductData
     [OptionValue.minPrice]: [...data].sort((a, b) => Number(a.price) - Number(b.price)),
     [OptionValue.maxPrice]: [...data].sort((a, b) => Number(b.price) - Number(a.price)),
     [OptionValue.minQuantity]: [...data].sort((a, b) => Number(a.count) - Number(b.count)),
-    [OptionValue.maxQuantity]: [...data].sort((a, b) => Number(b.count) - Number(a.count))
-  }
+    [OptionValue.maxQuantity]: [...data].sort((a, b) => Number(b.count) - Number(a.count)),
+  };
 
   return sortMap[value];
 };
@@ -28,13 +28,9 @@ export const checkboxFilter = <T>(item: T, value: T[]): boolean | T => {
   return value.length === 0 ? item : value.includes(item);
 };
 
-export const getMinValue = (item: number[]): number => {
-  return Math.min.apply(null, [...item]);
-};
+export const getMinValue = (item: number[]): number => Math.min(...item);
 
-export const getMaxValue = (item: number[]): number => {
-  return Math.max.apply(null, [...item]);
-};
+export const getMaxValue = (item: number[]): number => Math.max(...item);
 
 const dataNumPrice = dataLayout.map((el) => Number(el.price));
 const dataNumQuantity = dataLayout.map((el) => Number(el.count));

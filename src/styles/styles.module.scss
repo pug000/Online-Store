@@ -30,25 +30,3 @@ body {
   gap: 40px;
   grid-template-columns: minmax(180px, 280px) 1fr;
 }
-
-.productWrapper {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(295px, 0.23fr));
-  width: 100%;
-  grid-gap: 30px;
-  align-items: center;
-  align-content: flex-start;
-  justify-content: space-evenly;
-}
-
-.noResultWrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  &Title {
-    font-size: 28px;
-    color: #333;
-    font-family: "Play", sans-serif;
-  }
-}

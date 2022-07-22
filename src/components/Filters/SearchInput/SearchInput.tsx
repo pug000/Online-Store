@@ -1,9 +1,15 @@
 import React, { FC } from 'react';
-import { SearchProps } from '../../../ts/interfaces';
+import { eventHandler } from '../../../ts/types';
 
-import styles from './Search.module.scss';
+import styles from './SearchInput.module.scss';
 
-export const Search: FC<SearchProps> = (
+interface SearchInputProps {
+  value: string;
+  onChange: eventHandler<React.ChangeEvent<HTMLInputElement>, void>;
+  clearOnClick: eventHandler<React.MouseEvent<HTMLButtonElement>, void>;
+}
+
+const SearchInput: FC<SearchInputProps> = (
   {
     value,
     onChange,
@@ -15,14 +21,14 @@ export const Search: FC<SearchProps> = (
       <div className={styles.searchWrapper}>
         <input className={styles.searchWrapperInput}
           value={value}
-          onChange={e => onChange(e.target.value)}
+          onChange={onChange}
           placeholder='Поиск по названию'
           autoFocus
         />
         <button
           onClick={clearOnClick}
           className={
-            value.length <= 0
+            value.length === 0
               ? `${styles.searchWrapperClearBtn}`
               : `${styles.searchWrapperClearBtn} ${styles.searchWrapperClearBtnActive}`
           }
@@ -31,3 +37,5 @@ export const Search: FC<SearchProps> = (
     </div>
   )
 }
+
+export default SearchInput;

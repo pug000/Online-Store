@@ -2,9 +2,11 @@ import React, { FC } from 'react';
 
 import styles from './Header.module.scss';
 
-import { HeaderProps } from '../../ts/interfaces';
+export interface HeaderProps {
+  cart: string[];
+}
 
-export const Header: FC<HeaderProps> = ({ cart }) => {
+const Header: FC<HeaderProps> = ({ cart }) => {
   return (
     <header className={styles.header}>
       <div className={styles.headerContainer}>
@@ -17,3 +19,5 @@ export const Header: FC<HeaderProps> = ({ cart }) => {
     </header>
   )
 };
+
+export default Header;

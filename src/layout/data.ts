@@ -1,6 +1,6 @@
-import { CheckboxLayout, OptionLayout, ProductData } from "../ts/interfaces";
+import { ProductData } from "../ts/interfaces";
 
-export const dataLayout: ProductData[] = [
+const dataLayout: ProductData[] = [
   {
     num: '1',
     brand: 'Cougar',
@@ -201,32 +201,4 @@ export const dataLayout: ProductData[] = [
   },
 ];
 
-export const optionsLayout: OptionLayout[] = [
-  { id: 1, option: 'По названию (A-Z)' },
-  { id: 2, option: 'По названию (Z-A)' },
-  { id: 3, option: 'Сначала недорогие' },
-  { id: 4, option: 'Сначала дорогие' },
-  { id: 5, option: 'Максимальное количество' },
-  { id: 6, option: 'Минимальное количество' },
-]
-
-export const brandsLayout: CheckboxLayout[] = [
-  { id: 1, name: 'Cougar' },
-  { id: 2, name: 'HyperX' },
-  { id: 3, name: 'Razer' },
-  { id: 4, name: 'MSI' },
-  { id: 5, name: 'Corsair' },
-  { id: 6, name: 'ZET' },
-];
-
-export const typesLayout: CheckboxLayout[] = [
-  { id: 1, name: 'механическая' },
-  { id: 2, name: 'ножничная' },
-  { id: 3, name: 'мембранная' },
-];
-
-export const colorsEffectLayout: CheckboxLayout[] = [
-  { id: 1, name: 'RGB' },
-  { id: 2, name: 'многоцветная' },
-  { id: 3, name: 'красная' },
-];
+export default dataLayout;

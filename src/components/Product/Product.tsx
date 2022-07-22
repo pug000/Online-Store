@@ -1,50 +1,67 @@
-import React, { FC, useMemo, useState } from 'react';
-import { ProductProps } from '../../ts/interfaces';
+import React, { FC } from 'react';
+import { ProductData } from '../../ts/interfaces';
+import { setState } from '../../ts/types';
 
 import styles from './Product.module.scss';
 
-export const Product: FC<ProductProps> = (
+interface ProductProps {
+  products: Readonly<ProductData[]>;
+  cart: string[];
+  setCart: setState<React.SetStateAction<string[]>, void>;
+  setPopupOpen: setState<React.SetStateAction<boolean>, void>;
+}
+
+const Product: FC<ProductProps> = (
   {
-    product,
+    products,
     cart,
     setCart,
-    setPopup,
+    setPopupOpen,
   }
 ) => {
-  const [active, setActive] = useState<boolean>(false);
+  if (!products.length) {
+    return (
+      <div className={styles.noResultWrapper}>
+        <h2 className={styles.noResultWrapperTitle}>{'Извините, совпадений не обнаружено'}</h2>
+      </div>
+    )
+  }
 
-  useMemo(() => setActive(cart.includes(product.num) ? true : false), [cart]);
+  const checkForActive = (num: string) => cart.includes(num);
 
-  const addToCart = (id: string) => cart.length < 20 ? setCart(cart => [...cart, id]) : setPopup(popup => !popup);
+  const addToCart = (id: string) => cart.length < 20 ? setCart(cart => [...cart, id]) : setPopupOpen(isPopupOpen => !isPopupOpen);
 
   const removeFromCart = (id: string) => setCart(cart => cart.filter((el) => el !== id));
 
-  const handleClick = () => {
-    cart.length < 20 ? setActive(active => !active) : setActive(false);
-    !active ? addToCart(product.num) : removeFromCart(product.num);
-  };
+  const handleClick = (num: string) => checkForActive(num) ? removeFromCart(num) : addToCart(num);
 
   return (
-    <div className={styles.product}>
-      <div className={styles.productTitle}>{product.name}</div>
-      <div className={styles.productContainer}>
-        <img className={styles.productContainerImg} src={`./assets/img/${product.num}.png`} alt='product-img' />
-      </div>
-      <div className={styles.productDescription}>
-        <div className={styles.productDescriptionCount}>Количество: {product.count}</div>
-        <div className={styles.productDescriptionBrand}>Производитель: {product.brand}</div>
-        <div className={styles.productDescriptionType}>Тип клавиатуры: {product.type}</div>
-        <div className={styles.productDescriptionColorEffect}>Цвет подсветки: {product.colorEffect}</div>
-      </div>
-      <div className={styles.productBottom}>
-        <div className={styles.productBottomPrice}>${product.price}</div>
-        <button
-          className={active
-            ? `${styles.productBottomBtn} ${styles.productBottomBtnActive}`
-            : `${styles.productBottomBtn}`}
-          onClick={handleClick}
-        >{active ? 'Удалить из корзины' : 'Добавить в корзину'}</button>
-      </div>
+    <div className={styles.productWrapper}>
+      {products.map((item) => (
+        <div className={styles.product} key={item.num}>
+          <div className={styles.productTitle}>{item.name}</div>
+          <div className={styles.productContainer}>
+            <img className={styles.productContainerImg} src={`./assets/img/${item.num}.png`} alt='product-img' />
+          </div>
+          <div className={styles.productDescription}>
+            <div className={styles.productDescriptionCount}>Количество: {item.count}</div>
+            <div className={styles.productDescriptionBrand}>Производитель: {item.brand}</div>
+            <div className={styles.productDescriptionType}>Тип клавиатуры: {item.type}</div>
+            <div className={styles.productDescriptionColorEffect}>Цвет подсветки: {item.colorEffect}</div>
+          </div>
+          <div className={styles.productBottom}>
+            <div className={styles.productBottomPrice}>${item.price}</div>
+            <button
+              className={checkForActive(item.num) ? `${styles.productBottomBtn} ${styles.productBottomBtnActive}`
+                : `${styles.productBottomBtn}`
+              }
+              onClick={() => handleClick(item.num)}
+            >{checkForActive(item.num) ? 'Удалить из корзины' : 'Добавить в корзину'}</button>
+          </div>
+        </div>
+      ))}
     </div>
   )
 }
+
+export default Product;

@@ -1,16 +1,24 @@
-import React, { FC } from 'react'
-import { brandsLayout, colorsEffectLayout, optionsLayout, typesLayout } from '../../layout/data';
+import React, { FC, useState } from 'react';
 import { maxPrice, maxQuantity, minPrice, minQuantity } from '../../settings';
-import { FiltersProps } from '../../ts/interfaces';
-import { Search } from './Search/Search';
-import { SelectedSort } from './SelectedSort/SelectedSort';
-import { RangeSlider } from './RangeSlider/RangeSlider';
-import { Checkbox } from './Checkbox/Checkbox';
-import { ResetButton } from './Reset/Reset';
+import SearchInput from './SearchInput/SearchInput';
+import SelectedSort from './SelectedSort/SelectedSort';
+import RangeSlider from './RangeSlider/RangeSlider';
+import CheckboxFilter from './Checkbox/Checkbox';
+import ResetButton from './Reset/Reset';
+import { Checkbox, FilterState, Options } from '../../ts/interfaces';
+import { setState } from '../../ts/types';
 
 import styles from './Filters.module.scss';
+import { OptionValue } from '../../ts/enum';
 
-export const Filters: FC<FiltersProps> = (
+interface FiltersProps {
+  filter: FilterState;
+  setFilter: setState<React.SetStateAction<FilterState>, void>;
+  defaultFilters: FilterState;
+  setCart: setState<React.SetStateAction<string[]>, void>;
+}
+
+const Filters: FC<FiltersProps> = (
   {
     filter,
     setFilter,
@@ -18,18 +26,47 @@ export const Filters: FC<FiltersProps> = (
     setCart,
   }
 ) => {
-  const resetFilters = { ...defaultFilters, sort: filter.sort }
+  const [options] = useState<Options[]>([
+    { id: 1, option: OptionValue.AZ },
+    { id: 2, option: OptionValue.ZA },
+    { id: 3, option: OptionValue.minPrice },
+    { id: 4, option: OptionValue.maxPrice },
+    { id: 5, option: OptionValue.minQuantity },
+    { id: 6, option: OptionValue.maxQuantity },
+  ]);
+
+  const [brands] = useState<Checkbox[]>([
+    { id: 1, name: 'Cougar' },
+    { id: 2, name: 'HyperX' },
+    { id: 3, name: 'Razer' },
+    { id: 4, name: 'MSI' },
+    { id: 5, name: 'Corsair' },
+    { id: 6, name: 'ZET' },
+  ]);
+
+  const [types] = useState<Checkbox[]>([
+    { id: 1, name: 'механическая' },
+    { id: 2, name: 'ножничная' },
+    { id: 3, name: 'мембранная' },
+  ]);
+
+  const [colorsEffect] = useState<Checkbox[]>([
+    { id: 1, name: 'RGB' },
+    { id: 2, name: 'многоцветная' },
+    { id: 3, name: 'красная' },
+  ]);
+
   return (
     <div className={styles.filterContainer}>
-      <Search
+      <SearchInput
         value={filter.search}
-        onChange={value => setFilter({ ...filter, search: value })}
+        onChange={({ target }) => setFilter({ ...filter, search: target.value })}
         clearOnClick={() => setFilter({ ...filter, search: '' })}
       />
       <SelectedSort
         value={filter.sort}
         onChange={selectedValue => setFilter({ ...filter, sort: selectedValue })}
-        optionsLayout={optionsLayout} />
+        options={options} />
       <RangeSlider
         title='Цена $'
         value={filter.price}
@@ -44,9 +81,9 @@ export const Filters: FC<FiltersProps> = (
         onChange={(value) => setFilter({ ...filter, quantity: value })}
         defaultValue={[minQuantity, maxQuantity]}
       />
-      <Checkbox
-        title={'Производитель'}
-        layout={brandsLayout}
+      <CheckboxFilter
+        title='Производитель'
+        items={brands}
         filter={filter.brand}
         addOnClick={(value) => setFilter(
           { ...filter, brand: [...filter.brand, value] }
@@ -55,9 +92,9 @@ export const Filters: FC<FiltersProps> = (
           { ...filter, brand: [...filter.brand].filter((el) => el !== value) }
         )}
       />
-      <Checkbox
-        title={'Клавиатура'}
-        layout={typesLayout}
+      <CheckboxFilter
+        title='Клавиатура'
+        items={types}
         filter={filter.type}
         addOnClick={(value) => setFilter(
           { ...filter, type: [...filter.type, value] }
@@ -66,9 +103,9 @@ export const Filters: FC<FiltersProps> = (
           { ...filter, type: [...filter.type].filter((el) => el !== value) }
         )}
       />
-      <Checkbox
-        title={'Цвет подсветки'}
-        layout={colorsEffectLayout}
+      <CheckboxFilter
+        title='Цвет подсветки'
+        items={colorsEffect}
         filter={filter.colorEffect}
         addOnClick={(value) => setFilter(
           { ...filter, colorEffect: [...filter.colorEffect, value] }
@@ -80,7 +117,7 @@ export const Filters: FC<FiltersProps> = (
       <div className={styles.resetContainer}>
         <ResetButton
           text='Сброс фильтров'
-          resetOnClick={() => setFilter(resetFilters)}
+          resetOnClick={() => setFilter({ ...defaultFilters, sort: filter.sort })}
         />
         <ResetButton
           text='Cброс настроек'
@@ -93,3 +130,5 @@ export const Filters: FC<FiltersProps> = (
     </div>
   )
 }
+
+export default Filters;

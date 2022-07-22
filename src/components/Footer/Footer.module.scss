@@ -47,49 +47,46 @@
     }
   }
 
-  &Left {
+  &Github {
     display: flex;
     align-items: center;
-    gap: 15px;
-    transition: 0.3s ease-out;
 
-    &Github {
-      &Logo {
-        background-image: url("../../assets/icons/github.svg");
-        background-position: center;
-        background-size: contain;
-        width: 35px;
-        height: 35px;
-        filter: invert(1);
-        transition: 0.3s ease-out;
-        position: relative;
-        z-index: 1;
-      }
-    }
-  }
-
-  &Middle {
-    &Year {
-      font-size: 20px;
-      color: #fff;
+    &Link {
+      background-image: url("../../assets/icons/github.svg");
+      background-position: center;
+      background-size: contain;
+      width: 35px;
+      height: 35px;
+      filter: invert(1);
+      transition: 0.3s ease-out;
       position: relative;
-      background-color: transparent;
-      z-index: 0;
+      z-index: 1;
     }
   }
 
-  &Right {
-    &Rsschool {
-      &Logo {
-        background-image: url("../../assets/icons/rs_school.svg");
-        background-position: center;
-        background-size: contain;
-        background-repeat: no-repeat;
-        width: 95px;
-        height: 35px;
-        transition: all 0.3s ease-out;
-        filter: invert(1);
-      }
+  &Year {
+    font-size: 20px;
+    color: #fff;
+    position: relative;
+    background-color: transparent;
+    z-index: 0;
+  }
+
+  &Rsschool {
+    display: flex;
+    align-items: center;
+
+    &Link {
+      background-image: url("../../assets/icons/rs_school.svg");
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      width: 95px;
+      height: 35px;
+      transition: all 0.3s ease-out;
+      filter: invert(1);
+      position: relative;
+      z-index: 1;
     }
   }
 }
