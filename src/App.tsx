@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useMemo, useState } from 'react';
+import React, { FC, useMemo, useState } from 'react';
 import Header from './components/Header/Header';
 import Product from './components/Product/Product';
 import Filters from './components/Filters/Filters';
@@ -11,7 +11,7 @@ import { getLocalStorage, setLocalStorage } from './local';
 import { checkboxFilter, maxPrice, maxQuantity, minPrice, minQuantity, rangeFilter, searchFilter, sortFilter } from './settings';
 
 import './styles/reset.scss';
-import styles from './styles/styles.module.scss';
+import './styles/styles.scss';
 
 
 const App: FC = () => {
@@ -42,13 +42,6 @@ const App: FC = () => {
     setData(res);
   }, [filter]);
 
-  useEffect(() =>
-    !isPopupOpen
-      ? document.body.classList.remove(styles.bodyLock)
-      : document.body.classList.add(styles.bodyLock),
-    [isPopupOpen],
-  );
-
   window.onbeforeunload = () => {
     setLocalStorage('cart', cart);
     setLocalStorage('filters', { ...filter, search: '' });
@@ -57,7 +50,7 @@ const App: FC = () => {
   return (
     <>
       <Header cart={cart} />
-      <main className={styles.main}>
+      <main className='main'>
         <Filters
           filter={filter}
           setFilter={setFilter}

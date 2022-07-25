@@ -13,20 +13,18 @@
   src: url("../assets/fonts/Play-Regular.ttf") format("tff");
 }
 
-body {
-  max-width: 1440px;
+#root {
   color: #333;
   background-color: #f6f6f6;
-  margin: 0 auto;
-}
-
-.bodyLock {
-  overflow: hidden;
+  height: 100vh;
+  overflow: auto;
 }
 
 .main {
   display: grid;
-  margin: 100px 45px 0;
+  margin: 40px auto 0;
+  padding: 0 45px 80px;
+  max-width: 1350px;
   gap: 40px;
   grid-template-columns: minmax(180px, 280px) 1fr;
 }

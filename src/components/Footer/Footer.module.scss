@@ -6,8 +6,7 @@
   padding: 0 40px 0 40px;
   gap: 20px;
   background-color: #000;
-  margin-top: 80px;
-  position: absolute;
+  position: relative;
   left: 0;
   right: 0;
 
@@ -37,9 +36,9 @@
       top: -2px;
       left: -2px;
       background-size: 400%;
-      z-index: -1;
+      z-index: 2;
       filter: blur(5px);
-      width: calc(100%);
+      width: calc(100% + 2px);
       height: calc(100% + 4px);
       animation: rgb 20s linear infinite;
       border-radius: 10px;
