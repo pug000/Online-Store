@@ -1,12 +1,12 @@
 import React, { FC } from "react";
-import { Options, ProductData } from "../../../ts/interfaces";
-import { eventHandler, SortMap } from "../../../ts/types";
+import { Options } from "../../../ts/interfaces";
+import { eventHandler } from "../../../ts/types";
 
 import styles from './SelectedSort.module.scss';
 
 interface SelectedSortProps {
-  value: keyof SortMap<ProductData[]>;
-  onChange: eventHandler<keyof SortMap<ProductData[]>, void>;
+  value: string;
+  onChange: eventHandler<string, void>;
   options: Readonly<Options[]>;
 }
 
@@ -23,8 +23,7 @@ const SelectedSort: FC<SelectedSortProps> = (
       <select
         className={styles.sortSelect}
         value={value}
-        onChange={e => onChange(e.target.value as keyof SortMap<ProductData[]>)}
-      >
+        onChange={({ target }) => onChange(target.value)}>
         {options.map(({ id, option }) => (
           <option className={styles.sortSelectOption} key={id} value={option}>{option}</option>
         ))}

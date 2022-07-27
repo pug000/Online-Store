@@ -1,12 +1,10 @@
-import { SortMap } from "./types";
-
 export interface ProductData {
   num: string;
   brand: string;
   name: string;
   type: string;
   price: string;
-  count: string;
+  quantity: string;
   colorEffect: string;
 }
 
@@ -17,7 +15,7 @@ export interface Options {
 
 export interface FilterState {
   search: string;
-  sort: keyof SortMap<ProductData[]>;
+  sort: string;
   price: number[];
   quantity: number[];
   brand: string[];

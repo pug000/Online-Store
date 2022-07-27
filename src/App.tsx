@@ -15,7 +15,7 @@ import './styles/styles.scss';
 
 
 const App: FC = () => {
-  const defaultFilters: FilterState = {
+  const defaultFilter: FilterState = {
     search: '',
     sort: OptionValue.AZ,
     price: [minPrice, maxPrice],
@@ -28,13 +28,13 @@ const App: FC = () => {
   const [cart, setCart] = useState<string[]>(getLocalStorage('cart', []));
   const [data, setData] = useState<ProductData[]>(dataLayout)
   const [isPopupOpen, setPopupOpen] = useState<boolean>(false);
-  const [filter, setFilter] = useState<FilterState>(getLocalStorage('filters', defaultFilters));
+  const [filter, setFilter] = useState<FilterState>(getLocalStorage('filters', defaultFilter));
 
   useMemo(() => {
     const res = sortFilter(dataLayout, filter.sort).filter((item) =>
       searchFilter(item.name, filter.search)
       && rangeFilter(item.price, filter.price)
-      && rangeFilter(item.count, filter.quantity)
+      && rangeFilter(item.quantity, filter.quantity)
       && checkboxFilter(item.brand, filter.brand)
       && checkboxFilter(item.type, filter.type)
       && checkboxFilter(item.colorEffect, filter.colorEffect));
@@ -54,7 +54,7 @@ const App: FC = () => {
         <Filters
           filter={filter}
           setFilter={setFilter}
-          defaultFilters={defaultFilters}
+          defaultFilter={defaultFilter}
           setCart={setCart}
         />
         <Product

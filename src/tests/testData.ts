@@ -5,7 +5,7 @@ export const defaultData = [
     name: 'aaa',
     type: 'asd',
     price: '50',
-    count: '5',
+    quantity: '5',
     colorEffect: 'gddf',
   },
   {
@@ -14,7 +14,7 @@ export const defaultData = [
     name: 'aab',
     type: 'gdf',
     price: '70',
-    count: '2',
+    quantity: '2',
     colorEffect: 'dfg',
   },
   {
@@ -23,7 +23,7 @@ export const defaultData = [
     name: 'aab',
     type: 'gdf',
     price: '90',
-    count: '8',
+    quantity: '8',
     colorEffect: 'dfg',
   },
 ];
@@ -35,7 +35,7 @@ export const sortedByAZ = [
     name: 'aaa',
     type: 'asd',
     price: '50',
-    count: '5',
+    quantity: '5',
     colorEffect: 'gddf',
   },
   {
@@ -44,7 +44,7 @@ export const sortedByAZ = [
     name: 'aab',
     type: 'gdf',
     price: '70',
-    count: '2',
+    quantity: '2',
     colorEffect: 'dfg',
   },
   {
@@ -53,7 +53,7 @@ export const sortedByAZ = [
     name: 'aab',
     type: 'gdf',
     price: '90',
-    count: '8',
+    quantity: '8',
     colorEffect: 'dfg',
   },
 ];
@@ -65,7 +65,7 @@ export const sortedByZA = [
     name: 'aab',
     type: 'gdf',
     price: '70',
-    count: '2',
+    quantity: '2',
     colorEffect: 'dfg',
   },
   {
@@ -74,7 +74,7 @@ export const sortedByZA = [
     name: 'aab',
     type: 'gdf',
     price: '90',
-    count: '8',
+    quantity: '8',
     colorEffect: 'dfg',
   },
   {
@@ -83,7 +83,7 @@ export const sortedByZA = [
     name: 'aaa',
     type: 'asd',
     price: '50',
-    count: '5',
+    quantity: '5',
     colorEffect: 'gddf',
   },
 ];
@@ -95,7 +95,7 @@ export const sortedByMinPrice = [
     name: 'aaa',
     type: 'asd',
     price: '50',
-    count: '5',
+    quantity: '5',
     colorEffect: 'gddf',
   },
   {
@@ -104,7 +104,7 @@ export const sortedByMinPrice = [
     name: 'aab',
     type: 'gdf',
     price: '70',
-    count: '2',
+    quantity: '2',
     colorEffect: 'dfg',
   },
   {
@@ -113,7 +113,7 @@ export const sortedByMinPrice = [
     name: 'aab',
     type: 'gdf',
     price: '90',
-    count: '8',
+    quantity: '8',
     colorEffect: 'dfg',
   },
 ];
@@ -125,7 +125,7 @@ export const sortedByMaxPrice = [
     name: 'aab',
     type: 'gdf',
     price: '90',
-    count: '8',
+    quantity: '8',
     colorEffect: 'dfg',
   },
   {
@@ -134,7 +134,7 @@ export const sortedByMaxPrice = [
     name: 'aab',
     type: 'gdf',
     price: '70',
-    count: '2',
+    quantity: '2',
     colorEffect: 'dfg',
   },
   {
@@ -143,7 +143,7 @@ export const sortedByMaxPrice = [
     name: 'aaa',
     type: 'asd',
     price: '50',
-    count: '5',
+    quantity: '5',
     colorEffect: 'gddf',
   },
 ];
@@ -155,7 +155,7 @@ export const sortedByMaxQuantity = [
     name: 'aab',
     type: 'gdf',
     price: '90',
-    count: '8',
+    quantity: '8',
     colorEffect: 'dfg',
   },
   {
@@ -164,7 +164,7 @@ export const sortedByMaxQuantity = [
     name: 'aaa',
     type: 'asd',
     price: '50',
-    count: '5',
+    quantity: '5',
     colorEffect: 'gddf',
   },
   {
@@ -173,7 +173,7 @@ export const sortedByMaxQuantity = [
     name: 'aab',
     type: 'gdf',
     price: '70',
-    count: '2',
+    quantity: '2',
     colorEffect: 'dfg',
   },
 ];
@@ -185,7 +185,7 @@ export const sortedByMinQuantity = [
     name: 'aab',
     type: 'gdf',
     price: '70',
-    count: '2',
+    quantity: '2',
     colorEffect: 'dfg',
   },
   {
@@ -194,7 +194,7 @@ export const sortedByMinQuantity = [
     name: 'aaa',
     type: 'asd',
     price: '50',
-    count: '5',
+    quantity: '5',
     colorEffect: 'gddf',
   },
   {
@@ -203,7 +203,7 @@ export const sortedByMinQuantity = [
     name: 'aab',
     type: 'gdf',
     price: '90',
-    count: '8',
+    quantity: '8',
     colorEffect: 'dfg',
   },
 ];

@@ -7,7 +7,7 @@ const dataLayout: ProductData[] = [
     name: 'COUGAR 700K Evo',
     type: 'механическая',
     price: '120',
-    count: '5',
+    quantity: '5',
     colorEffect: 'RGB',
   },
   {
@@ -16,7 +16,7 @@ const dataLayout: ProductData[] = [
     name: 'COUGAR VANTAR',
     type: 'ножничная',
     price: '70',
-    count: '10',
+    quantity: '10',
     colorEffect: 'многоцветная',
   },
   {
@@ -25,7 +25,7 @@ const dataLayout: ProductData[] = [
     name: 'HyperX Alloy Elite 2',
     type: 'механическая',
     price: '130',
-    count: '2',
+    quantity: '2',
     colorEffect: 'RGB',
   },
   {
@@ -34,7 +34,7 @@ const dataLayout: ProductData[] = [
     name: 'HyperX Alloy Origins',
     type: 'механическая',
     price: '110',
-    count: '7',
+    quantity: '7',
     colorEffect: 'RGB',
   },
   {
@@ -43,7 +43,7 @@ const dataLayout: ProductData[] = [
     name: 'HyperX Alloy Core RGB',
     type: 'мембранная',
     price: '50',
-    count: '7',
+    quantity: '7',
     colorEffect: 'RGB',
   },
   {
@@ -52,7 +52,7 @@ const dataLayout: ProductData[] = [
     name: 'Razer BlackWidow V3 Pro',
     type: 'механическая',
     price: '230',
-    count: '1',
+    quantity: '1',
     colorEffect: 'RGB',
   },
   {
@@ -61,7 +61,7 @@ const dataLayout: ProductData[] = [
     name: 'Razer Huntsman V2',
     type: 'механическая',
     price: '250',
-    count: '4',
+    quantity: '4',
     colorEffect: 'RGB',
   },
   {
@@ -70,7 +70,7 @@ const dataLayout: ProductData[] = [
     name: 'Razer Cynosa V2',
     type: 'мембранная',
     price: '60',
-    count: '9',
+    quantity: '9',
     colorEffect: 'RGB',
   },
   {
@@ -79,7 +79,7 @@ const dataLayout: ProductData[] = [
     name: 'Razer Cynosa Lite',
     type: 'мембранная',
     price: '40',
-    count: '6',
+    quantity: '6',
     colorEffect: 'RGB',
   },
   {
@@ -88,7 +88,7 @@ const dataLayout: ProductData[] = [
     name: 'MSI Vigor GK50 Low Profile',
     type: 'механическая',
     price: '90',
-    count: '12',
+    quantity: '12',
     colorEffect: 'RGB',
   },
   {
@@ -97,7 +97,7 @@ const dataLayout: ProductData[] = [
     name: 'MSI Vigor GK71 SONIC',
     type: 'механическая',
     price: '110',
-    count: '3',
+    quantity: '3',
     colorEffect: 'RGB',
   },
   {
@@ -106,7 +106,7 @@ const dataLayout: ProductData[] = [
     name: 'Razer Ornata V2',
     type: 'мембранная',
     price: '100',
-    count: '8',
+    quantity: '8',
     colorEffect: 'многоцветная',
   },
   {
@@ -115,7 +115,7 @@ const dataLayout: ProductData[] = [
     name: 'Corsair K63',
     type: 'механическая',
     price: '80',
-    count: '12',
+    quantity: '12',
     colorEffect: 'красная',
   },
   {
@@ -124,7 +124,7 @@ const dataLayout: ProductData[] = [
     name: 'COUGAR VANTAR AX',
     type: 'ножничная',
     price: '150',
-    count: '6',
+    quantity: '6',
     colorEffect: 'RGB',
   },
   {
@@ -133,7 +133,7 @@ const dataLayout: ProductData[] = [
     name: 'ZET GAMING Dagger SE',
     type: 'механическая',
     price: '50',
-    count: '2',
+    quantity: '2',
     colorEffect: 'красная',
   },
   {
@@ -142,7 +142,7 @@ const dataLayout: ProductData[] = [
     name: 'MSI Vigor GK20',
     type: 'мембранная',
     price: '30',
-    count: '5',
+    quantity: '5',
     colorEffect: 'RGB',
   },
   {
@@ -151,7 +151,7 @@ const dataLayout: ProductData[] = [
     name: 'Corsair K55 RGB PRO XT',
     type: 'мембранная',
     price: '70',
-    count: '9',
+    quantity: '9',
     colorEffect: 'RGB',
   },
   {
@@ -160,7 +160,7 @@ const dataLayout: ProductData[] = [
     name: 'Corsair K55 RGB',
     type: 'мембранная',
     price: '50',
-    count: '1',
+    quantity: '1',
     colorEffect: 'RGB',
   },
   {
@@ -169,7 +169,7 @@ const dataLayout: ProductData[] = [
     name: 'Razer Huntsman Tournament Edition',
     type: 'механическая',
     price: '130',
-    count: '1',
+    quantity: '1',
     colorEffect: 'RGB',
   },
   {
@@ -178,7 +178,7 @@ const dataLayout: ProductData[] = [
     name: 'MSI GK50 ELITE',
     type: 'механическая',
     price: '70',
-    count: '11',
+    quantity: '11',
     colorEffect: 'RGB',
   },
   {
@@ -187,7 +187,7 @@ const dataLayout: ProductData[] = [
     name: 'HyperX Alloy MKW100',
     type: 'механическая',
     price: '80',
-    count: '5',
+    quantity: '5',
     colorEffect: 'RGB',
   },
   {
@@ -196,7 +196,7 @@ const dataLayout: ProductData[] = [
     name: 'Corsair K60 RGB PRO',
     type: 'механическая',
     price: '90',
-    count: '4',
+    quantity: '4',
     colorEffect: 'RGB',
   },
 ];

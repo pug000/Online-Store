@@ -14,7 +14,7 @@ import { OptionValue } from '../../ts/enum';
 interface FiltersProps {
   filter: FilterState;
   setFilter: setState<React.SetStateAction<FilterState>, void>;
-  defaultFilters: FilterState;
+  defaultFilter: FilterState;
   setCart: setState<React.SetStateAction<string[]>, void>;
 }
 
@@ -22,7 +22,7 @@ const Filters: FC<FiltersProps> = (
   {
     filter,
     setFilter,
-    defaultFilters,
+    defaultFilter,
     setCart,
   }
 ) => {
@@ -61,7 +61,7 @@ const Filters: FC<FiltersProps> = (
       <SearchInput
         value={filter.search}
         onChange={({ target }) => setFilter({ ...filter, search: target.value })}
-        clearOnClick={() => setFilter({ ...filter, search: '' })}
+        clearOnClick={() => setFilter({ ...filter, search: defaultFilter.search })}
       />
       <SelectedSort
         value={filter.sort}
@@ -117,12 +117,12 @@ const Filters: FC<FiltersProps> = (
       <div className={styles.resetContainer}>
         <ResetButton
           text='Сброс фильтров'
-          resetOnClick={() => setFilter({ ...defaultFilters, sort: filter.sort })}
+          resetOnClick={() => setFilter({ ...defaultFilter, sort: filter.sort })}
         />
         <ResetButton
           text='Cброс настроек'
           resetOnClick={() => {
-            setFilter(defaultFilters);
+            setFilter(defaultFilter);
             setCart([]);
           }}
         />

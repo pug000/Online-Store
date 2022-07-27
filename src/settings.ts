@@ -1,16 +1,15 @@
 import dataLayout from "./layout/data";
 import { OptionValue } from "./ts/enum";
 import { ProductData } from "./ts/interfaces";
-import { SortMap } from "./ts/types";
 
-export const sortFilter = (data: ProductData[], value: keyof SortMap<ProductData[]>) => {
-  const sortMap: SortMap<ProductData[]> = {
+export const sortFilter = (data: ProductData[], value: string) => {
+  const sortMap: Record<string, ProductData[]> = {
     [OptionValue.AZ]: [...data].sort((a, b) => a.name.localeCompare(b.name)),
     [OptionValue.ZA]: [...data].sort((a, b) => b.name.localeCompare(a.name)),
     [OptionValue.minPrice]: [...data].sort((a, b) => Number(a.price) - Number(b.price)),
     [OptionValue.maxPrice]: [...data].sort((a, b) => Number(b.price) - Number(a.price)),
-    [OptionValue.minQuantity]: [...data].sort((a, b) => Number(a.count) - Number(b.count)),
-    [OptionValue.maxQuantity]: [...data].sort((a, b) => Number(b.count) - Number(a.count)),
+    [OptionValue.minQuantity]: [...data].sort((a, b) => Number(a.quantity) - Number(b.quantity)),
+    [OptionValue.maxQuantity]: [...data].sort((a, b) => Number(b.quantity) - Number(a.quantity)),
   };
 
   return sortMap[value];
@@ -33,7 +32,7 @@ export const getMinValue = (item: number[]): number => Math.min(...item);
 export const getMaxValue = (item: number[]): number => Math.max(...item);
 
 const dataNumPrice = dataLayout.map((el) => Number(el.price));
-const dataNumQuantity = dataLayout.map((el) => Number(el.count));
+const dataNumQuantity = dataLayout.map((el) => Number(el.quantity));
 
 export const minPrice = getMinValue(dataNumPrice);
 export const maxPrice = getMaxValue(dataNumPrice);

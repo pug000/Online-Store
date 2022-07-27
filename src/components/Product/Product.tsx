@@ -44,7 +44,7 @@ const Product: FC<ProductProps> = (
             <img className={styles.productContainerImg} src={`./assets/img/${item.num}.png`} alt='product-img' />
           </div>
           <div className={styles.productDescription}>
-            <div className={styles.productDescriptionCount}>Количество: {item.count}</div>
+            <div className={styles.productDescriptionCount}>Количество: {item.quantity}</div>
             <div className={styles.productDescriptionBrand}>Производитель: {item.brand}</div>
             <div className={styles.productDescriptionType}>Тип клавиатуры: {item.type}</div>
             <div className={styles.productDescriptionColorEffect}>Цвет подсветки: {item.colorEffect}</div>
