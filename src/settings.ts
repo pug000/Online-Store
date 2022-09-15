@@ -1,8 +1,9 @@
 import dataLayout from "./layout/data";
-import { OptionValue } from "./ts/enum";
+
+import OptionValue from "./ts/enum";
 import { ProductData } from "./ts/interfaces";
 
-export const sortFilter = (data: ProductData[], value: string) => {
+const sortFilter = (data: ProductData[], value: string) => {
   const sortMap: Record<string, ProductData[]> = {
     [OptionValue.AZ]: [...data].sort((a, b) => a.name.localeCompare(b.name)),
     [OptionValue.ZA]: [...data].sort((a, b) => b.name.localeCompare(a.name)),
@@ -15,26 +16,39 @@ export const sortFilter = (data: ProductData[], value: string) => {
   return sortMap[value];
 };
 
-export const searchFilter = (name: string, value: string) => {
+const searchFilter = (name: string, value: string) => {
   return name.toLowerCase().includes(value.toLowerCase());
 };
 
-export const rangeFilter = <T>(item: T, value: number[]) => {
+const rangeFilter = <T>(item: T, value: number[]) => {
   return value[0] <= Number(item) && Number(item) <= value[1];
 };
 
-export const checkboxFilter = <T>(item: T, value: T[]): boolean | T => {
+const checkboxFilter = <T>(item: T, value: T[]): boolean | T => {
   return value.length === 0 ? item : value.includes(item);
 };
 
-export const getMinValue = (item: number[]): number => Math.min(...item);
+const getMinValue = (item: number[]): number => Math.min(...item);
 
-export const getMaxValue = (item: number[]): number => Math.max(...item);
+const getMaxValue = (item: number[]): number => Math.max(...item);
 
 const dataNumPrice = dataLayout.map((el) => Number(el.price));
 const dataNumQuantity = dataLayout.map((el) => Number(el.quantity));
 
-export const minPrice = getMinValue(dataNumPrice);
-export const maxPrice = getMaxValue(dataNumPrice);
-export const minQuantity = getMinValue(dataNumQuantity);
-export const maxQuantity = getMaxValue(dataNumQuantity);
+const minPrice = getMinValue(dataNumPrice);
+const maxPrice = getMaxValue(dataNumPrice);
+const minQuantity = getMinValue(dataNumQuantity);
+const maxQuantity = getMaxValue(dataNumQuantity);
+
+export {
+  minPrice,
+  maxPrice,
+  minQuantity,
+  maxQuantity,
+  searchFilter,
+  sortFilter,
+  rangeFilter,
+  checkboxFilter,
+  getMinValue,
+  getMaxValue
+};

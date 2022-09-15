@@ -1,14 +1,36 @@
-import React, { FC, useMemo, useState } from 'react';
+import React, {
+  FC,
+  useMemo,
+  useState
+} from 'react';
+
 import Header from './components/Header/Header';
 import Product from './components/Product/Product';
 import Filters from './components/Filters/Filters';
 import Popup from './components/Popup/Popup';
 import Footer from './components/Footer/Footer';
+
 import dataLayout from './layout/data';
-import { OptionValue } from './ts/enum';
-import { FilterState, ProductData } from './ts/interfaces';
-import { getLocalStorage, setLocalStorage } from './local';
-import { checkboxFilter, maxPrice, maxQuantity, minPrice, minQuantity, rangeFilter, searchFilter, sortFilter } from './settings';
+import {
+  getLocalStorage,
+  setLocalStorage
+} from './local';
+import {
+  checkboxFilter,
+  maxPrice,
+  maxQuantity,
+  minPrice,
+  minQuantity,
+  rangeFilter,
+  searchFilter,
+  sortFilter
+} from './settings';
+
+import OptionValue from './ts/enum';
+import {
+  FilterState,
+  ProductData
+} from './ts/interfaces';
 
 import './styles/reset.scss';
 import './styles/styles.scss';
@@ -25,7 +47,7 @@ const App: FC = () => {
     colorEffect: [],
   }
 
-  const [cart, setCart] = useState<string[]>(getLocalStorage('cart', []));
+  const [cart, setCart] = useState<ProductData[]>(getLocalStorage('cart', []));
   const [data, setData] = useState<ProductData[]>(dataLayout)
   const [isPopupOpen, setPopupOpen] = useState<boolean>(false);
   const [filter, setFilter] = useState<FilterState>(getLocalStorage('filters', defaultFilter));

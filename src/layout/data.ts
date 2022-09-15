@@ -2,7 +2,7 @@ import { ProductData } from "../ts/interfaces";
 
 const dataLayout: ProductData[] = [
   {
-    num: '1',
+    id: '1',
     brand: 'Cougar',
     name: 'COUGAR 700K Evo',
     type: 'механическая',
@@ -11,7 +11,7 @@ const dataLayout: ProductData[] = [
     colorEffect: 'RGB',
   },
   {
-    num: '2',
+    id: '2',
     brand: 'Cougar',
     name: 'COUGAR VANTAR',
     type: 'ножничная',
@@ -20,7 +20,7 @@ const dataLayout: ProductData[] = [
     colorEffect: 'многоцветная',
   },
   {
-    num: '3',
+    id: '3',
     brand: 'HyperX',
     name: 'HyperX Alloy Elite 2',
     type: 'механическая',
@@ -29,7 +29,7 @@ const dataLayout: ProductData[] = [
     colorEffect: 'RGB',
   },
   {
-    num: '4',
+    id: '4',
     brand: 'HyperX',
     name: 'HyperX Alloy Origins',
     type: 'механическая',
@@ -38,7 +38,7 @@ const dataLayout: ProductData[] = [
     colorEffect: 'RGB',
   },
   {
-    num: '5',
+    id: '5',
     brand: 'HyperX',
     name: 'HyperX Alloy Core RGB',
     type: 'мембранная',
@@ -47,7 +47,7 @@ const dataLayout: ProductData[] = [
     colorEffect: 'RGB',
   },
   {
-    num: '6',
+    id: '6',
     brand: 'Razer',
     name: 'Razer BlackWidow V3 Pro',
     type: 'механическая',
@@ -56,7 +56,7 @@ const dataLayout: ProductData[] = [
     colorEffect: 'RGB',
   },
   {
-    num: '7',
+    id: '7',
     brand: 'Razer',
     name: 'Razer Huntsman V2',
     type: 'механическая',
@@ -65,7 +65,7 @@ const dataLayout: ProductData[] = [
     colorEffect: 'RGB',
   },
   {
-    num: '8',
+    id: '8',
     brand: 'Razer',
     name: 'Razer Cynosa V2',
     type: 'мембранная',
@@ -74,7 +74,7 @@ const dataLayout: ProductData[] = [
     colorEffect: 'RGB',
   },
   {
-    num: '9',
+    id: '9',
     brand: 'Razer',
     name: 'Razer Cynosa Lite',
     type: 'мембранная',
@@ -83,7 +83,7 @@ const dataLayout: ProductData[] = [
     colorEffect: 'RGB',
   },
   {
-    num: '10',
+    id: '10',
     brand: 'MSI',
     name: 'MSI Vigor GK50 Low Profile',
     type: 'механическая',
@@ -92,7 +92,7 @@ const dataLayout: ProductData[] = [
     colorEffect: 'RGB',
   },
   {
-    num: '11',
+    id: '11',
     brand: 'MSI',
     name: 'MSI Vigor GK71 SONIC',
     type: 'механическая',
@@ -101,7 +101,7 @@ const dataLayout: ProductData[] = [
     colorEffect: 'RGB',
   },
   {
-    num: '12',
+    id: '12',
     brand: 'Razer',
     name: 'Razer Ornata V2',
     type: 'мембранная',
@@ -110,7 +110,7 @@ const dataLayout: ProductData[] = [
     colorEffect: 'многоцветная',
   },
   {
-    num: '13',
+    id: '13',
     brand: 'Corsair',
     name: 'Corsair K63',
     type: 'механическая',
@@ -119,7 +119,7 @@ const dataLayout: ProductData[] = [
     colorEffect: 'красная',
   },
   {
-    num: '14',
+    id: '14',
     brand: 'Cougar',
     name: 'COUGAR VANTAR AX',
     type: 'ножничная',
@@ -128,7 +128,7 @@ const dataLayout: ProductData[] = [
     colorEffect: 'RGB',
   },
   {
-    num: '15',
+    id: '15',
     brand: 'ZET',
     name: 'ZET GAMING Dagger SE',
     type: 'механическая',
@@ -137,7 +137,7 @@ const dataLayout: ProductData[] = [
     colorEffect: 'красная',
   },
   {
-    num: '16',
+    id: '16',
     brand: 'MSI',
     name: 'MSI Vigor GK20',
     type: 'мембранная',
@@ -146,7 +146,7 @@ const dataLayout: ProductData[] = [
     colorEffect: 'RGB',
   },
   {
-    num: '17',
+    id: '17',
     brand: 'Corsair',
     name: 'Corsair K55 RGB PRO XT',
     type: 'мембранная',
@@ -155,7 +155,7 @@ const dataLayout: ProductData[] = [
     colorEffect: 'RGB',
   },
   {
-    num: '18',
+    id: '18',
     brand: 'Corsair',
     name: 'Corsair K55 RGB',
     type: 'мембранная',
@@ -164,7 +164,7 @@ const dataLayout: ProductData[] = [
     colorEffect: 'RGB',
   },
   {
-    num: '19',
+    id: '19',
     brand: 'Razer',
     name: 'Razer Huntsman Tournament Edition',
     type: 'механическая',
@@ -173,7 +173,7 @@ const dataLayout: ProductData[] = [
     colorEffect: 'RGB',
   },
   {
-    num: '20',
+    id: '20',
     brand: 'MSI',
     name: 'MSI GK50 ELITE',
     type: 'механическая',
@@ -182,7 +182,7 @@ const dataLayout: ProductData[] = [
     colorEffect: 'RGB',
   },
   {
-    num: '21',
+    id: '21',
     brand: 'HyperX',
     name: 'HyperX Alloy MKW100',
     type: 'механическая',
@@ -191,7 +191,7 @@ const dataLayout: ProductData[] = [
     colorEffect: 'RGB',
   },
   {
-    num: '22',
+    id: '22',
     brand: 'Corsair',
     name: 'Corsair K60 RGB PRO',
     type: 'механическая',

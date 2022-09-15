@@ -1,4 +1,7 @@
-import { getLocalStorage, setLocalStorage } from "../local";
+import {
+  getLocalStorage,
+  setLocalStorage
+} from "../local";
 
 describe('save array in local storage', () => {
   test('save n load', () => {

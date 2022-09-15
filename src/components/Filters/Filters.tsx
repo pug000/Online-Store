@@ -1,21 +1,34 @@
-import React, { FC, useState } from 'react';
-import { maxPrice, maxQuantity, minPrice, minQuantity } from '../../settings';
+import React, { FC } from 'react';
+
 import SearchInput from './SearchInput/SearchInput';
 import SelectedSort from './SelectedSort/SelectedSort';
 import RangeSlider from './RangeSlider/RangeSlider';
 import CheckboxFilter from './Checkbox/Checkbox';
 import ResetButton from './Reset/Reset';
-import { Checkbox, FilterState, Options } from '../../ts/interfaces';
-import { setState } from '../../ts/types';
+
+import {
+  Checkbox,
+  FilterState,
+  Options,
+  ProductData
+} from '../../ts/interfaces';
+import { SetState } from '../../ts/types';
+import OptionValue from '../../ts/enum';
+
+import {
+  maxPrice,
+  maxQuantity,
+  minPrice,
+  minQuantity
+} from '../../settings';
 
 import styles from './Filters.module.scss';
-import { OptionValue } from '../../ts/enum';
 
 interface FiltersProps {
   filter: FilterState;
-  setFilter: setState<React.SetStateAction<FilterState>, void>;
+  setFilter: SetState<FilterState>;
   defaultFilter: FilterState;
-  setCart: setState<React.SetStateAction<string[]>, void>;
+  setCart: SetState<ProductData[]>;
 }
 
 const Filters: FC<FiltersProps> = (
@@ -26,35 +39,35 @@ const Filters: FC<FiltersProps> = (
     setCart,
   }
 ) => {
-  const [options] = useState<Options[]>([
+  const options: Options[] = [
     { id: 1, option: OptionValue.AZ },
     { id: 2, option: OptionValue.ZA },
     { id: 3, option: OptionValue.minPrice },
     { id: 4, option: OptionValue.maxPrice },
     { id: 5, option: OptionValue.minQuantity },
     { id: 6, option: OptionValue.maxQuantity },
-  ]);
+  ];
 
-  const [brands] = useState<Checkbox[]>([
+  const brands: Checkbox[] = [
     { id: 1, name: 'Cougar' },
     { id: 2, name: 'HyperX' },
     { id: 3, name: 'Razer' },
     { id: 4, name: 'MSI' },
     { id: 5, name: 'Corsair' },
     { id: 6, name: 'ZET' },
-  ]);
+  ];
 
-  const [types] = useState<Checkbox[]>([
+  const types: Checkbox[] = [
     { id: 1, name: 'механическая' },
     { id: 2, name: 'ножничная' },
     { id: 3, name: 'мембранная' },
-  ]);
+  ];
 
-  const [colorsEffect] = useState<Checkbox[]>([
+  const colorsEffect: Checkbox[] = [
     { id: 1, name: 'RGB' },
     { id: 2, name: 'многоцветная' },
     { id: 3, name: 'красная' },
-  ]);
+  ];
 
   return (
     <div className={styles.filterContainer}>

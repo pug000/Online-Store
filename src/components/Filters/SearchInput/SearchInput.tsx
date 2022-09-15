@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
-import { eventHandler } from '../../../ts/types';
+import { EventHandler } from '../../../ts/types';
 
 import styles from './SearchInput.module.scss';
 
 interface SearchInputProps {
   value: string;
-  onChange: eventHandler<React.ChangeEvent<HTMLInputElement>, void>;
-  clearOnClick: eventHandler<React.MouseEvent<HTMLButtonElement>, void>;
+  onChange: EventHandler<React.ChangeEvent<HTMLInputElement>, void>;
+  clearOnClick: EventHandler<React.MouseEvent<HTMLButtonElement>, void>;
 }
 
 const SearchInput: FC<SearchInputProps> = (

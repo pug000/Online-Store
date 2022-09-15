@@ -1,4 +1,7 @@
-import { getMinValue, getMaxValue } from '../settings';
+import {
+  getMinValue,
+  getMaxValue
+} from '../settings';
 
 describe('Min Max Value functions', () => {
   test('Min value', () => {

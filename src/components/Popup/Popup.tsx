@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
-import { eventHandler } from '../../ts/types';
+import { EventHandler } from '../../ts/types';
 
 import styles from './Popup.module.scss';
 
 interface PopupProps {
   isPopupOpen: boolean;
-  onClick: eventHandler<React.MouseEvent<HTMLButtonElement | HTMLDivElement>, void>;
+  onClick: EventHandler<React.MouseEvent<HTMLButtonElement | HTMLDivElement>, void>;
 }
 
 const Popup: FC<PopupProps> = (

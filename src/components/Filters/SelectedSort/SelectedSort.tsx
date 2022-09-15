@@ -1,12 +1,12 @@
 import React, { FC } from "react";
 import { Options } from "../../../ts/interfaces";
-import { eventHandler } from "../../../ts/types";
+import { EventHandler } from "../../../ts/types";
 
 import styles from './SelectedSort.module.scss';
 
 interface SelectedSortProps {
   value: string;
-  onChange: eventHandler<string, void>;
+  onChange: EventHandler<string, void>;
   options: Readonly<Options[]>;
 }
 

@@ -1,6 +1,6 @@
-export const defaultData = [
+const defaultData = [
   {
-    num: '1',
+    id: '1',
     brand: 'a',
     name: 'aaa',
     type: 'asd',
@@ -9,7 +9,7 @@ export const defaultData = [
     colorEffect: 'gddf',
   },
   {
-    num: '2',
+    id: '2',
     brand: 'dgf',
     name: 'aab',
     type: 'gdf',
@@ -18,7 +18,7 @@ export const defaultData = [
     colorEffect: 'dfg',
   },
   {
-    num: '3',
+    id: '3',
     brand: 'dgf',
     name: 'aab',
     type: 'gdf',
@@ -30,7 +30,7 @@ export const defaultData = [
 
 export const sortedByAZ = [
   {
-    num: '1',
+    id: '1',
     brand: 'a',
     name: 'aaa',
     type: 'asd',
@@ -39,7 +39,7 @@ export const sortedByAZ = [
     colorEffect: 'gddf',
   },
   {
-    num: '2',
+    id: '2',
     brand: 'dgf',
     name: 'aab',
     type: 'gdf',
@@ -48,7 +48,7 @@ export const sortedByAZ = [
     colorEffect: 'dfg',
   },
   {
-    num: '3',
+    id: '3',
     brand: 'dgf',
     name: 'aab',
     type: 'gdf',
@@ -60,7 +60,7 @@ export const sortedByAZ = [
 
 export const sortedByZA = [
   {
-    num: '2',
+    id: '2',
     brand: 'dgf',
     name: 'aab',
     type: 'gdf',
@@ -69,7 +69,7 @@ export const sortedByZA = [
     colorEffect: 'dfg',
   },
   {
-    num: '3',
+    id: '3',
     brand: 'dgf',
     name: 'aab',
     type: 'gdf',
@@ -78,7 +78,7 @@ export const sortedByZA = [
     colorEffect: 'dfg',
   },
   {
-    num: '1',
+    id: '1',
     brand: 'a',
     name: 'aaa',
     type: 'asd',
@@ -90,7 +90,7 @@ export const sortedByZA = [
 
 export const sortedByMinPrice = [
   {
-    num: '1',
+    id: '1',
     brand: 'a',
     name: 'aaa',
     type: 'asd',
@@ -99,7 +99,7 @@ export const sortedByMinPrice = [
     colorEffect: 'gddf',
   },
   {
-    num: '2',
+    id: '2',
     brand: 'dgf',
     name: 'aab',
     type: 'gdf',
@@ -108,7 +108,7 @@ export const sortedByMinPrice = [
     colorEffect: 'dfg',
   },
   {
-    num: '3',
+    id: '3',
     brand: 'dgf',
     name: 'aab',
     type: 'gdf',
@@ -120,7 +120,7 @@ export const sortedByMinPrice = [
 
 export const sortedByMaxPrice = [
   {
-    num: '3',
+    id: '3',
     brand: 'dgf',
     name: 'aab',
     type: 'gdf',
@@ -129,7 +129,7 @@ export const sortedByMaxPrice = [
     colorEffect: 'dfg',
   },
   {
-    num: '2',
+    id: '2',
     brand: 'dgf',
     name: 'aab',
     type: 'gdf',
@@ -138,7 +138,7 @@ export const sortedByMaxPrice = [
     colorEffect: 'dfg',
   },
   {
-    num: '1',
+    id: '1',
     brand: 'a',
     name: 'aaa',
     type: 'asd',
@@ -150,7 +150,7 @@ export const sortedByMaxPrice = [
 
 export const sortedByMaxQuantity = [
   {
-    num: '3',
+    id: '3',
     brand: 'dgf',
     name: 'aab',
     type: 'gdf',
@@ -159,7 +159,7 @@ export const sortedByMaxQuantity = [
     colorEffect: 'dfg',
   },
   {
-    num: '1',
+    id: '1',
     brand: 'a',
     name: 'aaa',
     type: 'asd',
@@ -168,7 +168,7 @@ export const sortedByMaxQuantity = [
     colorEffect: 'gddf',
   },
   {
-    num: '2',
+    id: '2',
     brand: 'dgf',
     name: 'aab',
     type: 'gdf',
@@ -180,7 +180,7 @@ export const sortedByMaxQuantity = [
 
 export const sortedByMinQuantity = [
   {
-    num: '2',
+    id: '2',
     brand: 'dgf',
     name: 'aab',
     type: 'gdf',
@@ -189,7 +189,7 @@ export const sortedByMinQuantity = [
     colorEffect: 'dfg',
   },
   {
-    num: '1',
+    id: '1',
     brand: 'a',
     name: 'aaa',
     type: 'asd',
@@ -198,7 +198,7 @@ export const sortedByMinQuantity = [
     colorEffect: 'gddf',
   },
   {
-    num: '3',
+    id: '3',
     brand: 'dgf',
     name: 'aab',
     type: 'gdf',
@@ -207,3 +207,5 @@ export const sortedByMinQuantity = [
     colorEffect: 'dfg',
   },
 ];
+
+export default defaultData;

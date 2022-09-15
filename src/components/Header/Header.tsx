@@ -1,9 +1,11 @@
 import React, { FC } from 'react';
 
+import { ProductData } from '../../ts/interfaces';
+
 import styles from './Header.module.scss';
 
 export interface HeaderProps {
-  cart: string[];
+  cart: ProductData[];
 }
 
 const Header: FC<HeaderProps> = ({ cart }) => {

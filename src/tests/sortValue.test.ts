@@ -1,6 +1,15 @@
 import { sortFilter } from "../settings";
-import { OptionValue } from "../ts/enum";
-import { defaultData, sortedByAZ, sortedByMaxPrice, sortedByMaxQuantity, sortedByMinPrice, sortedByMinQuantity, sortedByZA } from "./testData";
+
+import OptionValue from "../ts/enum";
+
+import defaultData, {
+  sortedByAZ,
+  sortedByMaxPrice,
+  sortedByMaxQuantity,
+  sortedByMinPrice,
+  sortedByMinQuantity,
+  sortedByZA
+} from "./testData";
 
 
 

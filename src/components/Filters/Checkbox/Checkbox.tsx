@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { eventHandler } from '../../../ts/types';
+import { EventHandler } from '../../../ts/types';
 import { Checkbox } from '../../../ts/interfaces';
 
 import styles from './Checkbox.module.scss';
@@ -8,8 +8,8 @@ export interface CheckboxFilterProps {
   title: string;
   items: Readonly<Checkbox[]>;
   filter: string[];
-  addOnClick: eventHandler<string, void>;
-  removeOnClick: eventHandler<string, void>;
+  addOnClick: EventHandler<string, void>;
+  removeOnClick: EventHandler<string, void>;
 }
 
 const CheckboxFilter: FC<CheckboxFilterProps> = (

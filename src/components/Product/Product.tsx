@@ -1,14 +1,14 @@
 import React, { FC } from 'react';
 import { ProductData } from '../../ts/interfaces';
-import { setState } from '../../ts/types';
+import { SetState } from '../../ts/types';
 
 import styles from './Product.module.scss';
 
 interface ProductProps {
   products: Readonly<ProductData[]>;
-  cart: string[];
-  setCart: setState<React.SetStateAction<string[]>, void>;
-  setPopupOpen: setState<React.SetStateAction<boolean>, void>;
+  cart: ProductData[];
+  setCart: SetState<ProductData[]>;
+  setPopupOpen: SetState<boolean>;
 }
 
 const Product: FC<ProductProps> = (
@@ -19,6 +19,24 @@ const Product: FC<ProductProps> = (
     setPopupOpen,
   }
 ) => {
+  const checkForActive = (id: string) => cart.some((item) => item.id === id);
+
+  const addToCart = (item: ProductData) => (
+    cart.length < 20
+      ? setCart((prev) => [...prev, item])
+      : setPopupOpen(isPopupOpen => !isPopupOpen)
+  );
+
+  const removeFromCart = (currentItem: ProductData) => (
+    setCart((prev) => prev.filter((item) => item.id !== currentItem.id))
+  );
+
+  const handleClick = (currentItem: ProductData) => (
+    checkForActive(currentItem.id)
+      ? removeFromCart(currentItem)
+      : addToCart(currentItem)
+  );
+
   if (!products.length) {
     return (
       <div className={styles.noResultWrapper}>
@@ -27,21 +45,13 @@ const Product: FC<ProductProps> = (
     )
   }
 
-  const checkForActive = (num: string) => cart.includes(num);
-
-  const addToCart = (id: string) => cart.length < 20 ? setCart(cart => [...cart, id]) : setPopupOpen(isPopupOpen => !isPopupOpen);
-
-  const removeFromCart = (id: string) => setCart(cart => cart.filter((el) => el !== id));
-
-  const handleClick = (num: string) => checkForActive(num) ? removeFromCart(num) : addToCart(num);
-
   return (
     <div className={styles.productWrapper}>
       {products.map((item) => (
-        <div className={styles.product} key={item.num}>
+        <div className={styles.product} key={item.id}>
           <div className={styles.productTitle}>{item.name}</div>
           <div className={styles.productContainer}>
-            <img className={styles.productContainerImg} src={`./assets/img/${item.num}.png`} alt='product-img' />
+            <img className={styles.productContainerImg} src={`./assets/img/${item.id}.png`} alt='product-img' />
           </div>
           <div className={styles.productDescription}>
             <div className={styles.productDescriptionCount}>Количество: {item.quantity}</div>
@@ -52,11 +62,11 @@ const Product: FC<ProductProps> = (
           <div className={styles.productBottom}>
             <div className={styles.productBottomPrice}>${item.price}</div>
             <button
-              className={checkForActive(item.num) ? `${styles.productBottomBtn} ${styles.productBottomBtnActive}`
+              className={checkForActive(item.id) ? `${styles.productBottomBtn} ${styles.productBottomBtnActive}`
                 : `${styles.productBottomBtn}`
               }
-              onClick={() => handleClick(item.num)}
-            >{checkForActive(item.num) ? 'Удалить из корзины' : 'Добавить в корзину'}</button>
+              onClick={() => handleClick(item)}
+            >{checkForActive(item.id) ? 'Удалить из корзины' : 'Добавить в корзину'}</button>
           </div>
         </div>
       ))}

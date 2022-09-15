@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import ReactSlider from 'react-slider';
-import { eventHandler } from '../../../ts/types';
+import { EventHandler } from '../../../ts/types';
 
 import styles from './RangeSlider.module.scss';
 
@@ -8,7 +8,7 @@ interface RangeSliderProps {
   title: string;
   value: number[];
   step: number;
-  onChange: eventHandler<number[], void>;
+  onChange: EventHandler<number[], void>;
   defaultValue: number[];
 }
 

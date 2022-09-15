@@ -1,5 +1,5 @@
-export interface ProductData {
-  num: string;
+interface ProductData {
+  id: string;
   brand: string;
   name: string;
   type: string;
@@ -8,12 +8,12 @@ export interface ProductData {
   colorEffect: string;
 }
 
-export interface Options {
+interface Options {
   id: number;
   option: string
 }
 
-export interface FilterState {
+interface FilterState {
   search: string;
   sort: string;
   price: number[];
@@ -23,7 +23,9 @@ export interface FilterState {
   colorEffect: string[];
 }
 
-export interface Checkbox {
+interface Checkbox {
   id: number;
   name: string;
 }
+
+export type { ProductData, Options, FilterState, Checkbox };

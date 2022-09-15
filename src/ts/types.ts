@@ -1,3 +1,5 @@
-export type eventHandler<T, R> = (arg: T) => R;
+type EventHandler<T, R> = (arg: T) => R;
 
-export type setState<T, R> = (arg: T) => R;
+type SetState<T> = React.Dispatch<React.SetStateAction<T>>;
+
+export type { EventHandler, SetState };
