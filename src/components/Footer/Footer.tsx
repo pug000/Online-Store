@@ -1,20 +1,28 @@
-import React, { FC } from 'react';
+import React from 'react';
 
 import styles from './Footer.module.scss';
 
-const Footer: FC = () => {
+function Footer() {
   return (
     <footer className={styles.footer}>
-      <div className={styles.footerLine}></div>
+      <div className={styles.footerLine} />
       <div className={styles.footerGithub}>
-        <a className={styles.footerGithubLink} href='https://github.com/pug000'></a>
+        <a
+          className={styles.footerGithubLink}
+          href="https://github.com/pug000"
+          aria-hidden="true"
+        />
       </div>
       <div className={styles.footerYear}>2022</div>
       <div className={styles.footerRsschool}>
-        <a className={styles.footerRsschoolLink} href='https://rs.school/js/'></a>
+        <a
+          className={styles.footerRsschoolLink}
+          href="https://rs.school/js/"
+          aria-hidden="true"
+        />
       </div>
     </footer>
-  )
+  );
 }
 
 export default Footer;

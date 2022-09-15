@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { EventHandler } from '../../../ts/types';
 import { Checkbox } from '../../../ts/interfaces';
 
@@ -12,18 +12,22 @@ export interface CheckboxFilterProps {
   removeOnClick: EventHandler<string, void>;
 }
 
-const CheckboxFilter: FC<CheckboxFilterProps> = (
+function CheckboxFilter(
   {
     title,
     items,
     filter,
     addOnClick,
     removeOnClick,
-  }
-) => {
+  }: CheckboxFilterProps,
+) {
   const checkForActive = (name: string) => filter.includes(name);
 
-  const handleClick = (name: string) => checkForActive(name) ? removeOnClick(name) : addOnClick(name);
+  const handleClick = (name: string) => (
+    checkForActive(name)
+      ? removeOnClick(name)
+      : addOnClick(name)
+  );
 
   return (
     <div className={styles.filter}>
@@ -32,22 +36,28 @@ const CheckboxFilter: FC<CheckboxFilterProps> = (
         {
           items.map(({ id, name }) => (
             <div
+              key={id}
+              aria-hidden="true"
               className={
                 checkForActive(name)
                   ? `${styles.filterItem} ${styles.filterItemActive}`
                   : `${styles.filterItem}`
               }
-              key={id}
-              defaultValue={''}
-              onClick={() => handleClick(name)}>
+              defaultValue=""
+              onClick={() => handleClick(name)}
+            >
               <span className={styles.filterItemText}>{name}</span>
-              <button className={styles.filterItemBtn}></button>
+              <button
+                className={styles.filterItemBtn}
+                type="button"
+                aria-hidden="true"
+              />
             </div>
           ))
         }
       </div>
     </div>
-  )
+  );
 }
 
 export default CheckboxFilter;

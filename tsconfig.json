@@ -20,6 +20,7 @@
     "src/index.tsx"
   ],
   "include": [
+    "src",
     "src/**/*.ts",
     ".eslintrc.json",
     "declarations.d.ts"

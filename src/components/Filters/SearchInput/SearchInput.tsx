@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { EventHandler } from '../../../ts/types';
 
 import styles from './SearchInput.module.scss';
@@ -9,33 +9,35 @@ interface SearchInputProps {
   clearOnClick: EventHandler<React.MouseEvent<HTMLButtonElement>, void>;
 }
 
-const SearchInput: FC<SearchInputProps> = (
+function SearchInput(
   {
     value,
     onChange,
     clearOnClick,
-  }
-) => {
+  }: SearchInputProps,
+) {
   return (
     <div className={styles.search}>
       <div className={styles.searchWrapper}>
-        <input className={styles.searchWrapperInput}
+        <input
+          className={styles.searchWrapperInput}
           value={value}
           onChange={onChange}
-          placeholder='Поиск по названию'
-          autoFocus
+          placeholder="Поиск по названию"
         />
         <button
           onClick={clearOnClick}
+          type="button"
+          aria-hidden="true"
           className={
             value.length === 0
               ? `${styles.searchWrapperClearBtn}`
               : `${styles.searchWrapperClearBtn} ${styles.searchWrapperClearBtnActive}`
           }
-        ></button>
+        />
       </div>
     </div>
-  )
+  );
 }
 
 export default SearchInput;

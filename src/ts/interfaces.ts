@@ -28,4 +28,9 @@ interface Checkbox {
   name: string;
 }
 
-export type { ProductData, Options, FilterState, Checkbox };
+export type {
+  ProductData,
+  Options,
+  FilterState,
+  Checkbox
+};

@@ -5,10 +5,10 @@ import App from './App';
 
 const root = document.getElementById('root');
 
-if (!root) throw new Error;
+if (!root) throw new Error();
 
 ReactDOM.createRoot(root).render(
   <React.StrictMode>
     <App />
   </React.StrictMode>
-)
+);

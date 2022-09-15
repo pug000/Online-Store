@@ -1,6 +1,6 @@
-import { sortFilter } from "../settings";
+import { sortFilter } from '../settings';
 
-import OptionValue from "../ts/enum";
+import OptionValue from '../ts/enum';
 
 import defaultData, {
   sortedByAZ,
@@ -9,9 +9,7 @@ import defaultData, {
   sortedByMinPrice,
   sortedByMinQuantity,
   sortedByZA
-} from "./testData";
-
-
+} from './testData';
 
 describe('Sort filter function', () => {
   test('sort by name A-Z', () => {

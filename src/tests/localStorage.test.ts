@@ -1,7 +1,7 @@
 import {
   getLocalStorage,
   setLocalStorage
-} from "../local";
+} from '../local';
 
 describe('save array in local storage', () => {
   test('save n load', () => {

@@ -4,6 +4,8 @@
     "es2021": true
   },
   "extends": [
+    "airbnb",
+    "airbnb-typescript",
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended"
@@ -14,7 +16,8 @@
       "jsx": true
     },
     "ecmaVersion": "latest",
-    "sourceType": "module"
+    "sourceType": "module",
+    "project": "./**/tsconfig.json"
   },
   "plugins": [
     "react",
@@ -22,6 +25,9 @@
     "import"
   ],
   "rules": {
-    "@typescript-eslint/no-explicit-any": "error"
+    "@typescript-eslint/no-explicit-any": "error",
+    "@typescript-eslint/comma-dangle": "off",
+    "jsx-a11y/anchor-has-content": "off",
+    "react/jsx-props-no-spreading": "off"
   }
 }

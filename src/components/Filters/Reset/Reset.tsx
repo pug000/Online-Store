@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { EventHandler } from '../../../ts/types';
 
 import styles from './Reset.module.scss';
@@ -8,18 +8,21 @@ export interface ResetButtonProps {
   resetOnClick: EventHandler<React.MouseEvent<HTMLButtonElement>, void>;
 }
 
-const ResetButton: FC<ResetButtonProps> = (
+function ResetButton(
   {
     text,
     resetOnClick,
-  }
-) => {
+  }: ResetButtonProps,
+) {
   return (
     <button
       className={styles.resetContainerBtn}
       onClick={resetOnClick}
-    >{text}</button>
-  )
+      type="button"
+    >
+      {text}
+    </button>
+  );
 }
 
 export default ResetButton;

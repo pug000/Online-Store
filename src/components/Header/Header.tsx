@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 
 import { ProductData } from '../../ts/interfaces';
 
@@ -8,7 +8,7 @@ export interface HeaderProps {
   cart: ProductData[];
 }
 
-const Header: FC<HeaderProps> = ({ cart }) => {
+function Header({ cart }: HeaderProps) {
   return (
     <header className={styles.header}>
       <div className={styles.headerContainer}>
@@ -17,9 +17,9 @@ const Header: FC<HeaderProps> = ({ cart }) => {
           <span>{cart.length}</span>
         </div>
       </div>
-      <div className={styles.headerLine}></div>
+      <div className={styles.headerLine} />
     </header>
-  )
-};
+  );
+}
 
 export default Header;

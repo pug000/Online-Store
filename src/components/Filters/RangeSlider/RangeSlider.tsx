@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import ReactSlider from 'react-slider';
 import { EventHandler } from '../../../ts/types';
 
@@ -12,15 +12,15 @@ interface RangeSliderProps {
   defaultValue: number[];
 }
 
-const RangeSlider: FC<RangeSliderProps> = (
+function RangeSlider(
   {
     title,
     value,
     step,
     onChange,
     defaultValue,
-  }
-) => {
+  }: RangeSliderProps,
+) {
   return (
     <div className={styles.filterRange}>
       <h2 className={styles.filterRangeTitle}>{title}</h2>
@@ -32,14 +32,10 @@ const RangeSlider: FC<RangeSliderProps> = (
         max={defaultValue[1]}
         minDistance={0}
         step={step}
-        withTracks={true}
+        withTracks
         pearling={false}
-        renderThumb={(props) => {
-          return <div {...props} className={styles.filterSliderThumb}></div>
-        }}
-        renderTrack={(props) => {
-          return <div {...props} className={styles.filterSliderTrack}></div>
-        }}
+        renderThumb={(props) => <div {...props} className={styles.filterSliderThumb} />}
+        renderTrack={(props) => <div {...props} className={styles.filterSliderTrack} />}
         onChange={onChange}
       />
       <div className={styles.filterRangeContainer}>
@@ -47,7 +43,7 @@ const RangeSlider: FC<RangeSliderProps> = (
         <div className={styles.filterRangeValue}>{value[1]}</div>
       </div>
     </div>
-  )
+  );
 }
 
 export default RangeSlider;

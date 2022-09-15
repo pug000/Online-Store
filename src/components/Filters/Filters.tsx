@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 
 import SearchInput from './SearchInput/SearchInput';
 import SelectedSort from './SelectedSort/SelectedSort';
@@ -31,14 +31,14 @@ interface FiltersProps {
   setCart: SetState<ProductData[]>;
 }
 
-const Filters: FC<FiltersProps> = (
+function Filters(
   {
     filter,
     setFilter,
     defaultFilter,
     setCart,
-  }
-) => {
+  }: FiltersProps,
+) {
   const options: Options[] = [
     { id: 1, option: OptionValue.AZ },
     { id: 2, option: OptionValue.ZA },
@@ -78,24 +78,25 @@ const Filters: FC<FiltersProps> = (
       />
       <SelectedSort
         value={filter.sort}
-        onChange={selectedValue => setFilter({ ...filter, sort: selectedValue })}
-        options={options} />
+        onChange={(selectedValue) => setFilter({ ...filter, sort: selectedValue })}
+        options={options}
+      />
       <RangeSlider
-        title='Цена $'
+        title="Цена $"
         value={filter.price}
         step={10}
         onChange={(value) => setFilter({ ...filter, price: value })}
         defaultValue={[minPrice, maxPrice]}
       />
       <RangeSlider
-        title='Количество'
+        title="Количество"
         value={filter.quantity}
         step={1}
         onChange={(value) => setFilter({ ...filter, quantity: value })}
         defaultValue={[minQuantity, maxQuantity]}
       />
       <CheckboxFilter
-        title='Производитель'
+        title="Производитель"
         items={brands}
         filter={filter.brand}
         addOnClick={(value) => setFilter(
@@ -106,7 +107,7 @@ const Filters: FC<FiltersProps> = (
         )}
       />
       <CheckboxFilter
-        title='Клавиатура'
+        title="Клавиатура"
         items={types}
         filter={filter.type}
         addOnClick={(value) => setFilter(
@@ -117,7 +118,7 @@ const Filters: FC<FiltersProps> = (
         )}
       />
       <CheckboxFilter
-        title='Цвет подсветки'
+        title="Цвет подсветки"
         items={colorsEffect}
         filter={filter.colorEffect}
         addOnClick={(value) => setFilter(
@@ -129,11 +130,11 @@ const Filters: FC<FiltersProps> = (
       />
       <div className={styles.resetContainer}>
         <ResetButton
-          text='Сброс фильтров'
+          text="Сброс фильтров"
           resetOnClick={() => setFilter({ ...defaultFilter, sort: filter.sort })}
         />
         <ResetButton
-          text='Cброс настроек'
+          text="Cброс настроек"
           resetOnClick={() => {
             setFilter(defaultFilter);
             setCart([]);
@@ -141,7 +142,7 @@ const Filters: FC<FiltersProps> = (
         />
       </div>
     </div>
-  )
+  );
 }
 
 export default Filters;

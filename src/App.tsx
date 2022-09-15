@@ -1,5 +1,4 @@
 import React, {
-  FC,
   useMemo,
   useState
 } from 'react';
@@ -35,8 +34,7 @@ import {
 import './styles/reset.scss';
 import './styles/styles.scss';
 
-
-const App: FC = () => {
+function App() {
   const defaultFilter: FilterState = {
     search: '',
     sort: OptionValue.AZ,
@@ -45,21 +43,21 @@ const App: FC = () => {
     brand: [],
     type: [],
     colorEffect: [],
-  }
+  };
 
   const [cart, setCart] = useState<ProductData[]>(getLocalStorage('cart', []));
-  const [data, setData] = useState<ProductData[]>(dataLayout)
+  const [data, setData] = useState<ProductData[]>(dataLayout);
   const [isPopupOpen, setPopupOpen] = useState<boolean>(false);
   const [filter, setFilter] = useState<FilterState>(getLocalStorage('filters', defaultFilter));
 
   useMemo(() => {
-    const res = sortFilter(dataLayout, filter.sort).filter((item) =>
-      searchFilter(item.name, filter.search)
-      && rangeFilter(item.price, filter.price)
-      && rangeFilter(item.quantity, filter.quantity)
-      && checkboxFilter(item.brand, filter.brand)
-      && checkboxFilter(item.type, filter.type)
-      && checkboxFilter(item.colorEffect, filter.colorEffect));
+    const res = sortFilter(dataLayout, filter.sort)
+      .filter((item) => searchFilter(item.name, filter.search)
+        && rangeFilter(item.price, filter.price)
+        && rangeFilter(item.quantity, filter.quantity)
+        && checkboxFilter(item.brand, filter.brand)
+        && checkboxFilter(item.type, filter.type)
+        && checkboxFilter(item.colorEffect, filter.colorEffect));
 
     setData(res);
   }, [filter]);
@@ -72,7 +70,7 @@ const App: FC = () => {
   return (
     <>
       <Header cart={cart} />
-      <main className='main'>
+      <main className="main">
         <Filters
           filter={filter}
           setFilter={setFilter}
@@ -87,9 +85,12 @@ const App: FC = () => {
         />
       </main>
       <Footer />
-      <Popup isPopupOpen={isPopupOpen} onClick={() => setPopupOpen(!isPopupOpen)} />
+      <Popup
+        isPopupOpen={isPopupOpen}
+        setPopupOpen={setPopupOpen}
+      />
     </>
-  )
-};
+  );
+}
 
 export default App;
