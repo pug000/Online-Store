@@ -1,4 +1,6 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { clearCart } from '../../redux/slices/cartSlice';
 
 import SearchInput from './SearchInput/SearchInput';
 import SelectedSort from './SelectedSort/SelectedSort';
@@ -10,7 +12,6 @@ import {
   Checkbox,
   FilterState,
   Options,
-  ProductData
 } from '../../ts/interfaces';
 import { SetState } from '../../ts/types';
 import OptionValue from '../../ts/enum';
@@ -28,7 +29,6 @@ interface FiltersProps {
   filter: FilterState;
   setFilter: SetState<FilterState>;
   defaultFilter: FilterState;
-  setCart: SetState<ProductData[]>;
 }
 
 function Filters(
@@ -36,9 +36,10 @@ function Filters(
     filter,
     setFilter,
     defaultFilter,
-    setCart,
   }: FiltersProps,
 ) {
+  const dispatch = useDispatch();
+
   const options: Options[] = [
     { id: 1, option: OptionValue.AZ },
     { id: 2, option: OptionValue.ZA },
@@ -68,6 +69,11 @@ function Filters(
     { id: 2, name: 'многоцветная' },
     { id: 3, name: 'красная' },
   ];
+
+  const clearSettings = () => {
+    setFilter(defaultFilter);
+    dispatch(clearCart());
+  };
 
   return (
     <div className={styles.filterContainer}>
@@ -135,10 +141,7 @@ function Filters(
         />
         <ResetButton
           text="Cброс настроек"
-          resetOnClick={() => {
-            setFilter(defaultFilter);
-            setCart([]);
-          }}
+          resetOnClick={clearSettings}
         />
       </div>
     </div>

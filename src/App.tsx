@@ -44,8 +44,6 @@ function App() {
     type: [],
     colorEffect: [],
   };
-
-  const [cart, setCart] = useState<ProductData[]>(getLocalStorage('cart', []));
   const [data, setData] = useState<ProductData[]>(dataLayout);
   const [isPopupOpen, setPopupOpen] = useState<boolean>(false);
   const [filter, setFilter] = useState<FilterState>(getLocalStorage('filters', defaultFilter));
@@ -63,24 +61,20 @@ function App() {
   }, [filter]);
 
   window.onbeforeunload = () => {
-    setLocalStorage('cart', cart);
     setLocalStorage('filters', { ...filter, search: '' });
   };
 
   return (
     <>
-      <Header cart={cart} />
+      <Header />
       <main className="main">
         <Filters
           filter={filter}
           setFilter={setFilter}
           defaultFilter={defaultFilter}
-          setCart={setCart}
         />
         <Product
           products={data}
-          cart={cart}
-          setCart={setCart}
           setPopupOpen={setPopupOpen}
         />
       </main>

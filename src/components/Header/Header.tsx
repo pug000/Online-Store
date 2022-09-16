@@ -1,14 +1,11 @@
 import React from 'react';
-
-import { ProductData } from '../../ts/interfaces';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
 
 import styles from './Header.module.scss';
 
-export interface HeaderProps {
-  cart: ProductData[];
-}
-
-function Header({ cart }: HeaderProps) {
+function Header() {
+  const cart = useSelector((state: RootState) => state.cart);
   return (
     <header className={styles.header}>
       <div className={styles.headerContainer}>
