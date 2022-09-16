@@ -28,9 +28,15 @@ interface Checkbox {
   name: string;
 }
 
+interface FilterActionProps {
+  key: keyof FilterState,
+  value: string | string[] | number[],
+}
+
 export type {
   ProductData,
   Options,
   FilterState,
-  Checkbox
+  Checkbox,
+  FilterActionProps,
 };

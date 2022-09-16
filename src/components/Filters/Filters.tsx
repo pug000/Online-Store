@@ -1,6 +1,17 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect } from 'react';
+import {
+  useDispatch,
+  useSelector
+} from 'react-redux';
 import { clearCart } from '../../redux/slices/cartSlice';
+import {
+  updateFilter,
+  selectFilter,
+  removeSelectedFilter,
+  resetFilter,
+  clearFilter
+} from '../../redux/slices/filterSlice';
+import { setProducts } from '../../redux/slices/productsSlice';
 
 import SearchInput from './SearchInput/SearchInput';
 import SelectedSort from './SelectedSort/SelectedSort';
@@ -10,34 +21,27 @@ import ResetButton from './Reset/Reset';
 
 import {
   Checkbox,
-  FilterState,
   Options,
 } from '../../ts/interfaces';
-import { SetState } from '../../ts/types';
 import OptionValue from '../../ts/enum';
 
 import {
+  checkboxFilter,
   maxPrice,
   maxQuantity,
   minPrice,
-  minQuantity
+  minQuantity,
+  rangeFilter,
+  searchFilter,
+  sortFilter
 } from '../../settings';
 
 import styles from './Filters.module.scss';
+import { RootState } from '../../redux/store';
+import dataLayout from '../../layout/data';
 
-interface FiltersProps {
-  filter: FilterState;
-  setFilter: SetState<FilterState>;
-  defaultFilter: FilterState;
-}
-
-function Filters(
-  {
-    filter,
-    setFilter,
-    defaultFilter,
-  }: FiltersProps,
-) {
+function Filters() {
+  const filter = useSelector((state: RootState) => state.filter);
   const dispatch = useDispatch();
 
   const options: Options[] = [
@@ -71,73 +75,73 @@ function Filters(
   ];
 
   const clearSettings = () => {
-    setFilter(defaultFilter);
+    dispatch(clearFilter());
     dispatch(clearCart());
   };
+
+  useEffect(() => {
+    const filteredProducts = sortFilter(dataLayout, filter.sort)
+      .filter((item) => searchFilter(item.name, filter.search)
+        && rangeFilter(item.price, filter.price)
+        && rangeFilter(item.quantity, filter.quantity)
+        && checkboxFilter(item.brand, filter.brand)
+        && checkboxFilter(item.type, filter.type)
+        && checkboxFilter(item.colorEffect, filter.colorEffect));
+
+    dispatch(setProducts(filteredProducts));
+  }, [filter]);
 
   return (
     <div className={styles.filterContainer}>
       <SearchInput
         value={filter.search}
-        onChange={({ target }) => setFilter({ ...filter, search: target.value })}
-        clearOnClick={() => setFilter({ ...filter, search: defaultFilter.search })}
+        onChange={({ target }) => dispatch(updateFilter({ key: 'search', value: target.value }))}
+        clearOnClick={() => dispatch(updateFilter({ key: 'search', value: '' }))}
       />
       <SelectedSort
         value={filter.sort}
-        onChange={(selectedValue) => setFilter({ ...filter, sort: selectedValue })}
+        onChange={(value) => dispatch(updateFilter({ key: 'sort', value }))}
         options={options}
       />
       <RangeSlider
         title="Цена $"
         value={filter.price}
         step={10}
-        onChange={(value) => setFilter({ ...filter, price: value })}
+        onChange={(value) => dispatch(updateFilter({ key: 'price', value }))}
         defaultValue={[minPrice, maxPrice]}
       />
       <RangeSlider
         title="Количество"
         value={filter.quantity}
         step={1}
-        onChange={(value) => setFilter({ ...filter, quantity: value })}
+        onChange={(value) => dispatch(updateFilter({ key: 'quantity', value }))}
         defaultValue={[minQuantity, maxQuantity]}
       />
       <CheckboxFilter
         title="Производитель"
         items={brands}
         filter={filter.brand}
-        addOnClick={(value) => setFilter(
-          { ...filter, brand: [...filter.brand, value] }
-        )}
-        removeOnClick={(value) => setFilter(
-          { ...filter, brand: [...filter.brand].filter((el) => el !== value) }
-        )}
+        addOnClick={(value) => dispatch(selectFilter({ key: 'brand', value }))}
+        removeOnClick={(value) => dispatch(removeSelectedFilter({ key: 'brand', value }))}
       />
       <CheckboxFilter
         title="Клавиатура"
         items={types}
         filter={filter.type}
-        addOnClick={(value) => setFilter(
-          { ...filter, type: [...filter.type, value] }
-        )}
-        removeOnClick={(value) => setFilter(
-          { ...filter, type: [...filter.type].filter((el) => el !== value) }
-        )}
+        addOnClick={(value) => dispatch(selectFilter({ key: 'type', value }))}
+        removeOnClick={(value) => dispatch(removeSelectedFilter({ key: 'type', value }))}
       />
       <CheckboxFilter
         title="Цвет подсветки"
         items={colorsEffect}
         filter={filter.colorEffect}
-        addOnClick={(value) => setFilter(
-          { ...filter, colorEffect: [...filter.colorEffect, value] }
-        )}
-        removeOnClick={(value) => setFilter(
-          { ...filter, colorEffect: [...filter.colorEffect].filter((el) => el !== value) }
-        )}
+        addOnClick={(value) => dispatch(selectFilter({ key: 'colorEffect', value }))}
+        removeOnClick={(value) => dispatch(removeSelectedFilter({ key: 'colorEffect', value }))}
       />
       <div className={styles.resetContainer}>
         <ResetButton
           text="Сброс фильтров"
-          resetOnClick={() => setFilter({ ...defaultFilter, sort: filter.sort })}
+          resetOnClick={() => dispatch(resetFilter())}
         />
         <ResetButton
           text="Cброс настроек"

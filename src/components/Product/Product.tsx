@@ -14,15 +14,8 @@ import { ProductData } from '../../ts/interfaces';
 
 import styles from './Product.module.scss';
 
-interface ProductProps {
-  products: ProductData[];
-}
-
-function Product(
-  {
-    products,
-  }: ProductProps,
-) {
+function Product() {
+  const products = useSelector((state: RootState) => state.products);
   const cart = useSelector((state: RootState) => state.cart);
   const dispatch = useDispatch();
 

@@ -1,6 +1,6 @@
 import { ProductData } from '../ts/interfaces';
 
-const dataLayout: ProductData[] = [
+const productsLayout: ProductData[] = [
   {
     id: '1',
     brand: 'Cougar',
@@ -201,4 +201,4 @@ const dataLayout: ProductData[] = [
   },
 ];
 
-export default dataLayout;
+export default productsLayout;
