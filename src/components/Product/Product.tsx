@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import {
   useDispatch,
   useSelector
@@ -19,23 +19,25 @@ function Product() {
   const cart = useSelector((state: RootState) => state.cart);
   const dispatch = useDispatch();
 
-  const checkSelectedProduct = (id: string) => cart.some((item) => item.id === id);
+  const checkSelectedProduct = useCallback((id: string) => (
+    cart.some((item) => item.id === id)
+  ), [cart]);
 
-  const addToCart = (currentItem: ProductData) => (
+  const addToCart = useCallback((currentItem: ProductData) => (
     cart.length < 20
       ? dispatch(addCartItem(currentItem))
       : dispatch(setPopupOpen(true))
-  );
+  ), [cart]);
 
-  const removeFromCart = (currentItem: ProductData) => (
+  const removeFromCart = useCallback((currentItem: ProductData) => (
     dispatch(removeCartItem(currentItem))
-  );
+  ), [cart]);
 
-  const handleClick = (currentItem: ProductData) => (
+  const selectProductOnClick = useCallback((currentItem: ProductData) => (
     checkSelectedProduct(currentItem.id)
       ? removeFromCart(currentItem)
       : addToCart(currentItem)
-  );
+  ), [cart]);
 
   if (!products.length) {
     return (
@@ -86,8 +88,12 @@ function Product() {
             </div>
             <button
               type="button"
-              className={`${styles.productBottomBtn} ${checkSelectedProduct(item.id) && styles.productBottomBtnActive}`}
-              onClick={() => handleClick(item)}
+              className={
+                checkSelectedProduct(item.id)
+                  ? `${styles.productBottomBtn} ${styles.productBottomBtnActive}`
+                  : `${styles.productBottomBtn}`
+              }
+              onClick={() => selectProductOnClick(item)}
             >
               {checkSelectedProduct(item.id) ? 'Удалить из корзины' : 'Добавить в корзину'}
             </button>

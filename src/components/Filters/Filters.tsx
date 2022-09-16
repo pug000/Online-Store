@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import {
   useDispatch,
   useSelector
@@ -74,10 +74,10 @@ function Filters() {
     { id: 3, name: 'красная' },
   ];
 
-  const clearSettings = () => {
+  const clearSettings = useCallback(() => {
     dispatch(clearFilter());
     dispatch(clearCart());
-  };
+  }, [filter]);
 
   useEffect(() => {
     const filteredProducts = sortFilter(dataLayout, filter.sort)
@@ -100,7 +100,7 @@ function Filters() {
       />
       <SelectedSort
         value={filter.sort}
-        onChange={(value) => dispatch(updateFilter({ key: 'sort', value }))}
+        onChange={({ target }) => dispatch(updateFilter({ key: 'sort', value: target.value }))}
         options={options}
       />
       <RangeSlider

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { EventHandler } from '../../../ts/types';
 import { Checkbox } from '../../../ts/interfaces';
 
@@ -6,7 +6,7 @@ import styles from './Checkbox.module.scss';
 
 export interface CheckboxFilterProps {
   title: string;
-  items: Readonly<Checkbox[]>;
+  items: Checkbox[];
   filter: string[];
   addOnClick: EventHandler<string, void>;
   removeOnClick: EventHandler<string, void>;
@@ -21,13 +21,15 @@ function CheckboxFilter(
     removeOnClick,
   }: CheckboxFilterProps,
 ) {
-  const checkForActive = (name: string) => filter.includes(name);
+  const checkSelectedFilter = useCallback((name: string) => (
+    filter.includes(name)
+  ), [addOnClick, removeOnClick]);
 
-  const handleClick = (name: string) => (
-    checkForActive(name)
+  const selectFilterOnClick = useCallback((name: string) => (
+    checkSelectedFilter(name)
       ? removeOnClick(name)
       : addOnClick(name)
-  );
+  ), [addOnClick, removeOnClick]);
 
   return (
     <div className={styles.filter}>
@@ -39,12 +41,12 @@ function CheckboxFilter(
               key={id}
               aria-hidden="true"
               className={
-                checkForActive(name)
+                checkSelectedFilter(name)
                   ? `${styles.filterItem} ${styles.filterItemActive}`
                   : `${styles.filterItem}`
               }
               defaultValue=""
-              onClick={() => handleClick(name)}
+              onClick={() => selectFilterOnClick(name)}
             >
               <span className={styles.filterItemText}>{name}</span>
               <button

@@ -6,7 +6,7 @@ import styles from './SelectedSort.module.scss';
 
 interface SelectedSortProps {
   value: string;
-  onChange: EventHandler<string, void>;
+  onChange: EventHandler<React.ChangeEvent<HTMLSelectElement>, void>;
   options: Readonly<Options[]>;
 }
 
@@ -23,7 +23,7 @@ function SelectedSort(
       <select
         className={styles.sortSelect}
         value={value}
-        onChange={({ target }) => onChange(target.value)}
+        onChange={onChange}
       >
         {options.map(({ id, option }) => (
           <option className={styles.sortSelectOption} key={id} value={option}>{option}</option>
