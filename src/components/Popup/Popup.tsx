@@ -1,25 +1,22 @@
 import React from 'react';
-import { SetState } from '../../ts/types';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
+import { setPopupOpen } from '../../redux/slices/popupSlice';
 
 import styles from './Popup.module.scss';
 
-interface PopupProps {
-  isPopupOpen: boolean;
-  setPopupOpen: SetState<boolean>;
-}
+function Popup() {
+  const isPopupOpen = useSelector((state: RootState) => state.isPopupOpen);
+  const dispatch = useDispatch();
 
-function Popup(
-  {
-    isPopupOpen,
-    setPopupOpen,
-  }: PopupProps,
-) {
+  const closePopup = () => dispatch(setPopupOpen(false));
+
   return (
     <div className={isPopupOpen ? `${styles.popup} ${styles.popupActive}` : `${styles.popup}`}>
       <div
         aria-hidden="true"
         className={styles.popupOverlay}
-        onClick={() => setPopupOpen(false)}
+        onClick={closePopup}
       />
       <div className={isPopupOpen
         ? `${styles.popupContent} ${styles.popupContentActive}`
@@ -30,7 +27,7 @@ function Popup(
           type="button"
           aria-hidden="true"
           className={styles.popupContentCloseBtn}
-          onClick={() => setPopupOpen(false)}
+          onClick={closePopup}
         />
       </div>
     </div>

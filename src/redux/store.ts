@@ -14,9 +14,11 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import cartSlice from './slices/cartSlice';
+import popupSlice from './slices/popupSlice';
 
 const rootReducer = combineReducers({
   cart: cartSlice,
+  isPopupOpen: popupSlice,
 });
 
 const persistConfig = {

@@ -7,22 +7,20 @@ import {
   addCartItem,
   removeCartItem
 } from '../../redux/slices/cartSlice';
+import { setPopupOpen } from '../../redux/slices/popupSlice';
 import { RootState } from '../../redux/store';
 
 import { ProductData } from '../../ts/interfaces';
-import { SetState } from '../../ts/types';
 
 import styles from './Product.module.scss';
 
 interface ProductProps {
   products: ProductData[];
-  setPopupOpen: SetState<boolean>;
 }
 
 function Product(
   {
     products,
-    setPopupOpen,
   }: ProductProps,
 ) {
   const cart = useSelector((state: RootState) => state.cart);
@@ -33,7 +31,7 @@ function Product(
   const addToCart = (currentItem: ProductData) => (
     cart.length < 20
       ? dispatch(addCartItem(currentItem))
-      : setPopupOpen((prev) => !prev)
+      : dispatch(setPopupOpen(true))
   );
 
   const removeFromCart = (currentItem: ProductData) => (

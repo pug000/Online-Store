@@ -45,7 +45,6 @@ function App() {
     colorEffect: [],
   };
   const [data, setData] = useState<ProductData[]>(dataLayout);
-  const [isPopupOpen, setPopupOpen] = useState<boolean>(false);
   const [filter, setFilter] = useState<FilterState>(getLocalStorage('filters', defaultFilter));
 
   useMemo(() => {
@@ -73,16 +72,10 @@ function App() {
           setFilter={setFilter}
           defaultFilter={defaultFilter}
         />
-        <Product
-          products={data}
-          setPopupOpen={setPopupOpen}
-        />
+        <Product products={data} />
       </main>
       <Footer />
-      <Popup
-        isPopupOpen={isPopupOpen}
-        setPopupOpen={setPopupOpen}
-      />
+      <Popup />
     </>
   );
 }
