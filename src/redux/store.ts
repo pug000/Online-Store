@@ -28,6 +28,7 @@ const rootReducer = combineReducers({
 const persistConfig = {
   key: 'root',
   storage,
+  blacklist: ['isPopupOpen', 'products'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
