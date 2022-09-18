@@ -1,32 +1,25 @@
 import React from 'react';
-import {
-  Route,
-  Routes
-} from 'react-router-dom';
 
+import Header from './components/Header/Header';
 import Product from './components/Product/Product';
 import Filters from './components/Filters/Filters';
+import Popup from './components/Popup/Popup';
+import Footer from './components/Footer/Footer';
 
 import './styles/reset.scss';
 import './styles/styles.scss';
-import AppLayout from './components/AppLayout/AppLayout';
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={(<AppLayout />)}>
-        <Route
-          index
-          element={(
-            <>
-              <Filters />
-              <Product />
-            </>
-          )}
-        />
-      </Route>
-      <Route path="cart" element={(<div>Cart</div>)} />
-    </Routes>
+    <>
+      <Header />
+      <main className="main">
+        <Filters />
+        <Product />
+      </main>
+      <Footer />
+      <Popup />
+    </>
   );
 }
 
