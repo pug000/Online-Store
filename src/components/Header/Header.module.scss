@@ -24,7 +24,8 @@
       font-size: 30px;
       flex-grow: 1;
       gap: 30px;
-      font-family: "Satisfy", cursive;
+      font-family: "Montserrat Bold" sans-serif;
+      font-weight: 700;
     }
 
     &Cart {
@@ -44,9 +45,10 @@
         position: absolute;
         top: 0%;
         left: 70%;
-        font-size: 20px;
-        min-width: 20px;
+        font-size: 15px;
+        min-width: 10px;
         text-align: center;
+        padding: 2px;
 
         &::before {
           content: "";

@@ -17,7 +17,6 @@
     box-shadow: 0 1px 2px 0 rgb(0 0 0 / 16%);
     background-color: #fff;
     cursor: pointer;
-    font-family: "Play", sans-serif;
 
     &:focus {
       outline: none;
@@ -26,7 +25,6 @@
     &Option {
       color: #333;
       font-size: 17px;
-      font-family: "Play", sans-serif;
     }
   }
 }
