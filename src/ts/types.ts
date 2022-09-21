@@ -1,5 +1,16 @@
+import store from 'redux/store';
+
 type EventHandler<T, R> = (arg: T) => R;
 
 type SetState<T> = React.Dispatch<React.SetStateAction<T>>;
 
-export type { EventHandler, SetState };
+type RootState = ReturnType<typeof store.getState>;
+
+type AppDispatch = typeof store.dispatch;
+
+export type {
+  EventHandler,
+  SetState,
+  RootState,
+  AppDispatch
+};

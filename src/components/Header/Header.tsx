@@ -1,12 +1,14 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from 'redux/store';
+
+import { useAppSelector } from 'hooks/useRedux';
+
 import CartMenu from './CartMenu/CartMenu';
 
 import styles from './Header.module.scss';
 
 function Header() {
-  const cart = useSelector((state: RootState) => state.cart);
+  const cart = useAppSelector((state) => state.cart);
+
   return (
     <header className={styles.header}>
       <div className={styles.headerContainer}>

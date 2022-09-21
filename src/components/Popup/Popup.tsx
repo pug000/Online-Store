@@ -1,13 +1,13 @@
 import React, { useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from 'redux/store';
 import { setPopupOpen } from 'redux/slices/popupSlice';
+
+import { useAppDispatch, useAppSelector } from 'hooks/useRedux';
 
 import styles from './Popup.module.scss';
 
 function Popup() {
-  const isPopupOpen = useSelector((state: RootState) => state.isPopupOpen);
-  const dispatch = useDispatch();
+  const isPopupOpen = useAppSelector((state) => state.isPopupOpen);
+  const dispatch = useAppDispatch();
 
   const closePopup = useCallback(() => (
     dispatch(setPopupOpen(false))

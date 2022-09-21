@@ -1,23 +1,20 @@
 import React, { useCallback } from 'react';
 import {
-  useDispatch,
-  useSelector
-} from 'react-redux';
-import {
   addCartItem,
   removeCartItem
 } from 'redux/slices/cartSlice';
 import { setPopupOpen } from 'redux/slices/popupSlice';
-import { RootState } from 'redux/store';
+
+import { useAppDispatch, useAppSelector } from 'hooks/useRedux';
 
 import { ProductData } from 'ts/interfaces';
 
 import styles from './Product.module.scss';
 
 function Product() {
-  const products = useSelector((state: RootState) => state.products);
-  const cart = useSelector((state: RootState) => state.cart);
-  const dispatch = useDispatch();
+  const products = useAppSelector((state) => state.products);
+  const cart = useAppSelector((state) => state.cart);
+  const dispatch = useAppDispatch();
 
   const checkSelectedProduct = useCallback((id: string) => (
     cart.some((item) => item.id === id)

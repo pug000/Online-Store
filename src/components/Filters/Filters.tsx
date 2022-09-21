@@ -1,8 +1,4 @@
 import React, { useCallback, useEffect } from 'react';
-import {
-  useDispatch,
-  useSelector
-} from 'react-redux';
 import { clearCart } from 'redux/slices/cartSlice';
 import {
   updateFilter,
@@ -13,7 +9,8 @@ import {
 } from 'redux/slices/filterSlice';
 import { setProducts } from 'redux/slices/productsSlice';
 
-import { RootState } from 'redux/store';
+import { useAppDispatch, useAppSelector } from 'hooks/useRedux';
+
 import dataLayout from 'layout/data';
 
 import {
@@ -42,8 +39,8 @@ import ResetButton from './Reset/Reset';
 import styles from './Filters.module.scss';
 
 function Filters() {
-  const filter = useSelector((state: RootState) => state.filter);
-  const dispatch = useDispatch();
+  const filter = useAppSelector((state) => state.filter);
+  const dispatch = useAppDispatch();
 
   const options: Options[] = [
     { id: 1, option: OptionValue.AZ },
