@@ -15,6 +15,12 @@
     "strict": true,
     "jsx": "react-jsx",
     "isolatedModules": true,
+    "baseUrl": "src",
+    "paths": {
+      "*": [
+        "*"
+      ]
+    }
   },
   "files": [
     "src/index.tsx"

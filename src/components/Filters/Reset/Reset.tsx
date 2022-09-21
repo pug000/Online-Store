@@ -1,5 +1,5 @@
 import React from 'react';
-import { EventHandler } from '../../../ts/types';
+import { EventHandler } from 'ts/types';
 
 import styles from './Reset.module.scss';
 

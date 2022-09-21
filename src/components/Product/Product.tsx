@@ -6,11 +6,11 @@ import {
 import {
   addCartItem,
   removeCartItem
-} from '../../redux/slices/cartSlice';
-import { setPopupOpen } from '../../redux/slices/popupSlice';
-import { RootState } from '../../redux/store';
+} from 'redux/slices/cartSlice';
+import { setPopupOpen } from 'redux/slices/popupSlice';
+import { RootState } from 'redux/store';
 
-import { ProductData } from '../../ts/interfaces';
+import { ProductData } from 'ts/interfaces';
 
 import styles from './Product.module.scss';
 

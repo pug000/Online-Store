@@ -1,6 +1,6 @@
 import React from 'react';
-import { Options } from '../../../ts/interfaces';
-import { EventHandler } from '../../../ts/types';
+import { Options } from 'ts/interfaces';
+import { EventHandler } from 'ts/types';
 
 import styles from './SelectedSort.module.scss';
 

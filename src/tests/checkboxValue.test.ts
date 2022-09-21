@@ -1,4 +1,4 @@
-import { checkboxFilter } from '../settings';
+import { checkboxFilter } from 'utils';
 
 describe('checkbox function', () => {
   test('correct value', () => {

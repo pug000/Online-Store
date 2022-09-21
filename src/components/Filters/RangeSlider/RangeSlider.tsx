@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactSlider from 'react-slider';
-import { EventHandler } from '../../../ts/types';
+import { EventHandler } from 'ts/types';
 
 import styles from './RangeSlider.module.scss';
 

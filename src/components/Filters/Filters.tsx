@@ -3,27 +3,24 @@ import {
   useDispatch,
   useSelector
 } from 'react-redux';
-import { clearCart } from '../../redux/slices/cartSlice';
+import { clearCart } from 'redux/slices/cartSlice';
 import {
   updateFilter,
   selectFilter,
   removeSelectedFilter,
   resetFilter,
   clearFilter
-} from '../../redux/slices/filterSlice';
-import { setProducts } from '../../redux/slices/productsSlice';
+} from 'redux/slices/filterSlice';
+import { setProducts } from 'redux/slices/productsSlice';
 
-import SearchInput from './SearchInput/SearchInput';
-import SelectedSort from './SelectedSort/SelectedSort';
-import RangeSlider from './RangeSlider/RangeSlider';
-import CheckboxFilter from './Checkbox/Checkbox';
-import ResetButton from './Reset/Reset';
+import { RootState } from 'redux/store';
+import dataLayout from 'layout/data';
 
 import {
   Checkbox,
   Options,
-} from '../../ts/interfaces';
-import OptionValue from '../../ts/enum';
+} from 'ts/interfaces';
+import OptionValue from 'ts/enum';
 
 import {
   checkboxFilter,
@@ -34,11 +31,15 @@ import {
   rangeFilter,
   searchFilter,
   sortFilter
-} from '../../settings';
+} from 'utils';
+
+import SearchInput from './SearchInput/SearchInput';
+import SelectedSort from './SelectedSort/SelectedSort';
+import RangeSlider from './RangeSlider/RangeSlider';
+import CheckboxFilter from './Checkbox/Checkbox';
+import ResetButton from './Reset/Reset';
 
 import styles from './Filters.module.scss';
-import { RootState } from '../../redux/store';
-import dataLayout from '../../layout/data';
 
 function Filters() {
   const filter = useSelector((state: RootState) => state.filter);

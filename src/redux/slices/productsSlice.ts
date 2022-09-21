@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import dataLayout from '../../layout/data';
-import { ProductData } from '../../ts/interfaces';
+import dataLayout from 'layout/data';
+import { ProductData } from 'ts/interfaces';
 
 const initialState: ProductData[] = dataLayout;
 

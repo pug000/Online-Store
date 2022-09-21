@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../redux/store';
+import { RootState } from 'redux/store';
 import CartMenu from './CartMenu/CartMenu';
 
 import styles from './Header.module.scss';

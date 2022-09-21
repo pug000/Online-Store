@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
-import { EventHandler } from '../../../ts/types';
-import { Checkbox } from '../../../ts/interfaces';
+import { EventHandler } from 'ts/types';
+import { Checkbox } from 'ts/interfaces';
 
 import styles from './Checkbox.module.scss';
 

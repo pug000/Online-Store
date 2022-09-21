@@ -1,4 +1,4 @@
-import { rangeFilter } from '../settings';
+import { rangeFilter } from 'utils';
 
 describe('range filter function', () => {
   test('intermediate value', () => {

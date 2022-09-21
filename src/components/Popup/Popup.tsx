@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../redux/store';
-import { setPopupOpen } from '../../redux/slices/popupSlice';
+import { RootState } from 'redux/store';
+import { setPopupOpen } from 'redux/slices/popupSlice';
 
 import styles from './Popup.module.scss';
 

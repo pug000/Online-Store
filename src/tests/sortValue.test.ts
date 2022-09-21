@@ -1,6 +1,6 @@
-import { sortFilter } from '../settings';
+import { sortFilter } from 'utils';
 
-import OptionValue from '../ts/enum';
+import OptionValue from 'ts/enum';
 
 import defaultData, {
   sortedByAZ,

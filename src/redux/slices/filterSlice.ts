@@ -5,10 +5,10 @@ import {
   maxQuantity,
   minPrice,
   minQuantity
-} from '../../settings';
+} from 'utils';
 
-import OptionValue from '../../ts/enum';
-import { FilterActionProps, FilterState } from '../../ts/interfaces';
+import OptionValue from 'ts/enum';
+import { FilterActionProps, FilterState } from 'ts/interfaces';
 
 const initialState: FilterState = {
   search: '',

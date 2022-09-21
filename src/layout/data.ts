@@ -1,4 +1,4 @@
-import { ProductData } from '../ts/interfaces';
+import { ProductData } from 'ts/interfaces';
 
 const productsLayout: ProductData[] = [
   {

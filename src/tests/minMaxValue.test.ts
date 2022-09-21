@@ -1,7 +1,7 @@
 import {
   getMinValue,
   getMaxValue
-} from '../settings';
+} from 'utils';
 
 describe('Min Max Value functions', () => {
   test('Min value', () => {
