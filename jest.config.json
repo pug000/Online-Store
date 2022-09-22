@@ -1,7 +1,26 @@
 {
   "preset": "ts-jest",
   "testEnvironment": "jsdom",
+  "verbose": true,
+  "moduleFileExtensions": [
+    "js",
+    "mjs",
+    "cjs",
+    "jsx",
+    "ts",
+    "tsx",
+    "json",
+    "node"
+  ],
+  "moduleDirectories": [
+    "node_modules",
+    "bower_components",
+    "src"
+  ],
+  "setupFilesAfterEnv": [
+    "<rootDir>/src/setupTests.ts"
+  ],
   "moduleNameMapper": {
-    "^.+.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "jest-transform-stub"
+    "\\.(scss|sass|css|less)$": "identity-obj-proxy"
   }
 }
