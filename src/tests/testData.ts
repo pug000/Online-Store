@@ -28,7 +28,7 @@ const defaultData = [
   },
 ];
 
-export const sortedByAZ = [
+const sortedByAZ = [
   {
     id: '1',
     brand: 'a',
@@ -58,7 +58,7 @@ export const sortedByAZ = [
   },
 ];
 
-export const sortedByZA = [
+const sortedByZA = [
   {
     id: '2',
     brand: 'dgf',
@@ -88,7 +88,7 @@ export const sortedByZA = [
   },
 ];
 
-export const sortedByMinPrice = [
+const sortedByMinPrice = [
   {
     id: '1',
     brand: 'a',
@@ -118,7 +118,7 @@ export const sortedByMinPrice = [
   },
 ];
 
-export const sortedByMaxPrice = [
+const sortedByMaxPrice = [
   {
     id: '3',
     brand: 'dgf',
@@ -148,7 +148,7 @@ export const sortedByMaxPrice = [
   },
 ];
 
-export const sortedByMaxQuantity = [
+const sortedByMaxQuantity = [
   {
     id: '3',
     brand: 'dgf',
@@ -178,7 +178,7 @@ export const sortedByMaxQuantity = [
   },
 ];
 
-export const sortedByMinQuantity = [
+const sortedByMinQuantity = [
   {
     id: '2',
     brand: 'dgf',
@@ -208,4 +208,12 @@ export const sortedByMinQuantity = [
   },
 ];
 
-export default defaultData;
+export {
+  defaultData,
+  sortedByZA,
+  sortedByAZ,
+  sortedByMinPrice,
+  sortedByMaxPrice,
+  sortedByMinQuantity,
+  sortedByMaxQuantity,
+};

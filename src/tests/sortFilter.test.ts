@@ -2,7 +2,8 @@ import { sortFilter } from 'utils';
 
 import OptionValue from 'ts/enum';
 
-import defaultData, {
+import {
+  defaultData,
   sortedByAZ,
   sortedByMaxPrice,
   sortedByMaxQuantity,
@@ -11,7 +12,7 @@ import defaultData, {
   sortedByZA
 } from './testData';
 
-describe('Sort filter function', () => {
+describe('Sort filter functionality', () => {
   test('sort by name A-Z', () => {
     expect(sortFilter(defaultData, OptionValue.AZ)).toEqual(sortedByAZ);
   });

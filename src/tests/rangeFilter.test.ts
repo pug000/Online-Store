@@ -1,6 +1,6 @@
 import { rangeFilter } from 'utils';
 
-describe('range filter function', () => {
+describe('Range filter functionality', () => {
   test('intermediate value', () => {
     expect(rangeFilter('5', [0, 10])).toBeTruthy();
   });

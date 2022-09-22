@@ -1,6 +1,6 @@
 import { checkboxFilter } from 'utils';
 
-describe('checkbox function', () => {
+describe('Selective filter functionality', () => {
   test('correct value', () => {
     expect(checkboxFilter('asd', ['asd'])).toBeTruthy();
     expect(checkboxFilter('vcbfd', ['asdt64', 'vcbfd'])).toBeTruthy();
