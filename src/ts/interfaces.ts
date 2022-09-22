@@ -28,9 +28,9 @@ interface Checkbox {
   name: string;
 }
 
-interface FilterActionProps {
-  key: keyof FilterState,
-  value: string | string[] | number[],
+interface ActionProps<T, U> {
+  key: keyof T,
+  value: U,
 }
 
 export type {
@@ -38,5 +38,5 @@ export type {
   Options,
   FilterState,
   Checkbox,
-  FilterActionProps,
+  ActionProps,
 };

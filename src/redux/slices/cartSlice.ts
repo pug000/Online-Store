@@ -2,22 +2,34 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { ProductData } from 'ts/interfaces';
 
-const initialState: ProductData[] = [];
+interface CartState {
+  cart: ProductData[],
+  cartTotalCount: number,
+}
+
+const initialState: CartState = {
+  cart: [],
+  cartTotalCount: 0,
+};
 
 const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
     addCartItem(state, action: PayloadAction<ProductData>) {
-      return [...state, action.payload];
+      state.cart.push(action.payload);
     },
 
     removeCartItem(state, action: PayloadAction<ProductData>) {
-      return state.filter((cart) => cart.id !== action.payload.id);
+      state.cart = state.cart.filter((cartItem) => cartItem.id !== action.payload.id);
     },
 
-    clearCart() {
-      return [];
+    clearCart(state) {
+      state.cart = [];
+    },
+
+    getCartTotalCount(state, action: PayloadAction<ProductData[]>) {
+      state.cartTotalCount = action.payload.reduce((acc, cur) => acc + Number(cur.price), 0);
     }
   }
 });
@@ -25,7 +37,8 @@ const cartSlice = createSlice({
 export const {
   addCartItem,
   removeCartItem,
-  clearCart
+  clearCart,
+  getCartTotalCount
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

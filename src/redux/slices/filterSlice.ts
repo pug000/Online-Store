@@ -8,7 +8,7 @@ import {
 } from 'utils';
 
 import OptionValue from 'ts/enum';
-import { FilterActionProps, FilterState } from 'ts/interfaces';
+import { ActionProps, FilterState } from 'ts/interfaces';
 
 const initialState: FilterState = {
   search: '',
@@ -24,21 +24,21 @@ const filterSlice = createSlice({
   name: 'filters',
   initialState,
   reducers: {
-    updateFilter(state, { payload }: PayloadAction<FilterActionProps>) {
+    updateFilter(state, { payload }: PayloadAction<ActionProps<FilterState, string | number[]>>) {
       return {
         ...state,
         [payload.key]: payload.value,
       };
     },
 
-    selectFilter(state, { payload }: PayloadAction<FilterActionProps>) {
+    selectFilter(state, { payload }: PayloadAction<ActionProps<FilterState, string>>) {
       return {
         ...state,
         [payload.key]: [...state[payload.key], payload.value],
       };
     },
 
-    removeSelectedFilter(state, { payload }: PayloadAction<FilterActionProps>) {
+    removeSelectedFilter(state, { payload }: PayloadAction<ActionProps<FilterState, string>>) {
       return {
         ...state,
         [payload.key]: [...state[payload.key]].filter((item) => item !== payload.value),

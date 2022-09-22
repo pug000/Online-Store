@@ -1,21 +1,63 @@
-import React from 'react';
-import { useAppSelector } from 'hooks/useRedux';
+import React, {
+  useCallback,
+  useEffect
+} from 'react';
+
+import { setBooleanState } from 'redux/slices/booleanSlice';
+
+import {
+  removeCartItem,
+  getCartTotalCount,
+  clearCart
+} from 'redux/slices/cartSlice';
+
+import {
+  useAppDispatch,
+  useAppSelector
+} from 'hooks/useRedux';
 
 import styles from './CartMenu.module.scss';
 
 function CartMenu() {
-  const cart = useAppSelector((state) => state.cart);
+  const cart = useAppSelector((state) => state.cart.cart);
+  const cartTotalCount = useAppSelector((state) => state.cart.cartTotalCount);
+  const isCartMenuOpen = useAppSelector((state) => state.booleanState.isCartMenuOpen);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (isCartMenuOpen) {
+      dispatch(getCartTotalCount(cart));
+    }
+  }, [cart, isCartMenuOpen]);
+
+  const closeCartMenu = useCallback(() => {
+    dispatch(setBooleanState({ key: 'isCartMenuOpen', value: false }));
+  }, [isCartMenuOpen]);
 
   return (
     <>
-      <div className={styles.shadow} />
-      <div className={styles.cart}>
+      <div
+        className={
+          isCartMenuOpen
+            ? `${styles.shadow} ${styles.shadowActive}`
+            : `${styles.shadow}`
+        }
+        aria-hidden="true"
+        onClick={closeCartMenu}
+      />
+      <div className={
+        isCartMenuOpen
+          ? `${styles.cart} ${styles.cartActive}`
+          : `${styles.cart}`
+      }
+      >
         <div className={styles.cartHeader}>
           <h3 className={styles.cartHeaderTitle}>Shopping Cart</h3>
           <button
             className={styles.cartHeaderCloseButton}
             type="button"
             aria-label="close"
+            onClick={closeCartMenu}
           />
         </div>
         <div className={styles.cartMain}>
@@ -37,6 +79,7 @@ function CartMenu() {
                   className={styles.cartItemButtonRemove}
                   type="button"
                   aria-label="button"
+                  onClick={() => dispatch(removeCartItem(item))}
                 />
               </div>
             </div>
@@ -45,11 +88,15 @@ function CartMenu() {
         <div className={styles.cartFooter}>
           <div className={styles.cartFooterPrice}>
             <span>Итого:</span>
-            <span>$</span>
+            <span>{`$${cartTotalCount}`}</span>
           </div>
           <button
             className={styles.cartFooterButton}
             type="button"
+            onClick={() => {
+              closeCartMenu();
+              dispatch(clearCart());
+            }}
           >
             Оформить заказ
           </button>

@@ -28,7 +28,16 @@
     "@typescript-eslint/no-explicit-any": "error",
     "@typescript-eslint/comma-dangle": "off",
     "jsx-a11y/anchor-has-content": "off",
-    "react/jsx-props-no-spreading": "off"
+    "react/jsx-props-no-spreading": "off",
+    "no-param-reassign": [
+      "error",
+      {
+        "props": true,
+        "ignorePropertyModificationsFor": [
+          "state"
+        ]
+      }
+    ]
   },
   "settings": {
     "import/resolver": {

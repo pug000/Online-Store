@@ -20,12 +20,12 @@
   background-color: #fff;
   color: #333;
   max-width: 400px;
+  width: 100%;
   height: 100vh;
   position: fixed;
   right: 0;
   top: 0;
   z-index: 15;
-  font-family: "Play", sans-serif;
   padding: 0 20px;
   transition: transform 0.8s, -webkit-transform 0.8s;
   transform: translateX(100%);

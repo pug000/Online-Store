@@ -1,16 +1,16 @@
 import React, { useCallback } from 'react';
-import { setPopupOpen } from 'redux/slices/popupSlice';
+import { setBooleanState } from 'redux/slices/booleanSlice';
 
 import { useAppDispatch, useAppSelector } from 'hooks/useRedux';
 
 import styles from './Popup.module.scss';
 
 function Popup() {
-  const isPopupOpen = useAppSelector((state) => state.isPopupOpen);
+  const isPopupOpen = useAppSelector((state) => state.booleanState.isPopupOpen);
   const dispatch = useAppDispatch();
 
   const closePopup = useCallback(() => (
-    dispatch(setPopupOpen(false))
+    dispatch(setBooleanState({ key: 'isPopupOpen', value: false }))
   ), [isPopupOpen]);
 
   return (

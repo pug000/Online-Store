@@ -3,7 +3,7 @@ import {
   addCartItem,
   removeCartItem
 } from 'redux/slices/cartSlice';
-import { setPopupOpen } from 'redux/slices/popupSlice';
+import { setBooleanState } from 'redux/slices/booleanSlice';
 
 import { useAppDispatch, useAppSelector } from 'hooks/useRedux';
 
@@ -13,7 +13,7 @@ import styles from './Product.module.scss';
 
 function Product() {
   const products = useAppSelector((state) => state.products);
-  const cart = useAppSelector((state) => state.cart);
+  const cart = useAppSelector((state) => state.cart.cart);
   const dispatch = useAppDispatch();
 
   const checkSelectedProduct = useCallback((id: string) => (
@@ -23,7 +23,7 @@ function Product() {
   const addToCart = useCallback((currentItem: ProductData) => (
     cart.length < 20
       ? dispatch(addCartItem(currentItem))
-      : dispatch(setPopupOpen(true))
+      : dispatch(setBooleanState({ key: 'isPopupOpen', value: true }))
   ), [cart]);
 
   const removeFromCart = useCallback((currentItem: ProductData) => (
