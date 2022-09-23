@@ -1,0 +1,32 @@
+@font-face {
+  font-family: "Montserrat Bold";
+  src: url("assets/fonts/Montserrat-Bold.ttf") format("tff");
+}
+
+@font-face {
+  font-family: "Roboto Mono";
+  src: url("assets/fonts/RobotoMono-Regular.ttf") format("tff");
+}
+
+@font-face {
+  font-family: "Open Sans Regular";
+  src: url("assets/fonts/OpenSans-Regular.ttf") format("tff");
+}
+
+#root {
+  color: #333;
+  background-color: #f6f6f6;
+  height: 100vh;
+  overflow: auto;
+  font-family: "Open Sans Regular", sans-serif;
+  font-weight: 400;
+}
+
+.main {
+  display: grid;
+  margin: 40px auto 0;
+  padding: 0 45px 80px;
+  max-width: 1350px;
+  gap: 40px;
+  grid-template-columns: minmax(180px, 280px) 1fr;
+}

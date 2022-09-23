@@ -1,0 +1,30 @@
+.sort {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+
+  &Title {
+    font-size: 22px;
+    color: #333;
+  }
+
+  &Select {
+    font-size: 17px;
+    padding: 10px 0 10px 8px;
+    border: none;
+    color: #333;
+    border-radius: 7px;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 16%);
+    background-color: #fff;
+    cursor: pointer;
+
+    &:focus {
+      outline: none;
+    }
+
+    &Option {
+      color: #333;
+      font-size: 17px;
+    }
+  }
+}
