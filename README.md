@@ -23,4 +23,4 @@
 3. git checkout develop
 4. npm i
 5. npm run start
->>>>>>> develop
+```
