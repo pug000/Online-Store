@@ -1,7 +1,5 @@
-import React from 'react';
-
 import Header from 'components/Header/Header';
-import Product from 'components/Product/Product';
+import ProductsList from 'components/ProductsList/ProductsList';
 import Filters from 'components/Filters/Filters';
 import Popup from 'components/Popup/Popup';
 import Footer from 'components/Footer/Footer';
@@ -15,7 +13,7 @@ function App() {
       <Header />
       <main className="main">
         <Filters />
-        <Product />
+        <ProductsList />
       </main>
       <Footer />
       <Popup />
