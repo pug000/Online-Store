@@ -1,3 +1,5 @@
+import { memo, useCallback, useState } from 'react';
+
 import Header from 'components/Header/Header';
 import ProductsList from 'components/ProductsList/ProductsList';
 import Filters from 'components/Filters/Filters';
@@ -6,7 +8,6 @@ import Footer from 'components/Footer/Footer';
 
 import './styles/reset.scss';
 import './styles/styles.scss';
-import { useCallback, useState } from 'react';
 
 function App() {
   const [isLimitPopupOpen, setLimitPopupOpen] = useState(false);
@@ -36,4 +37,4 @@ function App() {
   );
 }
 
-export default App;
+export default memo(App);

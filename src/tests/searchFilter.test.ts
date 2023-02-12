@@ -1,4 +1,4 @@
-import { searchFilter } from 'utils';
+import { searchFilter } from 'utils/functions';
 
 describe('Search filter functionality', () => {
   const randomValue = Math.random()

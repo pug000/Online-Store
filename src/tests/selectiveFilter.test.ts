@@ -1,4 +1,4 @@
-import { checkboxFilter } from 'utils';
+import { checkboxFilter } from 'utils/functions';
 
 describe('Selective filter functionality', () => {
   test('correct value', () => {

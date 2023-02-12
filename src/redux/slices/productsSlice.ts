@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
-import dataLayout from 'layout/data';
+import products from 'utils/products';
 
 import type { ProductData } from 'ts/interfaces';
 
-const initialState: ProductData[] = dataLayout;
+const initialState: ProductData[] = products;
 
 const productsSlice = createSlice({
   name: 'products',

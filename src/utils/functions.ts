@@ -1,7 +1,5 @@
-import dataLayout from './layout/data';
-
-import OptionValue from './ts/enum';
-import type { ProductData } from './ts/interfaces';
+import OptionValue from '../ts/enum';
+import type { ProductData } from '../ts/interfaces';
 
 const sortFilter = (data: ProductData[], value: string) => {
   const sortMap: Record<string, ProductData[]> = {
@@ -33,19 +31,7 @@ const getMinValue = (item: number[]): number => Math.min(...item);
 
 const getMaxValue = (item: number[]): number => Math.max(...item);
 
-const dataNumPrice = dataLayout.map((el) => Number(el.price));
-const dataNumQuantity = dataLayout.map((el) => Number(el.quantity));
-
-const minPrice = getMinValue(dataNumPrice);
-const maxPrice = getMaxValue(dataNumPrice);
-const minQuantity = getMinValue(dataNumQuantity);
-const maxQuantity = getMaxValue(dataNumQuantity);
-
 export {
-  minPrice,
-  maxPrice,
-  minQuantity,
-  maxQuantity,
   searchFilter,
   sortFilter,
   rangeFilter,

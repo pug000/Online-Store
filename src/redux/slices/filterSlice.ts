@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
-import { maxPrice, maxQuantity, minPrice, minQuantity } from 'utils';
+import { maxPrice, maxQuantity, minPrice, minQuantity } from 'utils/constants';
 
 import OptionValue from 'ts/enum';
 import type { ActionProps, FilterState } from 'ts/interfaces';

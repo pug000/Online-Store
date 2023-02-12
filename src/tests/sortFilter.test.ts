@@ -1,4 +1,4 @@
-import { sortFilter } from 'utils';
+import { sortFilter } from 'utils/functions';
 
 import OptionValue from 'ts/enum';
 

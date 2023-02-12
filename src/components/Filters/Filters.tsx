@@ -13,21 +13,18 @@ import getFilter from 'redux/selectors/filterSelector';
 
 import { useAppDispatch, useAppSelector } from 'hooks/useRedux';
 
-import dataLayout from 'layout/data';
-
-import type { Checkbox, Options } from 'ts/interfaces';
-import OptionValue from 'ts/enum';
-
+import products from 'utils/products';
+import { checkboxFilter, rangeFilter, searchFilter, sortFilter } from 'utils/functions';
 import {
-  checkboxFilter,
+  brands,
+  colorsEffect,
   maxPrice,
   maxQuantity,
   minPrice,
   minQuantity,
-  rangeFilter,
-  searchFilter,
-  sortFilter,
-} from 'utils';
+  options,
+  types,
+} from 'utils/constants';
 
 import SearchInput from './SearchInput/SearchInput';
 import SelectedSort from './SelectedSort/SelectedSort';
@@ -41,43 +38,13 @@ function Filters() {
   const filter = useAppSelector(getFilter);
   const dispatch = useAppDispatch();
 
-  const options: Options[] = [
-    { id: 1, option: OptionValue.AZ },
-    { id: 2, option: OptionValue.ZA },
-    { id: 3, option: OptionValue.minPrice },
-    { id: 4, option: OptionValue.maxPrice },
-    { id: 5, option: OptionValue.minQuantity },
-    { id: 6, option: OptionValue.maxQuantity },
-  ];
-
-  const brands: Checkbox[] = [
-    { id: 1, name: 'Cougar' },
-    { id: 2, name: 'HyperX' },
-    { id: 3, name: 'Razer' },
-    { id: 4, name: 'MSI' },
-    { id: 5, name: 'Corsair' },
-    { id: 6, name: 'ZET' },
-  ];
-
-  const types: Checkbox[] = [
-    { id: 1, name: 'механическая' },
-    { id: 2, name: 'ножничная' },
-    { id: 3, name: 'мембранная' },
-  ];
-
-  const colorsEffect: Checkbox[] = [
-    { id: 1, name: 'RGB' },
-    { id: 2, name: 'многоцветная' },
-    { id: 3, name: 'красная' },
-  ];
-
   const clearSettings = useCallback(() => {
     dispatch(clearFilter());
     dispatch(clearCart());
   }, [filter]);
 
   useEffect(() => {
-    const filteredProducts = sortFilter(dataLayout, filter.sort).filter(
+    const filteredProducts = sortFilter(products, filter.sort).filter(
       (item) =>
         searchFilter(item.name, filter.search) &&
         rangeFilter(item.price, filter.price) &&
