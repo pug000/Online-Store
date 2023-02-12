@@ -8,7 +8,8 @@
     "airbnb-typescript",
     "eslint:recommended",
     "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -19,11 +20,7 @@
     "sourceType": "module",
     "project": "./**/tsconfig.json"
   },
-  "plugins": [
-    "react",
-    "@typescript-eslint",
-    "import"
-  ],
+  "plugins": ["react", "@typescript-eslint", "import"],
   "rules": {
     "@typescript-eslint/no-explicit-any": "error",
     "@typescript-eslint/comma-dangle": "off",
@@ -33,9 +30,7 @@
       "error",
       {
         "props": true,
-        "ignorePropertyModificationsFor": [
-          "state"
-        ]
+        "ignorePropertyModificationsFor": ["state"]
       }
     ]
   },
