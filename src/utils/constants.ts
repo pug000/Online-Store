@@ -1,5 +1,5 @@
 import OptionValue from 'ts/enum';
-import type { Options, Checkbox } from 'ts/interfaces';
+import type { Options, Checkbox, CheckboxFilter, RangeSliderFilter } from 'ts/interfaces';
 
 import { getMaxValue, getMinValue } from './functions';
 import products from './products';
@@ -42,6 +42,44 @@ const maxPrice = getMaxValue(dataNumPrice);
 const minQuantity = getMinValue(dataNumQuantity);
 const maxQuantity = getMaxValue(dataNumQuantity);
 
+const rangeSliders: RangeSliderFilter[] = [
+  {
+    id: 1,
+    title: 'Цена $',
+    filterName: 'price',
+    step: 10,
+    defaultValue: [minPrice, maxPrice],
+  },
+  {
+    id: 2,
+    title: 'Количество',
+    filterName: 'quantity',
+    step: 1,
+    defaultValue: [minQuantity, maxQuantity],
+  },
+];
+
+const checkboxFilters: CheckboxFilter[] = [
+  {
+    id: 1,
+    title: 'Производитель',
+    filterName: 'brand',
+    items: brands,
+  },
+  {
+    id: 2,
+    title: 'Клавиатура',
+    filterName: 'type',
+    items: types,
+  },
+  {
+    id: 3,
+    title: 'Цвет подсветки',
+    filterName: 'colorEffect',
+    items: colorsEffect,
+  },
+];
+
 export {
   options,
   brands,
@@ -51,4 +89,6 @@ export {
   maxPrice,
   minQuantity,
   maxQuantity,
+  rangeSliders,
+  checkboxFilters,
 };

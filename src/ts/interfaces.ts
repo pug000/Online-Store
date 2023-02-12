@@ -33,4 +33,27 @@ interface ActionProps<T, U> {
   value: U;
 }
 
-export type { ProductData, Options, FilterState, Checkbox, ActionProps };
+interface RangeSliderFilter {
+  id: number;
+  title: string;
+  filterName: keyof FilterState;
+  step: number;
+  defaultValue: number[];
+}
+
+interface CheckboxFilter {
+  id: number;
+  title: string;
+  filterName: keyof FilterState;
+  items: Checkbox[];
+}
+
+export type {
+  ProductData,
+  Options,
+  FilterState,
+  Checkbox,
+  ActionProps,
+  RangeSliderFilter,
+  CheckboxFilter,
+};

@@ -2,110 +2,99 @@
   display: flex;
   flex-direction: column;
   gap: 25px;
+}
 
-  &Title {
-    font-size: 20px;
-    color: #333;
+.title {
+  font-size: 20px;
+  color: #333;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.filterItem {
+  display: flex;
+  gap: 5px;
+  user-select: none;
+  cursor: pointer;
+  padding: 3px 0 3px 25px;
+  transition: 0.8s;
+  border-radius: 4px;
+  position: relative;
+  transition: opacity 0.3s ease-in-out;
+
+  &:hover > .button {
+    &::after {
+      opacity: 1;
+    }
   }
 
-  &Container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
+  &.active > .button {
+    background-color: #000;
+    border: 2px solid #000;
 
-  .filterItem {
-    display: flex;
-    gap: 5px;
-    user-select: none;
-    cursor: pointer;
-    padding: 3px 0 3px 25px;
-    transition: 0.8s;
-    border-radius: 4px;
-    position: relative;
+    &::after {
+      opacity: 1;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    &::before {
+      opacity: 1;
+      transition: opacity 0.3s ease-in-out;
+    }
+  }
+}
+
+.text {
+  font-size: 18px;
+  color: #333;
+  transition: 0.3s;
+}
+
+.button {
+  position: absolute;
+  top: 4px;
+  left: 0;
+  height: 15px;
+  width: 15px;
+  background-color: #f6f6f6;
+  border-color: #8c8c8c;
+  border: 1px solid;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &::after {
+    content: "";
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: rgb 20s linear infinite;
     transition: opacity 0.3s ease-in-out;
+    border-radius: 10px;
+    opacity: 0;
+  }
 
-    &Text {
-      font-size: 18px;
-      color: #333;
-      transition: 0.3s;
-    }
-
-    &:hover > .filterItemBtn {
-      &::after {
-        opacity: 1;
-      }
-    }
-
-    &Active > .filterItemBtn {
-      background-color: #000;
-      border: 2px solid #000;
-
-      &::after {
-        opacity: 1;
-        transition: opacity 0.3s ease-in-out;
-      }
-
-      &::before {
-        opacity: 1;
-        transition: opacity 0.3s ease-in-out;
-      }
-    }
-
-    &Btn {
-      position: absolute;
-      top: 4px;
-      left: 0;
-      height: 15px;
-      width: 15px;
-      background-color: #f6f6f6;
-      border-color: #8c8c8c;
-      border: 1px solid;
-      border-radius: 4px;
-      cursor: pointer;
-
-      &::after {
-        content: "";
-        background: linear-gradient(
-          45deg,
-          #ff0000,
-          #ff7300,
-          #fffb00,
-          #48ff00,
-          #00ffd5,
-          #002bff,
-          #7a00ff,
-          #ff00c8,
-          #ff0000
-        );
-        position: absolute;
-        top: -2px;
-        left: -2px;
-        background-size: 400%;
-        z-index: -1;
-        filter: blur(5px);
-        width: calc(100% + 4px);
-        height: calc(100% + 4px);
-        animation: rgb 20s linear infinite;
-        transition: opacity 0.3s ease-in-out;
-        border-radius: 10px;
-        opacity: 0;
-      }
-
-      &::before {
-        border: solid #fff;
-        border-width: 0 4px 4px 0;
-        content: "";
-        display: block;
-        height: 7px;
-        left: 3px;
-        position: absolute;
-        top: -1px;
-        transform: rotate(45deg);
-        width: 3px;
-        opacity: 0;
-      }
-    }
+  &::before {
+    border: solid #fff;
+    border-width: 0 4px 4px 0;
+    content: "";
+    display: block;
+    height: 7px;
+    left: 3px;
+    position: absolute;
+    top: -1px;
+    transform: rotate(45deg);
+    width: 3px;
+    opacity: 0;
   }
 }
 

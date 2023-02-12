@@ -1,21 +1,35 @@
-import type { Options } from 'ts/interfaces';
-import type { EventHandler } from 'ts/types';
+import { memo } from 'react';
+
+import type { FilterState, Options } from 'ts/interfaces';
 
 import styles from './SelectedSort.module.scss';
 
 interface SelectedSortProps {
   value: string;
-  onChange: EventHandler<React.ChangeEvent<HTMLSelectElement>, void>;
+  filterName: keyof FilterState;
+  title: string;
+  onChange: (name: keyof FilterState, value: string) => void;
   options: Readonly<Options[]>;
 }
 
-function SelectedSort({ value, options, onChange }: SelectedSortProps) {
+function SelectedSort({
+  value,
+  filterName,
+  title,
+  options,
+  onChange,
+}: SelectedSortProps) {
   return (
     <div className={styles.sort}>
-      <h2 className={styles.sortTitle}>Сортировка</h2>
-      <select className={styles.sortSelect} value={value} onChange={onChange}>
+      <h2 className={styles.title}>{title}</h2>
+      <select
+        className={styles.select}
+        value={value}
+        name={filterName}
+        onChange={({ target }) => onChange(filterName, target.value)}
+      >
         {options.map(({ id, option }) => (
-          <option className={styles.sortSelectOption} key={id} value={option}>
+          <option className={styles.option} key={id} value={option}>
             {option}
           </option>
         ))}
@@ -24,4 +38,4 @@ function SelectedSort({ value, options, onChange }: SelectedSortProps) {
   );
 }
 
-export default SelectedSort;
+export default memo(SelectedSort);

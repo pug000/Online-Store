@@ -1,31 +1,34 @@
-import type { EventHandler } from 'ts/types';
+import { memo } from 'react';
+import type { FilterState } from 'ts/interfaces';
 
 import styles from './SearchInput.module.scss';
 
 interface SearchInputProps {
   value: string;
-  onChange: EventHandler<React.ChangeEvent<HTMLInputElement>, void>;
-  clearOnClick: EventHandler<React.MouseEvent<HTMLButtonElement>, void>;
+  filterName: keyof FilterState;
+  placeholder: string;
+  onChange: (name: keyof FilterState, value: string) => void;
 }
 
-function SearchInput({ value, onChange, clearOnClick }: SearchInputProps) {
+function SearchInput({ value, filterName, placeholder, onChange }: SearchInputProps) {
   return (
     <div className={styles.search}>
-      <div className={styles.searchWrapper}>
+      <div className={styles.wrapper}>
         <input
-          className={styles.searchWrapperInput}
+          className={styles.input}
           value={value}
-          onChange={onChange}
-          placeholder="Поиск по названию"
+          name={filterName}
+          onChange={({ target }) => onChange(filterName, target.value)}
+          placeholder={placeholder}
         />
         <button
-          onClick={clearOnClick}
+          onClick={() => onChange(filterName, '')}
           type="button"
           aria-hidden="true"
           className={
             value.length === 0
-              ? `${styles.searchWrapperClearBtn}`
-              : `${styles.searchWrapperClearBtn} ${styles.searchWrapperClearBtnActive}`
+              ? `${styles.clearButton}`
+              : `${styles.clearButton} ${styles.active}`
           }
         />
       </div>
@@ -33,4 +36,4 @@ function SearchInput({ value, onChange, clearOnClick }: SearchInputProps) {
   );
 }
 
-export default SearchInput;
+export default memo(SearchInput);

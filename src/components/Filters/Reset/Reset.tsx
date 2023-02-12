@@ -1,18 +1,18 @@
-import type { EventHandler } from 'ts/types';
+import { memo } from 'react';
 
 import styles from './Reset.module.scss';
 
 export interface ResetButtonProps {
   text: string;
-  resetOnClick: EventHandler<React.MouseEvent<HTMLButtonElement>, void>;
+  resetOnClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 function ResetButton({ text, resetOnClick }: ResetButtonProps) {
   return (
-    <button className={styles.resetContainerBtn} onClick={resetOnClick} type="button">
+    <button className={styles.resetButton} onClick={resetOnClick} type="button">
       {text}
     </button>
   );
 }
 
-export default ResetButton;
+export default memo(ResetButton);

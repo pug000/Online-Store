@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import { memo, useCallback, useEffect } from 'react';
 
 import { clearCart } from 'redux/slices/cartSlice';
 import {
@@ -15,16 +15,9 @@ import { useAppDispatch, useAppSelector } from 'hooks/useRedux';
 
 import products from 'utils/products';
 import { checkboxFilter, rangeFilter, searchFilter, sortFilter } from 'utils/functions';
-import {
-  brands,
-  colorsEffect,
-  maxPrice,
-  maxQuantity,
-  minPrice,
-  minQuantity,
-  options,
-  types,
-} from 'utils/constants';
+import { checkboxFilters, options, rangeSliders } from 'utils/constants';
+
+import type { FilterState } from 'ts/interfaces';
 
 import SearchInput from './SearchInput/SearchInput';
 import SelectedSort from './SelectedSort/SelectedSort';
@@ -38,10 +31,32 @@ function Filters() {
   const filter = useAppSelector(getFilter);
   const dispatch = useAppDispatch();
 
+  const updateFilterOnChange = useCallback(
+    (name: keyof FilterState, value: string | number[]) => {
+      dispatch(updateFilter({ key: name, value }));
+    },
+    []
+  );
+
+  const selectItemOnClick = useCallback((name: keyof FilterState, value: string) => {
+    dispatch(selectFilter({ key: name, value }));
+  }, []);
+
+  const removeSelectedItemOnClick = useCallback(
+    (name: keyof FilterState, value: string) => {
+      dispatch(removeSelectedFilter({ key: name, value }));
+    },
+    []
+  );
+
+  const resetFilters = useCallback(() => {
+    dispatch(resetFilter());
+  }, []);
+
   const clearSettings = useCallback(() => {
     dispatch(clearFilter());
     dispatch(clearCart());
-  }, [filter]);
+  }, []);
 
   useEffect(() => {
     const filteredProducts = sortFilter(products, filter.sort).filter(
@@ -58,64 +73,48 @@ function Filters() {
   }, [filter]);
 
   return (
-    <div className={styles.filterContainer}>
+    <div className={styles.wrapper}>
       <SearchInput
         value={filter.search}
-        onChange={({ target }) =>
-          dispatch(updateFilter({ key: 'search', value: target.value }))
-        }
-        clearOnClick={() => dispatch(updateFilter({ key: 'search', value: '' }))}
+        filterName="search"
+        placeholder="Поиск по названию"
+        onChange={updateFilterOnChange}
       />
       <SelectedSort
+        filterName="sort"
+        title="Сортировка"
         value={filter.sort}
-        onChange={({ target }) =>
-          dispatch(updateFilter({ key: 'sort', value: target.value }))
-        }
+        onChange={updateFilterOnChange}
         options={options}
       />
-      <RangeSlider
-        title="Цена $"
-        value={filter.price}
-        step={10}
-        onChange={(value) => dispatch(updateFilter({ key: 'price', value }))}
-        defaultValue={[minPrice, maxPrice]}
-      />
-      <RangeSlider
-        title="Количество"
-        value={filter.quantity}
-        step={1}
-        onChange={(value) => dispatch(updateFilter({ key: 'quantity', value }))}
-        defaultValue={[minQuantity, maxQuantity]}
-      />
-      <CheckboxFilter
-        title="Производитель"
-        items={brands}
-        filter={filter.brand}
-        addOnClick={(value) => dispatch(selectFilter({ key: 'brand', value }))}
-        removeOnClick={(value) => dispatch(removeSelectedFilter({ key: 'brand', value }))}
-      />
-      <CheckboxFilter
-        title="Клавиатура"
-        items={types}
-        filter={filter.type}
-        addOnClick={(value) => dispatch(selectFilter({ key: 'type', value }))}
-        removeOnClick={(value) => dispatch(removeSelectedFilter({ key: 'type', value }))}
-      />
-      <CheckboxFilter
-        title="Цвет подсветки"
-        items={colorsEffect}
-        filter={filter.colorEffect}
-        addOnClick={(value) => dispatch(selectFilter({ key: 'colorEffect', value }))}
-        removeOnClick={(value) =>
-          dispatch(removeSelectedFilter({ key: 'colorEffect', value }))
-        }
-      />
-      <div className={styles.resetContainer}>
-        <ResetButton text="Сброс фильтров" resetOnClick={() => dispatch(resetFilter())} />
+      {rangeSliders.map(({ id, title, filterName, step, defaultValue }) => (
+        <RangeSlider
+          key={id}
+          title={title}
+          filterName={filterName}
+          step={step}
+          defaultValue={defaultValue}
+          value={filter[filterName] as number[]}
+          onChange={updateFilterOnChange}
+        />
+      ))}
+      {checkboxFilters.map(({ id, title, items, filterName }) => (
+        <CheckboxFilter
+          key={id}
+          title={title}
+          filterName={filterName}
+          items={items}
+          filter={filter[filterName] as string[]}
+          addOnClick={selectItemOnClick}
+          removeOnClick={removeSelectedItemOnClick}
+        />
+      ))}
+      <div className={styles.buttonWrapper}>
+        <ResetButton text="Сброс фильтров" resetOnClick={resetFilters} />
         <ResetButton text="Cброс настроек" resetOnClick={clearSettings} />
       </div>
     </div>
   );
 }
 
-export default Filters;
+export default memo(Filters);
