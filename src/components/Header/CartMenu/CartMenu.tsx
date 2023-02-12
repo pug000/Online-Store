@@ -1,6 +1,6 @@
-import { memo, useCallback, useEffect } from 'react';
+import { memo, useCallback } from 'react';
 
-import { removeCartItem, getCartTotalCount, clearCart } from 'redux/slices/cartSlice';
+import { removeCartItem, clearCart } from 'redux/slices/cartSlice';
 import * as cartSelectors from 'redux/selectors/cartSelector';
 
 import { useAppDispatch, useAppSelector } from 'hooks/useRedux';
@@ -19,12 +19,6 @@ function CartMenu({ isCartMenuOpen, closeCartMenu }: CartMenuProps) {
   const cart = useAppSelector(cartSelectors.getCart);
   const cartTotalCount = useAppSelector(cartSelectors.getCartTotalCount);
   const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    if (isCartMenuOpen) {
-      dispatch(getCartTotalCount(cart));
-    }
-  }, [cart, isCartMenuOpen]);
 
   const removeCartItemFromCart = useCallback((cartItem: ProductData) => {
     dispatch(removeCartItem(cartItem));
