@@ -9,6 +9,7 @@ import {
   clearFilter,
 } from 'redux/slices/filterSlice';
 import { setProducts } from 'redux/slices/productsSlice';
+import getFilter from 'redux/selectors/filterSelector';
 
 import { useAppDispatch, useAppSelector } from 'hooks/useRedux';
 
@@ -37,7 +38,7 @@ import ResetButton from './Reset/Reset';
 import styles from './Filters.module.scss';
 
 function Filters() {
-  const filter = useAppSelector((state) => state.filter);
+  const filter = useAppSelector(getFilter);
   const dispatch = useAppDispatch();
 
   const options: Options[] = [

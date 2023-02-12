@@ -1,16 +1,16 @@
-import React, { useCallback, useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 
 import { setBooleanState } from 'redux/slices/booleanSlice';
-
 import { removeCartItem, getCartTotalCount, clearCart } from 'redux/slices/cartSlice';
+import * as cartSelectors from 'redux/selectors/cartSelector';
 
 import { useAppDispatch, useAppSelector } from 'hooks/useRedux';
 
 import styles from './CartMenu.module.scss';
 
 function CartMenu() {
-  const cart = useAppSelector((state) => state.cart.cart);
-  const cartTotalCount = useAppSelector((state) => state.cart.cartTotalCount);
+  const cart = useAppSelector(cartSelectors.getCart);
+  const cartTotalCount = useAppSelector(cartSelectors.getCartTotalCount);
   const isCartMenuOpen = useAppSelector((state) => state.booleanState.isCartMenuOpen);
   const dispatch = useAppDispatch();
 

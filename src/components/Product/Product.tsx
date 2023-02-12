@@ -2,6 +2,7 @@ import { useCallback } from 'react';
 
 import { addCartItem, removeCartItem } from 'redux/slices/cartSlice';
 import { setBooleanState } from 'redux/slices/booleanSlice';
+import * as cartSelectors from 'redux/selectors/cartSelector';
 
 import { useAppDispatch, useAppSelector } from 'hooks/useRedux';
 
@@ -11,7 +12,7 @@ import styles from './Product.module.scss';
 
 function Product() {
   const products = useAppSelector((state) => state.products);
-  const cart = useAppSelector((state) => state.cart.cart);
+  const cart = useAppSelector(cartSelectors.getCart);
   const dispatch = useAppDispatch();
 
   const checkSelectedProduct = useCallback(

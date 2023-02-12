@@ -1,13 +1,14 @@
 import { useAppDispatch, useAppSelector } from 'hooks/useRedux';
 
 import { setBooleanState } from 'redux/slices/booleanSlice';
+import * as cartSelectors from 'redux/selectors/cartSelector';
 
 import CartMenu from './CartMenu/CartMenu';
 
 import styles from './Header.module.scss';
 
 function Header() {
-  const cart = useAppSelector((state) => state.cart.cart);
+  const cart = useAppSelector(cartSelectors.getCart);
   const dispatch = useAppDispatch();
 
   return (
