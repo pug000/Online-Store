@@ -8,8 +8,8 @@ interface NoResultsProps {
 
 function NoResults({ text }: NoResultsProps) {
   return (
-    <div className={styles.noResultWrapper}>
-      <h2 className={styles.noResultWrapperTitle}>{text}</h2>
+    <div className={styles.wrapper}>
+      <h2 className={styles.title}>{text}</h2>
     </div>
   );
 }
