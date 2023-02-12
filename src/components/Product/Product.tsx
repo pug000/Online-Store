@@ -1,13 +1,11 @@
-import React, { useCallback } from 'react';
-import {
-  addCartItem,
-  removeCartItem
-} from 'redux/slices/cartSlice';
+import { useCallback } from 'react';
+
+import { addCartItem, removeCartItem } from 'redux/slices/cartSlice';
 import { setBooleanState } from 'redux/slices/booleanSlice';
 
 import { useAppDispatch, useAppSelector } from 'hooks/useRedux';
 
-import { ProductData } from 'ts/interfaces';
+import type { ProductData } from 'ts/interfaces';
 
 import styles from './Product.module.scss';
 
@@ -16,30 +14,38 @@ function Product() {
   const cart = useAppSelector((state) => state.cart.cart);
   const dispatch = useAppDispatch();
 
-  const checkSelectedProduct = useCallback((id: string) => (
-    cart.some((item) => item.id === id)
-  ), [cart]);
+  const checkSelectedProduct = useCallback(
+    (id: string) => cart.some((item) => item.id === id),
+    [cart]
+  );
 
-  const addToCart = useCallback((currentItem: ProductData) => (
-    cart.length < 20
-      ? dispatch(addCartItem(currentItem))
-      : dispatch(setBooleanState({ key: 'isPopupOpen', value: true }))
-  ), [cart]);
+  const addToCart = useCallback(
+    (currentItem: ProductData) =>
+      cart.length < 20
+        ? dispatch(addCartItem(currentItem))
+        : dispatch(setBooleanState({ key: 'isPopupOpen', value: true })),
+    [cart]
+  );
 
-  const removeFromCart = useCallback((currentItem: ProductData) => (
-    dispatch(removeCartItem(currentItem))
-  ), [cart]);
+  const removeFromCart = useCallback(
+    (currentItem: ProductData) => dispatch(removeCartItem(currentItem)),
+    [cart]
+  );
 
-  const selectProductOnClick = useCallback((currentItem: ProductData) => (
-    checkSelectedProduct(currentItem.id)
-      ? removeFromCart(currentItem)
-      : addToCart(currentItem)
-  ), [cart]);
+  const selectProductOnClick = useCallback(
+    (currentItem: ProductData) =>
+      checkSelectedProduct(currentItem.id)
+        ? removeFromCart(currentItem)
+        : addToCart(currentItem),
+    [cart]
+  );
 
   if (!products.length) {
     return (
       <div className={styles.noResultWrapper}>
-        <h2 className={styles.noResultWrapperTitle}>Извините, совпадений не обнаружено</h2>
+        <h2 className={styles.noResultWrapperTitle}>
+          Извините, совпадений не обнаружено
+        </h2>
       </div>
     );
   }
@@ -58,31 +64,20 @@ function Product() {
           </div>
           <div className={styles.productDescription}>
             <div className={styles.productDescriptionCount}>
-              Количество:
-              {' '}
-              {item.quantity}
+              Количество: {item.quantity}
             </div>
             <div className={styles.productDescriptionBrand}>
-              Производитель:
-              {' '}
-              {item.brand}
+              Производитель: {item.brand}
             </div>
             <div className={styles.productDescriptionType}>
-              Тип клавиатуры:
-              {' '}
-              {item.type}
+              Тип клавиатуры: {item.type}
             </div>
             <div className={styles.productDescriptionColorEffect}>
-              Цвет подсветки:
-              {' '}
-              {item.colorEffect}
+              Цвет подсветки: {item.colorEffect}
             </div>
           </div>
           <div className={styles.productBottom}>
-            <div className={styles.productBottomPrice}>
-              $
-              {item.price}
-            </div>
+            <div className={styles.productBottomPrice}>${item.price}</div>
             <button
               type="button"
               className={
@@ -92,7 +87,9 @@ function Product() {
               }
               onClick={() => selectProductOnClick(item)}
             >
-              {checkSelectedProduct(item.id) ? 'Удалить из корзины' : 'Добавить в корзину'}
+              {checkSelectedProduct(item.id)
+                ? 'Удалить из корзины'
+                : 'Добавить в корзину'}
             </button>
           </div>
         </div>

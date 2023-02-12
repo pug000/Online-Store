@@ -1,9 +1,4 @@
-import React from 'react';
-
-import {
-  useAppDispatch,
-  useAppSelector
-} from 'hooks/useRedux';
+import { useAppDispatch, useAppSelector } from 'hooks/useRedux';
 
 import { setBooleanState } from 'redux/slices/booleanSlice';
 
@@ -22,7 +17,9 @@ function Header() {
         <button
           className={styles.headerContainerButtonCart}
           type="button"
-          onClick={() => dispatch(setBooleanState({ key: 'isCartMenuOpen', value: true }))}
+          onClick={() =>
+            dispatch(setBooleanState({ key: 'isCartMenuOpen', value: true }))
+          }
         >
           <div className={styles.headerCircle}>
             <span>{cart.length}</span>

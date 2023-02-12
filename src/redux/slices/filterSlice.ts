@@ -1,14 +1,10 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
 
-import {
-  maxPrice,
-  maxQuantity,
-  minPrice,
-  minQuantity
-} from 'utils';
+import { maxPrice, maxQuantity, minPrice, minQuantity } from 'utils';
 
 import OptionValue from 'ts/enum';
-import { ActionProps, FilterState } from 'ts/interfaces';
+import type { ActionProps, FilterState } from 'ts/interfaces';
 
 const initialState: FilterState = {
   search: '',
@@ -24,7 +20,10 @@ const filterSlice = createSlice({
   name: 'filters',
   initialState,
   reducers: {
-    updateFilter(state, { payload }: PayloadAction<ActionProps<FilterState, string | number[]>>) {
+    updateFilter(
+      state,
+      { payload }: PayloadAction<ActionProps<FilterState, string | number[]>>
+    ) {
       return {
         ...state,
         [payload.key]: payload.value,
@@ -38,7 +37,10 @@ const filterSlice = createSlice({
       };
     },
 
-    removeSelectedFilter(state, { payload }: PayloadAction<ActionProps<FilterState, string>>) {
+    removeSelectedFilter(
+      state,
+      { payload }: PayloadAction<ActionProps<FilterState, string>>
+    ) {
       return {
         ...state,
         [payload.key]: [...state[payload.key]].filter((item) => item !== payload.value),
@@ -48,14 +50,14 @@ const filterSlice = createSlice({
     resetFilter(state) {
       return {
         ...initialState,
-        sort: state.sort
+        sort: state.sort,
       };
     },
 
     clearFilter() {
       return initialState;
-    }
-  }
+    },
+  },
 });
 
 export const {
@@ -63,7 +65,7 @@ export const {
   selectFilter,
   removeSelectedFilter,
   resetFilter,
-  clearFilter
+  clearFilter,
 } = filterSlice.actions;
 
 export default filterSlice.reducer;

@@ -9,7 +9,7 @@ import {
   sortedByMaxQuantity,
   sortedByMinPrice,
   sortedByMinQuantity,
-  sortedByZA
+  sortedByZA,
 } from './testData';
 
 describe('Sort filter functionality', () => {

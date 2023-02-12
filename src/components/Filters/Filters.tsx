@@ -1,11 +1,12 @@
-import React, { useCallback, useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
+
 import { clearCart } from 'redux/slices/cartSlice';
 import {
   updateFilter,
   selectFilter,
   removeSelectedFilter,
   resetFilter,
-  clearFilter
+  clearFilter,
 } from 'redux/slices/filterSlice';
 import { setProducts } from 'redux/slices/productsSlice';
 
@@ -13,10 +14,7 @@ import { useAppDispatch, useAppSelector } from 'hooks/useRedux';
 
 import dataLayout from 'layout/data';
 
-import {
-  Checkbox,
-  Options,
-} from 'ts/interfaces';
+import type { Checkbox, Options } from 'ts/interfaces';
 import OptionValue from 'ts/enum';
 
 import {
@@ -27,7 +25,7 @@ import {
   minQuantity,
   rangeFilter,
   searchFilter,
-  sortFilter
+  sortFilter,
 } from 'utils';
 
 import SearchInput from './SearchInput/SearchInput';
@@ -78,13 +76,15 @@ function Filters() {
   }, [filter]);
 
   useEffect(() => {
-    const filteredProducts = sortFilter(dataLayout, filter.sort)
-      .filter((item) => searchFilter(item.name, filter.search)
-        && rangeFilter(item.price, filter.price)
-        && rangeFilter(item.quantity, filter.quantity)
-        && checkboxFilter(item.brand, filter.brand)
-        && checkboxFilter(item.type, filter.type)
-        && checkboxFilter(item.colorEffect, filter.colorEffect));
+    const filteredProducts = sortFilter(dataLayout, filter.sort).filter(
+      (item) =>
+        searchFilter(item.name, filter.search) &&
+        rangeFilter(item.price, filter.price) &&
+        rangeFilter(item.quantity, filter.quantity) &&
+        checkboxFilter(item.brand, filter.brand) &&
+        checkboxFilter(item.type, filter.type) &&
+        checkboxFilter(item.colorEffect, filter.colorEffect)
+    );
 
     dispatch(setProducts(filteredProducts));
   }, [filter]);
@@ -93,12 +93,16 @@ function Filters() {
     <div className={styles.filterContainer}>
       <SearchInput
         value={filter.search}
-        onChange={({ target }) => dispatch(updateFilter({ key: 'search', value: target.value }))}
+        onChange={({ target }) =>
+          dispatch(updateFilter({ key: 'search', value: target.value }))
+        }
         clearOnClick={() => dispatch(updateFilter({ key: 'search', value: '' }))}
       />
       <SelectedSort
         value={filter.sort}
-        onChange={({ target }) => dispatch(updateFilter({ key: 'sort', value: target.value }))}
+        onChange={({ target }) =>
+          dispatch(updateFilter({ key: 'sort', value: target.value }))
+        }
         options={options}
       />
       <RangeSlider
@@ -134,17 +138,13 @@ function Filters() {
         items={colorsEffect}
         filter={filter.colorEffect}
         addOnClick={(value) => dispatch(selectFilter({ key: 'colorEffect', value }))}
-        removeOnClick={(value) => dispatch(removeSelectedFilter({ key: 'colorEffect', value }))}
+        removeOnClick={(value) =>
+          dispatch(removeSelectedFilter({ key: 'colorEffect', value }))
+        }
       />
       <div className={styles.resetContainer}>
-        <ResetButton
-          text="Сброс фильтров"
-          resetOnClick={() => dispatch(resetFilter())}
-        />
-        <ResetButton
-          text="Cброс настроек"
-          resetOnClick={clearSettings}
-        />
+        <ResetButton text="Сброс фильтров" resetOnClick={() => dispatch(resetFilter())} />
+        <ResetButton text="Cброс настроек" resetOnClick={clearSettings} />
       </div>
     </div>
   );

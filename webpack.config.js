@@ -1,16 +1,14 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CopyPlugin = require("copy-webpack-plugin");
+const CopyPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
 
 const isProduction = process.env.NODE_ENV === 'production';
 
-const stylesHandler = isProduction
-  ? MiniCssExtractPlugin.loader
-  : 'style-loader';
+const stylesHandler = isProduction ? MiniCssExtractPlugin.loader : 'style-loader';
 
 const config = {
   entry: './src/index.tsx',
@@ -22,23 +20,20 @@ const config = {
     host: 'localhost',
   },
   plugins: [
-    new MiniCssExtractPlugin(
-      {
-        filename: '[name].css'
-      }),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+    }),
     new HtmlWebpackPlugin({
       template: './src/index.html',
     }),
     new CleanWebpackPlugin(),
     new CopyPlugin({
-      patterns: [
-        { from: "./src/assets", to: "assets", noErrorOnMissing: true },
-      ],
+      patterns: [{ from: './src/assets', to: 'assets', noErrorOnMissing: true }],
     }),
     new ESLintPlugin({
       extensions: ['.tsx', '.ts', '.js'],
-      exclude: 'node_modules'
-    })
+      exclude: 'node_modules',
+    }),
   ],
   module: {
     rules: [

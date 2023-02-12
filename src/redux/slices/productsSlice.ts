@@ -1,6 +1,9 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
+
 import dataLayout from 'layout/data';
-import { ProductData } from 'ts/interfaces';
+
+import type { ProductData } from 'ts/interfaces';
 
 const initialState: ProductData[] = dataLayout;
 
@@ -10,8 +13,8 @@ const productsSlice = createSlice({
   reducers: {
     setProducts(_, action: PayloadAction<ProductData[]>) {
       return action.payload;
-    }
-  }
+    },
+  },
 });
 
 export const { setProducts } = productsSlice.actions;

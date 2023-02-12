@@ -1,5 +1,4 @@
-import React from 'react';
-import { EventHandler } from 'ts/types';
+import type { EventHandler } from 'ts/types';
 
 import styles from './SearchInput.module.scss';
 
@@ -9,13 +8,7 @@ interface SearchInputProps {
   clearOnClick: EventHandler<React.MouseEvent<HTMLButtonElement>, void>;
 }
 
-function SearchInput(
-  {
-    value,
-    onChange,
-    clearOnClick,
-  }: SearchInputProps,
-) {
+function SearchInput({ value, onChange, clearOnClick }: SearchInputProps) {
   return (
     <div className={styles.search}>
       <div className={styles.searchWrapper}>

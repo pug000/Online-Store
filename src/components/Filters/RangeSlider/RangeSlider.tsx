@@ -1,6 +1,5 @@
-import React from 'react';
 import ReactSlider from 'react-slider';
-import { EventHandler } from 'ts/types';
+import type { EventHandler } from 'ts/types';
 
 import styles from './RangeSlider.module.scss';
 
@@ -12,15 +11,7 @@ interface RangeSliderProps {
   defaultValue: number[];
 }
 
-function RangeSlider(
-  {
-    title,
-    value,
-    step,
-    onChange,
-    defaultValue,
-  }: RangeSliderProps,
-) {
+function RangeSlider({ title, value, step, onChange, defaultValue }: RangeSliderProps) {
   return (
     <div className={styles.filterRange}>
       <h2 className={styles.filterRangeTitle}>{title}</h2>

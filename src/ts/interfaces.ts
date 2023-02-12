@@ -10,7 +10,7 @@ interface ProductData {
 
 interface Options {
   id: number;
-  option: string
+  option: string;
 }
 
 interface FilterState {
@@ -29,14 +29,8 @@ interface Checkbox {
 }
 
 interface ActionProps<T, U> {
-  key: keyof T,
-  value: U,
+  key: keyof T;
+  value: U;
 }
 
-export type {
-  ProductData,
-  Options,
-  FilterState,
-  Checkbox,
-  ActionProps,
-};
+export type { ProductData, Options, FilterState, Checkbox, ActionProps };

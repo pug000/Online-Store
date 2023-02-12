@@ -6,7 +6,5 @@
   "trailingComma": "es5",
   "printWidth": 90,
   "arrowParens": "always",
-  "bracketSameLine": false,
-  "importOrderSeparation": true,
-  "importOrderSortSpecifiers": true
+  "bracketSameLine": false
 }

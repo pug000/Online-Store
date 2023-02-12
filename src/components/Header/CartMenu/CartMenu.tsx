@@ -1,20 +1,10 @@
-import React, {
-  useCallback,
-  useEffect
-} from 'react';
+import React, { useCallback, useEffect } from 'react';
 
 import { setBooleanState } from 'redux/slices/booleanSlice';
 
-import {
-  removeCartItem,
-  getCartTotalCount,
-  clearCart
-} from 'redux/slices/cartSlice';
+import { removeCartItem, getCartTotalCount, clearCart } from 'redux/slices/cartSlice';
 
-import {
-  useAppDispatch,
-  useAppSelector
-} from 'hooks/useRedux';
+import { useAppDispatch, useAppSelector } from 'hooks/useRedux';
 
 import styles from './CartMenu.module.scss';
 
@@ -38,18 +28,15 @@ function CartMenu() {
     <>
       <div
         className={
-          isCartMenuOpen
-            ? `${styles.shadow} ${styles.shadowActive}`
-            : `${styles.shadow}`
+          isCartMenuOpen ? `${styles.shadow} ${styles.shadowActive}` : `${styles.shadow}`
         }
         aria-hidden="true"
         onClick={closeCartMenu}
       />
-      <div className={
-        isCartMenuOpen
-          ? `${styles.cart} ${styles.cartActive}`
-          : `${styles.cart}`
-      }
+      <div
+        className={
+          isCartMenuOpen ? `${styles.cart} ${styles.cartActive}` : `${styles.cart}`
+        }
       >
         <div className={styles.cartHeader}>
           <h3 className={styles.cartHeaderTitle}>Shopping Cart</h3>
@@ -62,15 +49,9 @@ function CartMenu() {
         </div>
         <div className={styles.cartMain}>
           {cart.map((item) => (
-            <div
-              key={item.id}
-              className={styles.cartItem}
-            >
+            <div key={item.id} className={styles.cartItem}>
               <div className={styles.cartItemImg}>
-                <img
-                  src={`./assets/img/${item.id}.png`}
-                  alt="cart-img"
-                />
+                <img src={`./assets/img/${item.id}.png`} alt="cart-img" />
               </div>
               <div className={styles.cartItemDescription}>
                 <p className={styles.cartItemName}>{item.name}</p>

@@ -1,7 +1,9 @@
 import { searchFilter } from 'utils';
 
 describe('Search filter functionality', () => {
-  const randomValue = Math.random().toString(36).replace(/[^a-z]+/g, '');
+  const randomValue = Math.random()
+    .toString(36)
+    .replace(/[^a-z]+/g, '');
 
   test('empty search value', () => {
     expect(searchFilter('sdaa', '')).toBeTruthy();
