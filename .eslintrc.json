@@ -1,14 +1,16 @@
 {
   "env": {
     "browser": true,
-    "es2021": true
+    "es2021": true,
+    "jest": true,
+    "node": true
   },
   "extends": [
     "airbnb",
     "airbnb-typescript",
-    "eslint:recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
+    "plugin:jsx-a11y/recommended",
     "prettier"
   ],
   "parser": "@typescript-eslint/parser",
@@ -20,10 +22,11 @@
     "sourceType": "module",
     "project": "./**/tsconfig.json"
   },
-  "plugins": ["react", "@typescript-eslint", "import"],
+  "plugins": ["react", "@typescript-eslint", "import", "prettier"],
   "rules": {
     "@typescript-eslint/no-explicit-any": "error",
-    "@typescript-eslint/comma-dangle": "off",
+    "comma-dangle": ["error", "only-multiline"],
+    "react/react-in-jsx-scope": "off",
     "jsx-a11y/anchor-has-content": "off",
     "react/jsx-props-no-spreading": "off",
     "no-param-reassign": [
