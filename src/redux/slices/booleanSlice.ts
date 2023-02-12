@@ -4,12 +4,10 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import type { ActionProps } from 'ts/interfaces';
 
 interface BooleanState {
-  isPopupOpen: boolean;
   isCartMenuOpen: boolean;
 }
 
 const initialState: BooleanState = {
-  isPopupOpen: false,
   isCartMenuOpen: false,
 };
 

@@ -6,17 +6,32 @@ import Footer from 'components/Footer/Footer';
 
 import './styles/reset.scss';
 import './styles/styles.scss';
+import { useCallback, useState } from 'react';
 
 function App() {
+  const [isLimitPopupOpen, setLimitPopupOpen] = useState(false);
+
+  const openLimitPopup = useCallback(() => {
+    setLimitPopupOpen(true);
+  }, []);
+
+  const closeLimitPopup = useCallback(() => {
+    setLimitPopupOpen(false);
+  }, []);
+
   return (
     <>
       <Header />
       <main className="main">
         <Filters />
-        <ProductsList />
+        <ProductsList openPopup={openLimitPopup} />
       </main>
       <Footer />
-      <Popup />
+      <Popup
+        isPopupOpen={isLimitPopupOpen}
+        closePopup={closeLimitPopup}
+        text="Извините, все слоты заполнены"
+      />
     </>
   );
 }

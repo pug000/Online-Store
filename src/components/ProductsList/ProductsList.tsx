@@ -1,7 +1,6 @@
 import { memo, useCallback } from 'react';
 
 import { addCartItem, removeCartItem } from 'redux/slices/cartSlice';
-import { setBooleanState } from 'redux/slices/booleanSlice';
 import * as cartSelectors from 'redux/selectors/cartSelector';
 
 import { useAppDispatch, useAppSelector } from 'hooks/useRedux';
@@ -13,16 +12,18 @@ import ProductItem from './ProductItem/ProductItem';
 
 import styles from './ProductsList.module.scss';
 
-function ProductsList() {
+interface ProductsListProps {
+  openPopup: () => void;
+}
+
+function ProductsList({ openPopup }: ProductsListProps) {
   const products = useAppSelector((state) => state.products);
   const cart = useAppSelector(cartSelectors.getCart);
   const dispatch = useAppDispatch();
 
   const addToCart = useCallback(
     (currentItem: ProductData) =>
-      cart.length < 20
-        ? dispatch(addCartItem(currentItem))
-        : dispatch(setBooleanState({ key: 'isPopupOpen', value: true })),
+      cart.length < 20 ? dispatch(addCartItem(currentItem)) : openPopup(),
     [cart]
   );
 
