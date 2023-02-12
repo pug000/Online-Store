@@ -1,9 +1,9 @@
 import { memo, useCallback } from 'react';
 
-import { addCartItem, removeCartItem } from 'redux/slices/cartSlice';
+import { cartActions } from 'redux/slices/cartSlice';
 import * as cartSelectors from 'redux/selectors/cartSelector';
 
-import { useAppDispatch, useAppSelector } from 'hooks/useRedux';
+import { useActions, useAppSelector } from 'hooks/useRedux';
 
 import type { ProductData } from 'ts/interfaces';
 
@@ -13,22 +13,22 @@ import ProductItem from './ProductItem/ProductItem';
 import styles from './ProductsList.module.scss';
 
 interface ProductsListProps {
+  products: ProductData[];
   openPopup: () => void;
 }
 
-function ProductsList({ openPopup }: ProductsListProps) {
-  const products = useAppSelector((state) => state.products);
+function ProductsList({ products, openPopup }: ProductsListProps) {
   const cart = useAppSelector(cartSelectors.getCart);
-  const dispatch = useAppDispatch();
+  const { addCartItem, removeCartItem } = useActions(cartActions);
 
   const addToCart = useCallback(
     (currentItem: ProductData) =>
-      cart.length < 20 ? dispatch(addCartItem(currentItem)) : openPopup(),
+      cart.length < 20 ? addCartItem(currentItem) : openPopup(),
     [cart]
   );
 
   const removeFromCart = useCallback(
-    (currentItem: ProductData) => dispatch(removeCartItem(currentItem)),
+    (currentItem: ProductData) => removeCartItem(currentItem),
     [cart]
   );
 

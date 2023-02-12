@@ -11,20 +11,17 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-import cartSlice from './slices/cartSlice';
-import filterSlice from './slices/filterSlice';
-import productsSlice from './slices/productsSlice';
+import { cartName, cartReducer } from './slices/cartSlice';
+import { filterName, filterReducer } from './slices/filterSlice';
 
 const rootReducer = combineReducers({
-  cart: cartSlice,
-  filter: filterSlice,
-  products: productsSlice,
+  [cartName]: cartReducer,
+  [filterName]: filterReducer,
 });
 
 const persistConfig = {
   key: 'root',
   storage,
-  blacklist: ['products'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

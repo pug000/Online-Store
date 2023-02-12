@@ -1,20 +1,11 @@
-import { memo, useCallback, useEffect } from 'react';
+import { memo, useCallback } from 'react';
 
-import { clearCart } from 'redux/slices/cartSlice';
-import {
-  updateFilter,
-  selectFilter,
-  removeSelectedFilter,
-  resetFilter,
-  clearFilter,
-} from 'redux/slices/filterSlice';
-import { setProducts } from 'redux/slices/productsSlice';
+import { cartActions } from 'redux/slices/cartSlice';
+import { filterActions } from 'redux/slices/filterSlice';
 import getFilter from 'redux/selectors/filterSelector';
 
-import { useAppDispatch, useAppSelector } from 'hooks/useRedux';
+import { useActions, useAppSelector } from 'hooks/useRedux';
 
-import products from 'utils/products';
-import { checkboxFilter, rangeFilter, searchFilter, sortFilter } from 'utils/functions';
 import { checkboxFilters, options, rangeSliders } from 'utils/constants';
 
 import type { FilterState } from 'ts/interfaces';
@@ -29,48 +20,36 @@ import styles from './Filters.module.scss';
 
 function Filters() {
   const filter = useAppSelector(getFilter);
-  const dispatch = useAppDispatch();
+  const { updateFilter, selectFilter, removeSelectedFilter, clearFilter, resetFilter } =
+    useActions(filterActions);
+  const { clearCart } = useActions(cartActions);
 
   const updateFilterOnChange = useCallback(
     (name: keyof FilterState, value: string | number[]) => {
-      dispatch(updateFilter({ key: name, value }));
+      updateFilter({ key: name, value });
     },
     []
   );
 
   const selectItemOnClick = useCallback((name: keyof FilterState, value: string) => {
-    dispatch(selectFilter({ key: name, value }));
+    selectFilter({ key: name, value });
   }, []);
 
   const removeSelectedItemOnClick = useCallback(
     (name: keyof FilterState, value: string) => {
-      dispatch(removeSelectedFilter({ key: name, value }));
+      removeSelectedFilter({ key: name, value });
     },
     []
   );
 
   const resetFilters = useCallback(() => {
-    dispatch(resetFilter());
+    resetFilter();
   }, []);
 
   const clearSettings = useCallback(() => {
-    dispatch(clearFilter());
-    dispatch(clearCart());
+    clearFilter();
+    clearCart();
   }, []);
-
-  useEffect(() => {
-    const filteredProducts = sortFilter(products, filter.sort).filter(
-      (item) =>
-        searchFilter(item.name, filter.search) &&
-        rangeFilter(item.price, filter.price) &&
-        rangeFilter(item.quantity, filter.quantity) &&
-        checkboxFilter(item.brand, filter.brand) &&
-        checkboxFilter(item.type, filter.type) &&
-        checkboxFilter(item.colorEffect, filter.colorEffect)
-    );
-
-    dispatch(setProducts(filteredProducts));
-  }, [filter]);
 
   return (
     <div className={styles.wrapper}>

@@ -1,9 +1,9 @@
 import { memo, useCallback } from 'react';
 
-import { removeCartItem, clearCart } from 'redux/slices/cartSlice';
+import { cartActions } from 'redux/slices/cartSlice';
 import * as cartSelectors from 'redux/selectors/cartSelector';
 
-import { useAppDispatch, useAppSelector } from 'hooks/useRedux';
+import { useActions, useAppSelector } from 'hooks/useRedux';
 
 import type { ProductData } from 'ts/interfaces';
 
@@ -18,15 +18,15 @@ interface CartMenuProps {
 function CartMenu({ isCartMenuOpen, closeCartMenu }: CartMenuProps) {
   const cart = useAppSelector(cartSelectors.getCart);
   const cartTotalCount = useAppSelector(cartSelectors.getCartTotalCount);
-  const dispatch = useAppDispatch();
+  const { removeCartItem, clearCart } = useActions(cartActions);
 
   const removeCartItemFromCart = useCallback((cartItem: ProductData) => {
-    dispatch(removeCartItem(cartItem));
+    removeCartItem(cartItem);
   }, []);
 
   const purchaseCart = () => {
     closeCartMenu();
-    dispatch(clearCart());
+    clearCart();
   };
 
   return (
