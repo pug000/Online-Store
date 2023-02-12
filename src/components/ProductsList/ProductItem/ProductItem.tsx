@@ -1,15 +1,14 @@
 import { memo } from 'react';
 
 import type { ProductData } from 'ts/interfaces';
-import { EventHandler } from 'ts/types';
 
 import styles from './ProductItem.module.scss';
 
 interface ProductItemProps {
   product: ProductData;
   cart: ProductData[];
-  addToCart: EventHandler<ProductData, void>;
-  removeFromCart: EventHandler<ProductData, void>;
+  addToCart: (product: ProductData) => void;
+  removeFromCart: (product: ProductData) => void;
 }
 
 function ProductItem({ product, cart, addToCart, removeFromCart }: ProductItemProps) {
