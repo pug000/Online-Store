@@ -1,6 +1,7 @@
-import { useAppDispatch, useAppSelector } from 'hooks/useRedux';
+import { memo, useCallback, useState } from 'react';
 
-import { setBooleanState } from 'redux/slices/booleanSlice';
+import { useAppSelector } from 'hooks/useRedux';
+
 import * as cartSelectors from 'redux/selectors/cartSelector';
 
 import CartMenu from './CartMenu/CartMenu';
@@ -8,29 +9,31 @@ import CartMenu from './CartMenu/CartMenu';
 import styles from './Header.module.scss';
 
 function Header() {
+  const [isCartMenuOpen, setCartMenuOpen] = useState(false);
   const cart = useAppSelector(cartSelectors.getCart);
-  const dispatch = useAppDispatch();
+
+  const openCartMenu = () => {
+    setCartMenuOpen(true);
+  };
+
+  const closeCartMenu = useCallback(() => {
+    setCartMenuOpen(false);
+  }, []);
 
   return (
     <header className={styles.header}>
-      <div className={styles.headerContainer}>
-        <h1 className={styles.headerContainerTitle}>Online Store</h1>
-        <button
-          className={styles.headerContainerButtonCart}
-          type="button"
-          onClick={() =>
-            dispatch(setBooleanState({ key: 'isCartMenuOpen', value: true }))
-          }
-        >
-          <div className={styles.headerCircle}>
+      <div className={styles.container}>
+        <h1 className={styles.title}>Online Store</h1>
+        <button className={styles.buttonCart} type="button" onClick={openCartMenu}>
+          <div className={styles.circle}>
             <span>{cart.length}</span>
           </div>
         </button>
       </div>
-      <div className={styles.headerLine} />
-      <CartMenu />
+      <div className={styles.line} />
+      <CartMenu isCartMenuOpen={isCartMenuOpen} closeCartMenu={closeCartMenu} />
     </header>
   );
 }
 
-export default Header;
+export default memo(Header);

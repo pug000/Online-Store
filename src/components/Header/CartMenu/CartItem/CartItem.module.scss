@@ -1,0 +1,52 @@
+.wrapper {
+  display: flex;
+  height: 100px;
+  gap: 20px;
+}
+
+.imageWrapper {
+  max-width: 100px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.description {
+  display: grid;
+  grid-template-areas:
+    "name name"
+    "price button";
+  justify-items: center;
+  align-items: center;
+  align-content: center;
+  font-size: 17px;
+  flex: 1;
+  gap: 10px;
+}
+
+.name {
+  grid-area: name;
+}
+
+.price {
+  font-family: "Roboto Mono", monospace;
+  grid-area: price;
+  font-size: 18px;
+}
+
+.removeButton {
+  grid-area: button;
+  background-image: url("../../../../assets/icons/delete-icon.svg");
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+
+  &:hover {
+    opacity: 0.6;
+  }
+}

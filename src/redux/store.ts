@@ -13,12 +13,10 @@ import storage from 'redux-persist/lib/storage';
 
 import cartSlice from './slices/cartSlice';
 import filterSlice from './slices/filterSlice';
-import booleanSlice from './slices/booleanSlice';
 import productsSlice from './slices/productsSlice';
 
 const rootReducer = combineReducers({
   cart: cartSlice,
-  booleanState: booleanSlice,
   filter: filterSlice,
   products: productsSlice,
 });
@@ -26,7 +24,7 @@ const rootReducer = combineReducers({
 const persistConfig = {
   key: 'root',
   storage,
-  blacklist: ['booleanState', 'products'],
+  blacklist: ['products'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

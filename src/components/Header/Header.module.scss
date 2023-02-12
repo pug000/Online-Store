@@ -10,117 +10,95 @@
   left: 0;
   width: 100%;
   z-index: 5;
+}
 
-  &Container {
-    max-width: 1440px;
-    margin: 0 auto;
-    display: flex;
-    width: 100%;
-    padding: 0 40px;
-    align-items: center;
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  width: 100%;
+  padding: 0 40px;
+  align-items: center;
+}
 
-    &Title {
-      display: flex;
-      font-size: 30px;
-      flex-grow: 1;
-      gap: 30px;
-      font-family: "Montserrat Bold" sans-serif;
-      font-weight: 700;
-    }
+.title {
+  display: flex;
+  font-size: 30px;
+  flex-grow: 1;
+  gap: 30px;
+  font-family: "Montserrat Bold" sans-serif;
+  font-weight: 700;
+}
 
-    &ButtonCart {
-      background-image: url("../../assets/icons/fav-cart.svg");
-      background-repeat: no-repeat;
-      background-size: 50px 50px;
-      width: 50px;
-      height: 50px;
-      position: relative;
-      cursor: pointer;
-      background-color: transparent;
-      color: #fff;
-      border: none;
+.buttonCart {
+  background-image: url("../../assets/icons/fav-cart.svg");
+  background-repeat: no-repeat;
+  background-size: 50px 50px;
+  width: 50px;
+  height: 50px;
+  position: relative;
+  cursor: pointer;
+  background-color: transparent;
+  color: #fff;
+  border: none;
+}
 
-      .headerCircle {
-        background-color: #000;
-        border: 1px solid #fff;
-        border-radius: 50%;
-        position: absolute;
-        top: 0%;
-        left: 70%;
-        font-size: 15px;
-        max-width: 20px;
-        width: 100%;
-        padding: 4px;
+.circle {
+  background-color: #000;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 0%;
+  left: 70%;
+  font-size: 15px;
+  max-width: 20px;
+  width: 100%;
+  padding: 4px;
 
-        &::before {
-          content: "";
-          background: linear-gradient(
-            45deg,
-            #ff0000,
-            #ff7300,
-            #fffb00,
-            #48ff00,
-            #00ffd5,
-            #002bff,
-            #7a00ff,
-            #ff00c8,
-            #ff0000
-          );
-          position: absolute;
-          top: -2px;
-          left: -2px;
-          background-size: 400%;
-          z-index: -1;
-          filter: blur(5px);
-          width: calc(100%);
-          height: calc(100% + 4px);
-          animation: rgb 20s linear infinite;
-          transition: opacity 0.3s ease-in-out;
-          border-radius: 10px;
-          opacity: 1;
-        }
-
-        span {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-      }
-    }
+  &::before {
+    content: "";
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100%);
+    height: calc(100% + 4px);
+    animation: rgb 20s linear infinite;
+    transition: opacity 0.3s ease-in-out;
+    border-radius: 10px;
+    opacity: 1;
   }
 
-  &Line {
-    position: absolute;
-    width: 100%;
-    background-color: transparent;
-    height: 5px;
-    top: 100%;
+  span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
 
-    &::before {
-      content: "";
-      background: linear-gradient(
-        45deg,
-        #ff0000,
-        #ff7300,
-        #fffb00,
-        #48ff00,
-        #00ffd5,
-        #002bff,
-        #7a00ff,
-        #ff00c8,
-        #ff0000
-      );
-      position: absolute;
-      top: -2px;
-      left: -2px;
-      background-size: 400%;
-      filter: blur(5px);
-      width: calc(100% + 2px);
-      height: calc(100% + 4px);
-      animation: rgb 20s linear infinite;
-      border-radius: 10px;
-      opacity: 1;
-    }
+.line {
+  position: absolute;
+  width: 100%;
+  background-color: transparent;
+  height: 5px;
+  top: 100%;
+
+  &::before {
+    content: "";
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 400%;
+    filter: blur(5px);
+    width: calc(100% + 2px);
+    height: calc(100% + 4px);
+    animation: rgb 20s linear infinite;
+    border-radius: 10px;
+    opacity: 1;
   }
 }
 

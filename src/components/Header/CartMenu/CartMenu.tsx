@@ -1,17 +1,23 @@
-import { useCallback, useEffect } from 'react';
+import { memo, useCallback, useEffect } from 'react';
 
-import { setBooleanState } from 'redux/slices/booleanSlice';
 import { removeCartItem, getCartTotalCount, clearCart } from 'redux/slices/cartSlice';
 import * as cartSelectors from 'redux/selectors/cartSelector';
 
 import { useAppDispatch, useAppSelector } from 'hooks/useRedux';
 
-import styles from './CartMenu.module.scss';
+import type { ProductData } from 'ts/interfaces';
 
-function CartMenu() {
+import styles from './CartMenu.module.scss';
+import CartItem from './CartItem/CartItem';
+
+interface CartMenuProps {
+  isCartMenuOpen: boolean;
+  closeCartMenu: () => void;
+}
+
+function CartMenu({ isCartMenuOpen, closeCartMenu }: CartMenuProps) {
   const cart = useAppSelector(cartSelectors.getCart);
   const cartTotalCount = useAppSelector(cartSelectors.getCartTotalCount);
-  const isCartMenuOpen = useAppSelector((state) => state.booleanState.isCartMenuOpen);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -20,65 +26,53 @@ function CartMenu() {
     }
   }, [cart, isCartMenuOpen]);
 
-  const closeCartMenu = useCallback(() => {
-    dispatch(setBooleanState({ key: 'isCartMenuOpen', value: false }));
-  }, [isCartMenuOpen]);
+  const removeCartItemFromCart = useCallback((cartItem: ProductData) => {
+    dispatch(removeCartItem(cartItem));
+  }, []);
+
+  const purchaseCart = () => {
+    closeCartMenu();
+    dispatch(clearCart());
+  };
 
   return (
     <>
       <div
         className={
-          isCartMenuOpen ? `${styles.shadow} ${styles.shadowActive}` : `${styles.shadow}`
+          isCartMenuOpen ? `${styles.overlay} ${styles.active}` : `${styles.shadow}`
         }
         aria-hidden="true"
         onClick={closeCartMenu}
       />
       <div
         className={
-          isCartMenuOpen ? `${styles.cart} ${styles.cartActive}` : `${styles.cart}`
+          isCartMenuOpen ? `${styles.wrapper} ${styles.active}` : `${styles.wrapper}`
         }
       >
-        <div className={styles.cartHeader}>
-          <h3 className={styles.cartHeaderTitle}>Shopping Cart</h3>
+        <div className={styles.containerHeader}>
+          <h3 className={styles.title}>Shopping Cart</h3>
           <button
-            className={styles.cartHeaderCloseButton}
+            className={styles.closeButton}
             type="button"
             aria-label="close"
             onClick={closeCartMenu}
           />
         </div>
-        <div className={styles.cartMain}>
-          {cart.map((item) => (
-            <div key={item.id} className={styles.cartItem}>
-              <div className={styles.cartItemImg}>
-                <img src={`./assets/img/${item.id}.png`} alt="cart-img" />
-              </div>
-              <div className={styles.cartItemDescription}>
-                <p className={styles.cartItemName}>{item.name}</p>
-                <p className={styles.cartItemPrice}>{`$${item.price}`}</p>
-                <button
-                  className={styles.cartItemButtonRemove}
-                  type="button"
-                  aria-label="button"
-                  onClick={() => dispatch(removeCartItem(item))}
-                />
-              </div>
-            </div>
+        <div className={styles.containerMain}>
+          {cart.map((cartItem) => (
+            <CartItem
+              key={cartItem.id}
+              cartItem={cartItem}
+              removeCartItemFromCart={removeCartItemFromCart}
+            />
           ))}
         </div>
-        <div className={styles.cartFooter}>
-          <div className={styles.cartFooterPrice}>
+        <div className={styles.containerFooter}>
+          <div className={styles.price}>
             <span>Итого:</span>
             <span>{`$${cartTotalCount}`}</span>
           </div>
-          <button
-            className={styles.cartFooterButton}
-            type="button"
-            onClick={() => {
-              closeCartMenu();
-              dispatch(clearCart());
-            }}
-          >
+          <button className={styles.purchaseButton} type="button" onClick={purchaseCart}>
             Оформить заказ
           </button>
         </div>
@@ -87,4 +81,4 @@ function CartMenu() {
   );
 }
 
-export default CartMenu;
+export default memo(CartMenu);
