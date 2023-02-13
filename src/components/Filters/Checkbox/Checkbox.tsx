@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import classNames from 'classnames';
 
 import type { Checkbox, FilterState } from 'ts/interfaces';
 
@@ -34,11 +35,9 @@ function CheckboxFilter({
           <div
             key={id}
             aria-hidden="true"
-            className={
-              filter.includes(name)
-                ? `${styles.filterItem} ${styles.active}`
-                : `${styles.filterItem}`
-            }
+            className={classNames(styles.filterItem, {
+              [styles.active]: filter.includes(name),
+            })}
             defaultValue=""
             onClick={() => selectFilterOnClick(name)}
           >

@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import classNames from 'classnames';
 
 import type { ProductData } from 'ts/interfaces';
 
@@ -12,7 +13,7 @@ interface ProductItemProps {
 }
 
 function ProductItem({ product, cart, addToCart, removeFromCart }: ProductItemProps) {
-  const selectedProduct = cart.some(({ id }) => id === product.id);
+  const isSelectedProduct = cart.some(({ id }) => id === product.id);
 
   return (
     <div className={styles.wrapper}>
@@ -34,14 +35,12 @@ function ProductItem({ product, cart, addToCart, removeFromCart }: ProductItemPr
         <div className={styles.price}>${product.price}</div>
         <button
           type="button"
-          className={
-            selectedProduct
-              ? `${styles.button} ${styles.buttonActive}`
-              : `${styles.button}`
+          className={classNames(styles.button, { [styles.active]: isSelectedProduct })}
+          onClick={() =>
+            isSelectedProduct ? removeFromCart(product) : addToCart(product)
           }
-          onClick={() => (selectedProduct ? removeFromCart(product) : addToCart(product))}
         >
-          {selectedProduct ? 'Удалить из корзины' : 'Добавить в корзину'}
+          {isSelectedProduct ? 'Удалить из корзины' : 'Добавить в корзину'}
         </button>
       </div>
     </div>

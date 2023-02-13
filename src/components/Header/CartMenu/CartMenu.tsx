@@ -1,4 +1,5 @@
 import { memo, useCallback } from 'react';
+import classNames from 'classnames';
 
 import { cartActions } from 'redux/slices/cartSlice';
 import * as cartSelectors from 'redux/selectors/cartSelector';
@@ -32,17 +33,11 @@ function CartMenu({ isCartMenuOpen, closeCartMenu }: CartMenuProps) {
   return (
     <>
       <div
-        className={
-          isCartMenuOpen ? `${styles.overlay} ${styles.active}` : `${styles.shadow}`
-        }
+        className={classNames(styles.overlay, { [styles.active]: isCartMenuOpen })}
         aria-hidden="true"
         onClick={closeCartMenu}
       />
-      <div
-        className={
-          isCartMenuOpen ? `${styles.wrapper} ${styles.active}` : `${styles.wrapper}`
-        }
-      >
+      <div className={classNames(styles.wrapper, { [styles.active]: isCartMenuOpen })}>
         <div className={styles.containerHeader}>
           <h3 className={styles.title}>Shopping Cart</h3>
           <button

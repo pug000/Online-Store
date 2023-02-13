@@ -1,4 +1,5 @@
 import { memo, useEffect, useRef } from 'react';
+import classNames from 'classnames';
 
 import styles from './Popup.module.scss';
 
@@ -26,13 +27,9 @@ function Popup({ isPopupOpen, closePopup, text }: PopupProps) {
   }, [isPopupOpen]);
 
   return (
-    <div className={isPopupOpen ? `${styles.popup} ${styles.active}` : `${styles.popup}`}>
+    <div className={classNames(styles.popup, { [styles.active]: isPopupOpen })}>
       <div aria-hidden="true" className={styles.overlay} onClick={closePopup} />
-      <div
-        className={
-          isPopupOpen ? `${styles.content} ${styles.active}` : `${styles.content}`
-        }
-      >
+      <div className={classNames(styles.content, { [styles.active]: isPopupOpen })}>
         <div className={styles.title}>{text}</div>
         <button
           type="button"
